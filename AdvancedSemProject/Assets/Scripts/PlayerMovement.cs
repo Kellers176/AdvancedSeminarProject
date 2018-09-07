@@ -17,22 +17,40 @@ public class PlayerMovement : MonoBehaviour {
         if(Input.GetKey(KeyCode.W))
         {
             //up
-            transform.Translate(Vector2.up * speed);
+           transform.Translate(Vector2.up * speed);
+           if(transform.rotation != Quaternion.Euler(0,0,0))
+            {
+                transform.rotation = Quaternion.Euler(0,0,0);
+            }
+            
         }
         if (Input.GetKey(KeyCode.S))
         {
             //down
-            transform.Translate(Vector2.down * speed);
+            transform.Translate(Vector2.up * speed);
+            if(transform.rotation != Quaternion.Euler(0,0,180))
+            {
+                transform.rotation = Quaternion.Euler(0,0,180);
+            }
+            
         }
         if (Input.GetKey(KeyCode.A))
         {
             //left
-            transform.Translate(Vector2.left * speed);
+            transform.Translate(Vector2.up * speed);
+            if(transform.rotation != Quaternion.Euler(0,0,90))
+            {
+                transform.rotation = Quaternion.Euler(0,0,90);
+            }
         }
         if (Input.GetKey(KeyCode.D))
         {
             //right
-            transform.Translate(Vector2.right * speed);
+            transform.Translate(Vector2.up * speed);
+            if(transform.rotation != Quaternion.Euler(0,0,-90))
+            {
+                transform.rotation = Quaternion.Euler(0,0,-90);
+            }
         }
 
 
