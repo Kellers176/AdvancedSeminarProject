@@ -8,7 +8,11 @@ public class PlayerMovement : MonoBehaviour {
 
     public float speed;
 
+    public GameObject spawner;
+    Projectile myProjectile;
+
 	void Start () {
+        myProjectile = spawner.GetComponent<Projectile>();
 	}
 	
 	// Update is called once per frame
@@ -20,6 +24,7 @@ public class PlayerMovement : MonoBehaviour {
            transform.Translate(Vector2.up * speed);
            if(transform.rotation != Quaternion.Euler(0,0,0))
             {
+                myProjectile.myDirection = Vector3.up;
                 transform.rotation = Quaternion.Euler(0,0,0);
             }
             
@@ -30,6 +35,7 @@ public class PlayerMovement : MonoBehaviour {
             transform.Translate(Vector2.up * speed);
             if(transform.rotation != Quaternion.Euler(0,0,180))
             {
+                myProjectile.myDirection = Vector3.down;
                 transform.rotation = Quaternion.Euler(0,0,180);
             }
             
@@ -40,6 +46,7 @@ public class PlayerMovement : MonoBehaviour {
             transform.Translate(Vector2.up * speed);
             if(transform.rotation != Quaternion.Euler(0,0,90))
             {
+                myProjectile.myDirection = Vector3.left;
                 transform.rotation = Quaternion.Euler(0,0,90);
             }
         }
@@ -49,6 +56,7 @@ public class PlayerMovement : MonoBehaviour {
             transform.Translate(Vector2.up * speed);
             if(transform.rotation != Quaternion.Euler(0,0,-90))
             {
+                myProjectile.myDirection = Vector3.right;
                 transform.rotation = Quaternion.Euler(0,0,-90);
             }
         }
