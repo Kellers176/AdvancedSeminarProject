@@ -14,13 +14,7 @@ public class Bullet : MonoBehaviour {
 		
 	}
     void OnCollisionEnter2D(Collision2D col)
-    {
-
-        if (col.gameObject.tag == "Enemy")
-        {
-            Destroy(col.gameObject);
-        }
-
+    { 
         Destroy(this.gameObject);
     }
 }
