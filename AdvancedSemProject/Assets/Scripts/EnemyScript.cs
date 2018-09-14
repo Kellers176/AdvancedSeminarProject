@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyScript : MonoBehaviour {
 
-    int maxHealth = 50;
+    int maxHealth = 5;
     int currentHealth;
     private Renderer rend;
     Rigidbody2D rb;
@@ -32,11 +32,11 @@ public class EnemyScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if(currentHealth < 40)
+        if(currentHealth < 4)
         {
             rend.material.color = Color.yellow;
         }
-        if (currentHealth < 20)
+        if (currentHealth < 3)
         {
             rend.material.color = Color.red;
         }
@@ -67,7 +67,7 @@ public class EnemyScript : MonoBehaviour {
     {
         if(collision.gameObject.tag == "Bullet")
         {
-            currentHealth -= 10;
+            currentHealth -= 1;
         }
     }
 }
