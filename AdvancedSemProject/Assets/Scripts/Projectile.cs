@@ -9,6 +9,7 @@ public class Projectile : MonoBehaviour {
     public Vector3 myDirection;
     public float[] SpreadRange;
 
+
     // Use this for initialization
     void Start () {
         myDirection = Vector3.up;
@@ -16,6 +17,8 @@ public class Projectile : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+            //work on player health, work on timer, work on weapon, work on fixing thsiss
+        
 		if(Input.GetKeyDown(KeyCode.Space))
 		{
 			spawnObject();
@@ -32,6 +35,7 @@ public class Projectile : MonoBehaviour {
         }
         if(myDirection == Vector3.left)
         {
+           
             myObjectClone.AddForce(new Vector2(-speed, RandomRange));
         }
         if(myDirection == Vector3.up)
@@ -42,6 +46,5 @@ public class Projectile : MonoBehaviour {
         {
             myObjectClone.AddForce(new Vector2(RandomRange, -speed));
         }
-
 	}
 }

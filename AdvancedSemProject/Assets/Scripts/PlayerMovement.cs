@@ -11,57 +11,45 @@ public class PlayerMovement : MonoBehaviour {
     public GameObject spawner;
     Projectile myProjectile;
 
+
 	void Start () {
         myProjectile = spawner.GetComponent<Projectile>();
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () 
+    {
 
-        if(Input.GetKey(KeyCode.W))
+
+        if(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
             //up
-           transform.Translate(Vector2.up * speed);
-           if(transform.rotation != Quaternion.Euler(0,0,0))
-            {
-                myProjectile.myDirection = Vector3.up;
-                transform.rotation = Quaternion.Euler(0,0,0);
-            }
+            transform.Translate(Vector2.up * speed);
+            myProjectile.myDirection = Vector3.up;
+            transform.rotation = Quaternion.Euler(0,0,0);
             
         }
-        if (Input.GetKey(KeyCode.S))
+        if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
         {
             //down
-            transform.Translate(Vector2.up * speed);
-            if(transform.rotation != Quaternion.Euler(0,0,180))
-            {
-                myProjectile.myDirection = Vector3.down;
-                transform.rotation = Quaternion.Euler(0,0,180);
-            }
+            transform.Translate(Vector2.down * speed);
+            myProjectile.myDirection = Vector3.down;
+            transform.rotation = Quaternion.Euler(0,0,0);
             
         }
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
             //left
-            transform.Translate(Vector2.up * speed);
-            if(transform.rotation != Quaternion.Euler(0,0,90))
-            {
-                myProjectile.myDirection = Vector3.left;
-                transform.rotation = Quaternion.Euler(0,0,90);
-            }
+            transform.Translate(Vector2.left * speed);
+            myProjectile.myDirection = Vector3.left;
+            transform.rotation = Quaternion.Euler(0,0,0);
         }
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.D)|| Input.GetKey(KeyCode.RightArrow))
         {
             //right
-            transform.Translate(Vector2.up * speed);
-            if(transform.rotation != Quaternion.Euler(0,0,-90))
-            {
-                myProjectile.myDirection = Vector3.right;
-                transform.rotation = Quaternion.Euler(0,0,-90);
-            }
+            transform.Translate(Vector2.right * speed);
+            myProjectile.myDirection = Vector3.right;
+            transform.rotation = Quaternion.Euler(0,0,0);
         }
-
-
-
     }
 }
