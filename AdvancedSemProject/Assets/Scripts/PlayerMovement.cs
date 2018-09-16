@@ -7,13 +7,12 @@ public class PlayerMovement : MonoBehaviour {
     // Use this for initialization
 
     public float speed;
-
-    public GameObject spawner;
+    
     Projectile myProjectile;
 
 
 	void Start () {
-        myProjectile = spawner.GetComponent<Projectile>();
+        myProjectile = GameObject.FindGameObjectWithTag("SpawnPoint").GetComponent<Projectile>();
 	}
 	
 	// Update is called once per frame
