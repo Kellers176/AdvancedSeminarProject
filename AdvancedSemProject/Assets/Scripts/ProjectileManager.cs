@@ -7,9 +7,7 @@ public class ProjectileManager : MonoBehaviour
     public bool canShoot = false;
     public Rigidbody2D myObject;
     private Rigidbody2D myObjectClone;
-    public float speed = 100f;
     public Vector3 myDirection;
-    float[] SpreadRange = { 10, 8, 6, 4, 2, 0, -2, -4, -6, -8, -10 };
 
 
 

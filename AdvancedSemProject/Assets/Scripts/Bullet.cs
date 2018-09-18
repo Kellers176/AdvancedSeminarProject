@@ -16,6 +16,7 @@ public class Bullet : MonoBehaviour {
         myProjectile = GameObject.FindGameObjectWithTag("SpawnManager").GetComponent<ProjectileManager>();
         float RandomRange = SpreadRange[Random.Range(0, SpreadRange.Length)];
         gameObject.GetComponent<Rigidbody2D>().velocity = myProjectile.getDirection() * speed;
+
         if (myProjectile.getDirection() == Vector3.right)
         {
             gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(speed, RandomRange));
