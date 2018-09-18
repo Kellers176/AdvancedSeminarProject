@@ -8,11 +8,11 @@ public class PlayerMovement : MonoBehaviour {
 
     public float speed;
     
-    Projectile myProjectile;
+    ProjectileManager myProjectile;
 
 
 	void Start () {
-        myProjectile = GameObject.FindGameObjectWithTag("SpawnPoint").GetComponent<Projectile>();
+        myProjectile = GameObject.FindGameObjectWithTag("SpawnManager").GetComponent<ProjectileManager>();
 	}
 	
 	// Update is called once per frame
