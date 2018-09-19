@@ -25,15 +25,22 @@ public class RocketBullet : MonoBehaviour {
     // Update is called once per frame
     void FixedUpdate()
     {
-        Vector2 pointToTarget = (Vector2)transform.position - (Vector2)target.transform.position;
+        if(target != null)
+        {
+            Vector2 pointToTarget = (Vector2)transform.position - (Vector2)target.transform.position;
 
-        pointToTarget.Normalize();
+            pointToTarget.Normalize();
 
-        float value = Vector3.Cross(pointToTarget, transform.right).z;
+            float value = Vector3.Cross(pointToTarget, transform.right).z;
         
-        rb.angularVelocity = rotatingSpeed * value;
+            rb.angularVelocity = rotatingSpeed * value;
 
-        rb.velocity = transform.right * speed;
+            rb.velocity = transform.right * speed;
+        }
+        else
+        {
+            rb.velocity = transform.right * speed;
+        }
     }
 
     void OnCollisionEnter2D(Collision2D col)

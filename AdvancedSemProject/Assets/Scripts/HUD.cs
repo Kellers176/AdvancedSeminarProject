@@ -55,4 +55,9 @@ public class HUD : MonoBehaviour {
 
         }
     }
+
+    public int getTimeLeft()
+    {
+        return timeLeft;
+    }
 }

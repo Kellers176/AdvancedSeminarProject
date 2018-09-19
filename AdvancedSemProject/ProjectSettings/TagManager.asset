@@ -8,6 +8,7 @@ TagManager:
   - Bullet
   - SpawnManager
   - SpawnPoint
+  - HUD
   layers:
   - Default
   - TransparentFX
