@@ -16,10 +16,13 @@ public class HUD : MonoBehaviour {
 
 	private PlayerManager myPlayer;
 
+    ProjectileManager mManager;
+
 	// Use this for initialization
 	void Start () {
         StartCoroutine("LoseTime");
 		myPlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerManager>();
+        mManager = GameObject.FindGameObjectWithTag("SpawnManager").GetComponent<ProjectileManager>();
         Time.timeScale = 1;
 	}
 	
@@ -42,6 +45,7 @@ public class HUD : MonoBehaviour {
 
         if(timeLeft < 0)
         {
+            mManager.done = true;
             timeLeft = 10;
         }
 	}
