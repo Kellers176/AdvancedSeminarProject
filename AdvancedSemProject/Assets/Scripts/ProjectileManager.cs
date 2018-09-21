@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ProjectileManager : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class ProjectileManager : MonoBehaviour
     private Rigidbody2D spawn;
     public Vector3 myDirection;
     public bool done;
+
+    float time;
+
 
     int random;
 
@@ -26,6 +30,26 @@ public class ProjectileManager : MonoBehaviour
 
     // Update is called once per frame
     void Update()
+    {
+        changeObject();
+
+        time += Time.deltaTime;
+
+        if (Input.GetKeyDown(KeyCode.Space) && !(myCountdown.getTimeLeft() <= 0) && time > 0.5)
+        {
+            spawnObject();
+            time = 0;
+        }
+    }
+
+    public void spawnObject()
+    {
+
+        spawn = (Rigidbody2D)Instantiate(myObjectClone, transform.position, transform.rotation);
+
+    }
+
+    public void changeObject()
     {
         random = Random.Range(0, myObject.Length);
 
@@ -45,22 +69,13 @@ public class ProjectileManager : MonoBehaviour
             }
             done = false;
         }
-
-        if (Input.GetKeyDown(KeyCode.Space) && !(myCountdown.getTimeLeft() <= 0))
-        {
-            spawnObject();
-        }
     }
 
-    public void spawnObject()
-    {
-
-        spawn = (Rigidbody2D)Instantiate(myObjectClone, transform.position, transform.rotation);
-
-    }
 
     public Vector3 getDirection()
     {
         return myDirection;
     }
+   
+
 }

@@ -6,7 +6,7 @@ public class EnemyFollowScript : MonoBehaviour {
     public Transform target;
     public float speed = 20.0f;
 
-    int maxHealth = 50;
+    int maxHealth = 100;
     int currentHealth;
     private Renderer rend;
     Rigidbody2D rb;
@@ -42,6 +42,10 @@ public class EnemyFollowScript : MonoBehaviour {
         if (collision.gameObject.tag == "Bullet")
         {
             currentHealth -= 10;
+        }
+        if (collision.gameObject.tag == "Rocket")
+        {
+            currentHealth -= 50;
         }
     }
 }
