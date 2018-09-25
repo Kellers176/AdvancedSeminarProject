@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerManager : MonoBehaviour {
 
@@ -20,6 +21,7 @@ public class PlayerManager : MonoBehaviour {
         if (currentHealth <= 0)
         {
             Destroy(this.gameObject);
+            SceneManager.LoadScene("Lose Screen");
         }
 		
 	}

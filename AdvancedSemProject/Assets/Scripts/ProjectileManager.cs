@@ -14,6 +14,10 @@ public class ProjectileManager : MonoBehaviour
 
     float time;
 
+    float cooldown;
+
+    int maxBullets;
+    int toReload;
 
     int random;
 
@@ -26,27 +30,40 @@ public class ProjectileManager : MonoBehaviour
         myCountdown = GameObject.FindGameObjectWithTag("HUD").GetComponent<HUD>();
         myObjectClone = myObject[0];
         done = true;
+        cooldown = 0.5f;
+        toReload = 5;
+        maxBullets = toReload;
     }
 
     // Update is called once per frame
     void Update()
     {
         changeObject();
-
+        
         time += Time.deltaTime;
 
-        if (Input.GetKeyDown(KeyCode.Space) && !(myCountdown.getTimeLeft() <= 0) && time > 0.5)
+        Reloading();
+        if (Input.GetKeyDown(KeyCode.Space) && !(myCountdown.getTimeLeft() <= 0) && time > cooldown && !(toReload <= 0))
         {
             spawnObject();
             time = 0;
         }
     }
 
+    void Reloading()
+    {
+        if(toReload <= 0 && Input.GetKeyDown(KeyCode.R))
+        {
+            Debug.Log("Reloading");
+            //have a wait time
+            toReload = maxBullets;
+        }
+    }
+
     public void spawnObject()
     {
-
         spawn = (Rigidbody2D)Instantiate(myObjectClone, transform.position, transform.rotation);
-
+        toReload--;
     }
 
     public void changeObject()
@@ -71,11 +88,21 @@ public class ProjectileManager : MonoBehaviour
         }
     }
 
+    public void setReload(int myreload)
+    {
+        maxBullets = myreload;
+        toReload = myreload;
+    }
 
     public Vector3 getDirection()
     {
         return myDirection;
     }
    
+
+    public void setCoolDownTime(float cool)
+    {
+        cooldown = cool;
+    }
 
 }

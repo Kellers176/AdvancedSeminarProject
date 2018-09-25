@@ -20,21 +20,24 @@ public class EnemyFollowScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if(target != null)
+        {
 
-        if (currentHealth < 40)
-        {
-            rend.material.color = Color.yellow;
-        }
-        if (currentHealth < 20)
-        {
-            rend.material.color = Color.red;
-        }
-        if (currentHealth <= 0)
-        {
-            Destroy(this.gameObject);
-        }
+            if (currentHealth < 40)
+            {
+                rend.material.color = Color.yellow;
+            }
+            if (currentHealth < 20)
+            {
+                rend.material.color = Color.red;
+            }
+            if (currentHealth <= 0)
+            {
+                Destroy(this.gameObject);
+            }
 
-        transform.position = Vector2.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

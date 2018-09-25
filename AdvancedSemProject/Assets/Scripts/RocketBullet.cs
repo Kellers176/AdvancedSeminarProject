@@ -18,7 +18,9 @@ public class RocketBullet : MonoBehaviour {
         Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), GameObject.FindGameObjectWithTag("Player").GetComponent<Collider2D>());
         Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), GameObject.FindGameObjectWithTag("Rocket").GetComponent<Collider2D>());
         target = GameObject.FindGameObjectWithTag("Enemy");
-
+        myProjectile = GameObject.FindGameObjectWithTag("SpawnManager").GetComponent<ProjectileManager>();
+        myProjectile.setCoolDownTime(0.7f);
+        myProjectile.setReload(5);
         rb = GetComponent<Rigidbody2D>();
     }
 

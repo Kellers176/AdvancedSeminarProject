@@ -14,6 +14,10 @@ public class Bullet : MonoBehaviour {
     void Start () {
 		Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), GameObject.FindGameObjectWithTag("Player").GetComponent<Collider2D>());
         myProjectile = GameObject.FindGameObjectWithTag("SpawnManager").GetComponent<ProjectileManager>();
+        myProjectile.setCoolDownTime(0.2f);
+        myProjectile.setReload(20);
+
+
         float RandomRange = SpreadRange[Random.Range(0, SpreadRange.Length)];
         gameObject.GetComponent<Rigidbody2D>().velocity = myProjectile.getDirection() * speed;
 
@@ -23,7 +27,6 @@ public class Bullet : MonoBehaviour {
         }
         if (myProjectile.getDirection() == Vector3.left)
         {
-
             gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-speed, RandomRange));
         }
         if (myProjectile.getDirection() == Vector3.up)
