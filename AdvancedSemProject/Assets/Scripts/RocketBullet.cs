@@ -6,11 +6,11 @@ public class RocketBullet : MonoBehaviour {
     public float speed = 50f;
     public float rotatingSpeed = 200;
     public GameObject target;
+    Vector3 toTransform;
 
     Rigidbody2D rb;
 
-
-    ProjectileManager myProjectile;
+    
 
     // Use this for initialization
     void Start()
@@ -18,9 +18,6 @@ public class RocketBullet : MonoBehaviour {
         Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), GameObject.FindGameObjectWithTag("Player").GetComponent<Collider2D>());
         Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), GameObject.FindGameObjectWithTag("Rocket").GetComponent<Collider2D>());
         target = GameObject.FindGameObjectWithTag("Enemy");
-        myProjectile = GameObject.FindGameObjectWithTag("SpawnManager").GetComponent<ProjectileManager>();
-        myProjectile.setCoolDownTime(0.7f);
-        myProjectile.setReload(5);
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -41,7 +38,7 @@ public class RocketBullet : MonoBehaviour {
         }
         else
         {
-            rb.velocity = transform.right * speed;
+           rb.velocity = transform.right * speed;
         }
     }
 

@@ -37,6 +37,10 @@ public class EnemyFollowScript : MonoBehaviour {
             }
 
             transform.position = Vector2.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);
+            //if(transform.position == Vector3.right)
+            //{
+            //    Debug.Log("ree?");
+            //}
         }
     }
 

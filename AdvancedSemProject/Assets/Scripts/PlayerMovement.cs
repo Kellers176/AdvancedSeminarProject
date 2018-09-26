@@ -10,6 +10,8 @@ public class PlayerMovement : MonoBehaviour {
     
     ProjectileManager myProjectile;
 
+    public Sprite[] playerSprites;
+
 
 	void Start () {
         myProjectile = GameObject.FindGameObjectWithTag("SpawnManager").GetComponent<ProjectileManager>();
@@ -25,6 +27,7 @@ public class PlayerMovement : MonoBehaviour {
             //up
             transform.Translate(Vector2.up * speed);
             myProjectile.myDirection = Vector3.up;
+            this.GetComponent<SpriteRenderer>().sprite = playerSprites[1];
             transform.rotation = Quaternion.Euler(0,0,0);
             
         }
@@ -33,6 +36,7 @@ public class PlayerMovement : MonoBehaviour {
             //down
             transform.Translate(Vector2.down * speed);
             myProjectile.myDirection = Vector3.down;
+            this.GetComponent<SpriteRenderer>().sprite = playerSprites[0];
             transform.rotation = Quaternion.Euler(0,0,0);
             
         }
@@ -41,6 +45,7 @@ public class PlayerMovement : MonoBehaviour {
             //left
             transform.Translate(Vector2.left * speed);
             myProjectile.myDirection = Vector3.left;
+            this.GetComponent<SpriteRenderer>().sprite = playerSprites[3];
             transform.rotation = Quaternion.Euler(0,0,0);
         }
         if (Input.GetKey(KeyCode.D)|| Input.GetKey(KeyCode.RightArrow))
@@ -48,6 +53,7 @@ public class PlayerMovement : MonoBehaviour {
             //right
             transform.Translate(Vector2.right * speed);
             myProjectile.myDirection = Vector3.right;
+            this.GetComponent<SpriteRenderer>().sprite = playerSprites[2];
             transform.rotation = Quaternion.Euler(0,0,0);
         }
     }

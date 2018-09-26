@@ -8,6 +8,8 @@ public class HUD : MonoBehaviour {
 
     public TextMeshProUGUI countdown;
 
+    public TextMeshProUGUI reload;
+
     public int timeLeft = 10;
 
 	public Sprite[] HeartSprites;
@@ -30,6 +32,7 @@ public class HUD : MonoBehaviour {
 	void Update () {
 		HeartUI.sprite = HeartSprites[(int)myPlayer.currentHealth];
         countdown.text = ("" + timeLeft);
+        reload.text = ("" + mManager.getReloadCount());
         if(timeLeft < 11)
         {
             countdown.color = Color.green;
