@@ -2436,9 +2436,9 @@ GameObject:
   m_Component:
   - component: {fileID: 501702240}
   - component: {fileID: 501702239}
-  - component: {fileID: 501702238}
   - component: {fileID: 501702237}
   - component: {fileID: 501702236}
+  - component: {fileID: 501702238}
   m_Layer: 0
   m_Name: Enemy (4)
   m_TagString: Enemy
@@ -2491,18 +2491,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.029333353, y: -0.02259779}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.0666667, y: 1.0666667}
+    oldSize: {x: 0.64, y: 0.64}
     newSize: {x: 0.64, y: 0.64}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.0150385, y: 0.9111781}
+  m_Size: {x: 0.64, y: 0.64}
   m_EdgeRadius: 0
 --- !u!212 &501702239
 SpriteRenderer:
@@ -2539,7 +2539,7 @@ SpriteRenderer:
   m_SortingLayerID: -947196027
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b2757a08f99a85f42aaf2cf93127b032, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c10210c0ed5282b4ca586b19a6a961f3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2647,9 +2647,9 @@ GameObject:
   m_Component:
   - component: {fileID: 725756281}
   - component: {fileID: 725756280}
-  - component: {fileID: 725756279}
   - component: {fileID: 725756278}
   - component: {fileID: 725756277}
+  - component: {fileID: 725756279}
   m_Layer: 0
   m_Name: Enemy (3)
   m_TagString: Enemy
@@ -2702,18 +2702,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.029333353, y: -0.02259779}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.0666667, y: 1.0666667}
+    oldSize: {x: 0.64, y: 0.64}
     newSize: {x: 0.64, y: 0.64}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.0150385, y: 0.9111781}
+  m_Size: {x: 0.64, y: 0.64}
   m_EdgeRadius: 0
 --- !u!212 &725756280
 SpriteRenderer:
@@ -2750,7 +2750,7 @@ SpriteRenderer:
   m_SortingLayerID: -947196027
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b2757a08f99a85f42aaf2cf93127b032, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c10210c0ed5282b4ca586b19a6a961f3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2904,9 +2904,9 @@ GameObject:
   m_Component:
   - component: {fileID: 821372214}
   - component: {fileID: 821372213}
-  - component: {fileID: 821372216}
   - component: {fileID: 821372215}
   - component: {fileID: 821372217}
+  - component: {fileID: 821372216}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -2949,7 +2949,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b2757a08f99a85f42aaf2cf93127b032, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c10210c0ed5282b4ca586b19a6a961f3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3005,18 +3005,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.029333353, y: -0.02259779}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.0666667, y: 1.0666667}
+    oldSize: {x: 0.64, y: 0.64}
     newSize: {x: 0.64, y: 0.64}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.0150385, y: 0.9111781}
+  m_Size: {x: 0.64, y: 0.64}
   m_EdgeRadius: 0
 --- !u!114 &821372217
 MonoBehaviour:
@@ -3117,9 +3117,9 @@ GameObject:
   m_Component:
   - component: {fileID: 960211898}
   - component: {fileID: 960211897}
-  - component: {fileID: 960211896}
   - component: {fileID: 960211895}
   - component: {fileID: 960211894}
+  - component: {fileID: 960211896}
   m_Layer: 0
   m_Name: Enemy (2)
   m_TagString: Enemy
@@ -3172,18 +3172,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.029333353, y: -0.02259779}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.0666667, y: 1.0666667}
+    oldSize: {x: 0.64, y: 0.64}
     newSize: {x: 0.64, y: 0.64}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.0150385, y: 0.9111781}
+  m_Size: {x: 0.64, y: 0.64}
   m_EdgeRadius: 0
 --- !u!212 &960211897
 SpriteRenderer:
@@ -3220,7 +3220,7 @@ SpriteRenderer:
   m_SortingLayerID: -947196027
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b2757a08f99a85f42aaf2cf93127b032, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c10210c0ed5282b4ca586b19a6a961f3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -5331,9 +5331,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1892862954}
   - component: {fileID: 1892862953}
-  - component: {fileID: 1892862952}
   - component: {fileID: 1892862951}
   - component: {fileID: 1892862950}
+  - component: {fileID: 1892862952}
   m_Layer: 0
   m_Name: Enemy (5)
   m_TagString: Enemy
@@ -5386,18 +5386,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.029333353, y: -0.02259779}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.0666667, y: 1.0666667}
+    oldSize: {x: 0.64, y: 0.64}
     newSize: {x: 0.64, y: 0.64}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.0150385, y: 0.9111781}
+  m_Size: {x: 0.64, y: 0.64}
   m_EdgeRadius: 0
 --- !u!212 &1892862953
 SpriteRenderer:
@@ -5434,7 +5434,7 @@ SpriteRenderer:
   m_SortingLayerID: -947196027
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b2757a08f99a85f42aaf2cf93127b032, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c10210c0ed5282b4ca586b19a6a961f3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
