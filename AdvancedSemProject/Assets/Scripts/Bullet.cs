@@ -11,10 +11,24 @@ public class Bullet : MonoBehaviour {
     ProjectileManager myProjectile;
 
     // Use this for initialization
-    void Start () {
+    void Start ()
+    {
 		Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), GameObject.FindGameObjectWithTag("Player").GetComponent<Collider2D>());
         myProjectile = GameObject.FindGameObjectWithTag("SpawnManager").GetComponent<ProjectileManager>();
+        movement();
+    }
+	
+	// Update is called once per frame
+	void Update () {
+		
+	}
+    void OnCollisionEnter2D(Collision2D col)
+    { 
+        Destroy(this.gameObject);
+    }
 
+    void movement()
+    {
         float RandomRange = SpreadRange[Random.Range(0, SpreadRange.Length)];
         gameObject.GetComponent<Rigidbody2D>().velocity = myProjectile.getDirection() * speed;
 
@@ -34,14 +48,6 @@ public class Bullet : MonoBehaviour {
         {
             gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(RandomRange, -speed));
         }
-    }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-    void OnCollisionEnter2D(Collision2D col)
-    { 
-        Destroy(this.gameObject);
+        
     }
 }

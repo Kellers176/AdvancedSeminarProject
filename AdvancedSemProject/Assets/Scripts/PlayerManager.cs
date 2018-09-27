@@ -18,13 +18,18 @@ public class PlayerManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+        checkHealth();
+		
+	}
+
+    void checkHealth()
+    {
         if (currentHealth <= 0)
         {
             Destroy(this.gameObject);
             SceneManager.LoadScene("Lose Screen");
         }
-		
-	}
+    }
 	void OnCollisionEnter2D(Collision2D col)
 	{
 		if(col.gameObject.tag == "Enemy")

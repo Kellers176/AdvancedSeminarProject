@@ -9,7 +9,6 @@ public class EnemyFollowScript : MonoBehaviour {
     int maxHealth = 100;
     int currentHealth;
     private Renderer rend;
-    Rigidbody2D rb;
 
     // Use this for initialization
     void Start () {
@@ -22,25 +21,39 @@ public class EnemyFollowScript : MonoBehaviour {
 	void Update () {
         if(target != null)
         {
+            changeColor();
+            destroyObject();
+            move();
+        }
+    }
+    void move()
+    {
+        transform.position = Vector2.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);
+    }
 
-            if (currentHealth < 40)
-            {
+    void destroyObject()
+    {
+        if (currentHealth <= 0)
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
+    void changeColor()
+    {
+        switch (currentHealth)
+        {
+            case 40:
                 rend.material.color = Color.yellow;
-            }
-            if (currentHealth < 20)
-            {
+                break;
+            case 20:
                 rend.material.color = Color.red;
-            }
-            if (currentHealth <= 0)
-            {
+                break;
+            case 0:
                 Destroy(this.gameObject);
-            }
-
-            transform.position = Vector2.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);
-            //if(transform.position == Vector3.right)
-            //{
-            //    Debug.Log("ree?");
-            //}
+                break;
+            default:
+                break;
         }
     }
 

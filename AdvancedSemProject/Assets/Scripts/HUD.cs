@@ -1,13 +1,11 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class HUD : MonoBehaviour {
 
     public TextMeshProUGUI countdown;
-
     public TextMeshProUGUI reload;
 
     public int timeLeft = 10;
@@ -15,9 +13,7 @@ public class HUD : MonoBehaviour {
 	public Sprite[] HeartSprites;
 
 	public Image HeartUI;
-
 	private PlayerManager myPlayer;
-
     ProjectileManager mManager;
 
 	// Use this for initialization
@@ -32,26 +28,50 @@ public class HUD : MonoBehaviour {
 	void Update () {
 		HeartUI.sprite = HeartSprites[(int)myPlayer.currentHealth];
         countdown.text = ("" + timeLeft);
-        reload.text = ("" + mManager.getReloadCount());
-        if(timeLeft < 11)
+        changeTimeColor();
+        showReload();
+        resetTime();
+    }
+    void showReload()
+    {
+        if (mManager.getReloadCount() == 0)
         {
-            countdown.color = Color.green;
+            reload.text = "Press R!";
         }
-        if(timeLeft < 6)
+        else
         {
-            countdown.color = Color.yellow;
-        }
-        if(timeLeft < 3)
-        {
-            countdown.color = Color.red;
+            reload.text = ("" + mManager.getReloadCount());
         }
 
-        if(timeLeft < 0)
+    }
+
+    void changeTimeColor()
+    {
+        switch (timeLeft)
+        {
+            case 10:
+                countdown.color = Color.green;
+                break;
+            case 6:
+                countdown.color = Color.yellow;
+                break;
+            case 3:
+                countdown.color = Color.red;
+                break;
+            default:
+                break;
+
+        }
+    }
+
+    void resetTime()
+    {
+        if (timeLeft < 0)
         {
             mManager.done = true;
             timeLeft = 10;
         }
-	}
+    }
 
     IEnumerator LoseTime()
     {

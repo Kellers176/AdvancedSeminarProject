@@ -39,9 +39,13 @@ public class ProjectileManager : MonoBehaviour
     void Update()
     {
         changeObject();
-        
-        time += Time.deltaTime;
         Reloading();
+        moveInput();
+    }
+
+    void moveInput()
+    {
+        time += Time.deltaTime;
         if (Input.GetKeyDown(KeyCode.Space) && !(myCountdown.getTimeLeft() <= 0) && time > cooldown && !(toReload <= 0))
         {
             spawnObject();
