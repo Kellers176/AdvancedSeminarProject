@@ -3,7 +3,8 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HUD : MonoBehaviour {
+public class HUD : MonoBehaviour 
+{
 
     public TextMeshProUGUI countdown;
     public TextMeshProUGUI reload;
@@ -17,7 +18,8 @@ public class HUD : MonoBehaviour {
     ProjectileManager mManager;
 
 	// Use this for initialization
-	void Start () {
+	void Start () 
+    {
         StartCoroutine("LoseTime");
 		myPlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerManager>();
         mManager = GameObject.FindGameObjectWithTag("SpawnManager").GetComponent<ProjectileManager>();
@@ -25,27 +27,15 @@ public class HUD : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	private void Update () 
+    {
 		HeartUI.sprite = HeartSprites[(int)myPlayer.currentHealth];
         countdown.text = ("" + timeLeft);
-        changeTimeColor();
-        showReload();
-        resetTime();
+        ChangeTimeColor();
+        ResetTime();
     }
-    void showReload()
-    {
-        if (mManager.getReloadCount() == 0)
-        {
-            reload.text = "Press R!";
-        }
-        else
-        {
-            reload.text = ("" + mManager.getReloadCount());
-        }
-
-    }
-
-    void changeTimeColor()
+    
+    private void ChangeTimeColor()
     {
         switch (timeLeft)
         {
@@ -64,7 +54,7 @@ public class HUD : MonoBehaviour {
         }
     }
 
-    void resetTime()
+    private void ResetTime()
     {
         if (timeLeft < 0)
         {
@@ -83,7 +73,7 @@ public class HUD : MonoBehaviour {
         }
     }
 
-    public int getTimeLeft()
+    public int GetTimeLeft()
     {
         return timeLeft;
     }

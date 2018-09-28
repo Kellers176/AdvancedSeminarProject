@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class ProjectileManager : MonoBehaviour
 {
     public bool canShoot = false;
+    //make more clear
     public Rigidbody2D[] myObject;
     private Rigidbody2D myObjectClone;
     private Rigidbody2D spawn;
@@ -16,9 +17,6 @@ public class ProjectileManager : MonoBehaviour
 
     float cooldown;
 
-    int maxBullets;
-    int toReload;
-
     int random;
 
     HUD myCountdown;
@@ -27,53 +25,40 @@ public class ProjectileManager : MonoBehaviour
     void Start()
     {
         myDirection = Vector3.up;
+        //switch to random element in array 
         myCountdown = GameObject.FindGameObjectWithTag("HUD").GetComponent<HUD>();
         myObjectClone = myObject[0];
         done = true;
-        cooldown = 0.02f;
-        toReload = 20;
-        maxBullets = toReload;
+        cooldown = 0.2f;
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        changeObject();
-        Reloading();
-        moveInput();
+        ChangeObject();
+        MoveInput();
     }
 
-    void moveInput()
+    private void MoveInput()
     {
         time += Time.deltaTime;
-        if (Input.GetKeyDown(KeyCode.Space) && !(myCountdown.getTimeLeft() <= 0) && time > cooldown && !(toReload <= 0))
+        if (Input.GetKey(KeyCode.Space) && !(myCountdown.GetTimeLeft() <= 0) && time > cooldown)
         {
-            spawnObject();
+            SpawnObject();
             time = 0;
         }
     }
 
-    void Reloading()
-    {
-        if(toReload <= 0 && Input.GetKeyDown(KeyCode.R))
-        {
-            Debug.Log("Reloading");
-            //have a wait time
-            toReload = maxBullets;
-        }
-    }
-
-    public void spawnObject()
+    private void SpawnObject()
     {
         spawn = (Rigidbody2D)Instantiate(myObjectClone, transform.position, transform.rotation);
-        toReload--;
     }
 
-    public void changeObject()
+    private void ChangeObject()
     {
         random = Random.Range(0, myObject.Length);
 
-        if (myCountdown.getTimeLeft() <= 0 && done)
+        if (myCountdown.GetTimeLeft() <= 0 && done)
         {
             if (myObject[random] != myObjectClone)
             {
@@ -81,47 +66,36 @@ public class ProjectileManager : MonoBehaviour
             }
             else
             {
+                //switch to list instead of a while loop
                 while (myObject[random] == myObjectClone)
                 {
                     random = Random.Range(0, myObject.Length);
                 }
                 myObjectClone = myObject[random];
             }
-        if(myObject[random].tag == "Bullet")
-        {
-            cooldown = 0.02f;
-            toReload = 20;
-            maxBullets = toReload;
-        }
-        if(myObject[random].tag == "Rocket")
-        {
-            cooldown = 0.7f;
-            toReload = 5;
-            maxBullets = toReload;
-        }
+
+
+            if(myObject[random].tag == "Bullet")
+            {
+                cooldown = 0.2f;
+            }
+            if(myObject[random].tag == "Rocket")
+            {
+                cooldown = 0.7f;
+            }
             done = false;
         }
        
     }
 
-    public void setReload(int myreload)
-    {
-        maxBullets = myreload;
-        toReload = myreload;
-    }
 
-    public Vector3 getDirection()
+    public Vector3 GetDirection()
     {
         return myDirection;
     }
 
-    public float getReloadCount()
-    {
-        return toReload;
-    }
-   
 
-    public void setCoolDownTime(float cool)
+    public void SetCoolDownTime(float cool)
     {
         cooldown = cool;
     }

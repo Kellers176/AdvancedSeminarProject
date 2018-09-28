@@ -22,7 +22,7 @@ public class ShotgunBullet : MonoBehaviour {
     }
 	
 	// Update is called once per frame
-	void FixedUpdate () {
+	private void FixedUpdate () {
         Vector2 pointToTarget = (Vector2)transform.position - (Vector2)target.transform.position;
 
         pointToTarget.Normalize();
@@ -47,7 +47,7 @@ public class ShotgunBullet : MonoBehaviour {
         rb.velocity = transform.right * speed;
 	}
 
-    void OnCollisionEnter2D(Collision2D col)
+    private void OnCollisionEnter2D(Collision2D col)
     {
         Destroy(this.gameObject);
     }

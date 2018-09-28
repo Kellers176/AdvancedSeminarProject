@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyScript : MonoBehaviour {
+public class EnemyScript : MonoBehaviour 
+{
 
     int maxHealth = 100;
     int currentHealth;
@@ -21,7 +22,8 @@ public class EnemyScript : MonoBehaviour {
     public Quaternion right = Quaternion.Euler(0, 180, 0);
 
 	// Use this for initialization
-	void Start () {
+	void Start () 
+    {
         currentHealth = maxHealth;
         rend = GetComponent<Renderer>();
         rend.material.color = Color.white;
@@ -30,16 +32,19 @@ public class EnemyScript : MonoBehaviour {
     }
 	
 	// Update is called once per frame
-	void Update () {
+	private void Update () 
+    {
 
         if(currentHealth < 60)
         {
             rend.material.color = Color.yellow;
         }
+
         if (currentHealth < 30)
         {
             rend.material.color = Color.red;
         }
+
         if (currentHealth <= 0)
         {
             Destroy(this.gameObject);
@@ -69,6 +74,7 @@ public class EnemyScript : MonoBehaviour {
         {
             currentHealth -= 10;
         }
+
         if (collision.gameObject.tag == "Rocket")
         {
             currentHealth -= 50;

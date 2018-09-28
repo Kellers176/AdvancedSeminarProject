@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PlayerManager : MonoBehaviour {
+public class PlayerManager : MonoBehaviour 
+{
 
 	float maxHealth = 5;
 	public float currentHealth;
@@ -11,18 +12,18 @@ public class PlayerManager : MonoBehaviour {
     Rigidbody2D rb;
 
 	// Use this for initialization
-	void Start () {
+	void Start () 
+	{
 		currentHealth = maxHealth;
 	}
 	
 	// Update is called once per frame
-	void Update () {
-
+	private void Update () 
+	{
         checkHealth();
-		
 	}
 
-    void checkHealth()
+    private void checkHealth()
     {
         if (currentHealth <= 0)
         {
@@ -30,7 +31,7 @@ public class PlayerManager : MonoBehaviour {
             SceneManager.LoadScene("Lose Screen");
         }
     }
-	void OnCollisionEnter2D(Collision2D col)
+	private void OnCollisionEnter2D(Collision2D col)
 	{
 		if(col.gameObject.tag == "Enemy")
 		{

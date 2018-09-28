@@ -14,7 +14,7 @@ public class LoseSceneScript : MonoBehaviour {
 		
 	}
 
-    public void mainMenu()
+    public void MainMenu()
     {
         SceneManager.LoadScene("Main Menu");
     }

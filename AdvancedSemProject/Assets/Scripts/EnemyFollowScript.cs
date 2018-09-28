@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyFollowScript : MonoBehaviour {
+public class EnemyFollowScript : MonoBehaviour 
+{
     public Transform target;
     public float speed = 20.0f;
 
@@ -11,27 +12,30 @@ public class EnemyFollowScript : MonoBehaviour {
     private Renderer rend;
 
     // Use this for initialization
-    void Start () {
+    void Start () 
+    {
         currentHealth = maxHealth;
         rend = GetComponent<Renderer>();
         rend.material.color = Color.white;
     }
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () 
+    {
         if(target != null)
         {
-            changeColor();
-            destroyObject();
-            move();
+            ChangeColor();
+            DestroyObject();
+            Move();
         }
     }
-    void move()
+
+    private void Move()
     {
         transform.position = Vector2.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);
     }
 
-    void destroyObject()
+    private void DestroyObject()
     {
         if (currentHealth <= 0)
         {
@@ -39,7 +43,7 @@ public class EnemyFollowScript : MonoBehaviour {
         }
     }
 
-    void changeColor()
+    private void ChangeColor()
     {
         switch (currentHealth)
         {
