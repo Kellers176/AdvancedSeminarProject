@@ -6,14 +6,14 @@ using UnityEngine.UI;
 public class HUD : MonoBehaviour 
 {
 
-    public TextMeshProUGUI countdown;
-    public TextMeshProUGUI reload;
+    [SerializeField] TextMeshProUGUI countdown;
+    [SerializeField] TextMeshProUGUI reload;
 
-    public int timeLeft = 10;
+    [SerializeField] int timeLeft = 10;
 
-	public Sprite[] HeartSprites;
+    [SerializeField] Sprite[] HeartSprites;
 
-	public Image HeartUI;
+    [SerializeField] Image HeartUI;
 	private PlayerManager myPlayer;
     ProjectileManager mManager;
 
@@ -29,7 +29,7 @@ public class HUD : MonoBehaviour
 	// Update is called once per frame
 	private void Update () 
     {
-		HeartUI.sprite = HeartSprites[(int)myPlayer.currentHealth];
+		HeartUI.sprite = HeartSprites[(int)myPlayer.GetHealth()];
         countdown.text = ("" + timeLeft);
         ChangeTimeColor();
         ResetTime();
@@ -58,7 +58,7 @@ public class HUD : MonoBehaviour
     {
         if (timeLeft < 0)
         {
-            mManager.done = true;
+            mManager.SetDone(true);
             timeLeft = 10;
         }
     }

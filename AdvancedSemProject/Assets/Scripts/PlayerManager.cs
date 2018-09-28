@@ -7,7 +7,7 @@ public class PlayerManager : MonoBehaviour
 {
 
 	float maxHealth = 5;
-	public float currentHealth;
+    [SerializeField] float currentHealth;
 
     Rigidbody2D rb;
 
@@ -38,4 +38,9 @@ public class PlayerManager : MonoBehaviour
 			currentHealth -= 1;
 		}
 	}
+
+    public float GetHealth()
+    {
+        return currentHealth;
+    }
 }

@@ -1,0 +1,10 @@
+Adv. sem
+Stuff to get done for alpha:
+Making bubble weapon
+Make Ray Gun
+Enemies Shoot you
+Case state for Room
+Airforce strike Launch
+Enemy AI behavior
+Spawing Enemies
+Different Enemies

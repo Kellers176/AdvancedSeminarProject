@@ -2820,9 +2820,8 @@ MonoBehaviour:
   canShoot: 0
   myObject:
   - {fileID: 50356382330083222, guid: dbd3c22658fb1bc45a890de07c0a62e0, type: 2}
-  - {fileID: 50183786930409762, guid: a95f7cdfc6d9fca42ae10bfce8c6d0fd, type: 2}
+  - {fileID: 50312620009802562, guid: 269dddbc6d9bfcd4abcc277af3febcd3, type: 2}
   myDirection: {x: 0, y: 0, z: 0}
-  done: 0
 --- !u!1 &821372212
 GameObject:
   m_ObjectHideFlags: 0

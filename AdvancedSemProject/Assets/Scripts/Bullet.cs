@@ -5,8 +5,8 @@ using UnityEngine;
 public class Bullet : MonoBehaviour 
 {
 
-    public float speed = 50f;
-    public float[] SpreadRange = { 10, 8, 6, 4, 2, 0, -2, -4, -6, -8, -10 };
+    [SerializeField] float speed = 50f;
+    float[] SpreadRange = { 10, 8, 6, 4, 2, 0, -2, -4, -6, -8, -10 };
 
 
     ProjectileManager myProjectile;
@@ -31,25 +31,9 @@ public class Bullet : MonoBehaviour
 
     private void Movement()
     {
-        float RandomRange = SpreadRange[Random.Range(0, SpreadRange.Length)];
-        gameObject.GetComponent<Rigidbody2D>().velocity = myProjectile.GetDirection() * speed;
 
-        if (myProjectile.GetDirection() == Vector3.right)
-        {
-            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(speed, RandomRange));
-        }
-        if (myProjectile.GetDirection() == Vector3.left)
-        {
-            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-speed, RandomRange));
-        }
-        if (myProjectile.GetDirection() == Vector3.up)
-        {
-            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(RandomRange, speed));
-        }
-        if (myProjectile.GetDirection() == Vector3.down)
-        {
-            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(RandomRange, -speed));
-        }
+        gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(myProjectile.getShootDirection().x * speed, myProjectile.getShootDirection().y * speed);
+        
         
     }
 }

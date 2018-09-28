@@ -10,16 +10,16 @@ public class EnemyScript : MonoBehaviour
     private Renderer rend;
     Rigidbody2D rb;
 
-    public GameObject pointA;
-    public GameObject pointB;
-    
-    public float speed = 20.0f;
-    
+    [SerializeField] GameObject pointA;
+    [SerializeField] GameObject pointB;
 
-    public int direction = 1;
+    [SerializeField] float speed = 20.0f;
 
-    public Quaternion left = Quaternion.Euler(0, 0, 0);
-    public Quaternion right = Quaternion.Euler(0, 180, 0);
+
+    [SerializeField] int direction = 1;
+
+    [SerializeField] Quaternion left = Quaternion.Euler(0, 0, 0);
+    [SerializeField] Quaternion right = Quaternion.Euler(0, 180, 0);
 
 	// Use this for initialization
 	void Start () 

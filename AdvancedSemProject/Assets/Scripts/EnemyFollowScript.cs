@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class EnemyFollowScript : MonoBehaviour 
 {
-    public Transform target;
-    public float speed = 20.0f;
+    [SerializeField] Transform target;
+    [SerializeField] float speed = 20.0f;
 
     int maxHealth = 100;
     int currentHealth;

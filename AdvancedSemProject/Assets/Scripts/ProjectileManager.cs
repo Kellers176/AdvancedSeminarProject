@@ -5,13 +5,15 @@ using UnityEngine.UI;
 
 public class ProjectileManager : MonoBehaviour
 {
-    public bool canShoot = false;
+    [SerializeField] bool canShoot = false;
     //make more clear
-    public Rigidbody2D[] myObject;
+    [SerializeField] Rigidbody2D[] myObject;
     private Rigidbody2D myObjectClone;
     private Rigidbody2D spawn;
-    public Vector3 myDirection;
-    public bool done;
+    [SerializeField] Vector3 myDirection;
+    bool done;
+
+    float speed = 10f;
 
     float time;
 
@@ -20,6 +22,8 @@ public class ProjectileManager : MonoBehaviour
     int random;
 
     HUD myCountdown;
+
+    Vector3 shootDirection;
 
     // Use this for initialization
     void Start()
@@ -42,7 +46,7 @@ public class ProjectileManager : MonoBehaviour
     private void MoveInput()
     {
         time += Time.deltaTime;
-        if (Input.GetKey(KeyCode.Space) && !(myCountdown.GetTimeLeft() <= 0) && time > cooldown)
+        if (Input.GetMouseButton(0) && !(myCountdown.GetTimeLeft() <= 0) && time > cooldown)
         {
             SpawnObject();
             time = 0;
@@ -51,7 +55,15 @@ public class ProjectileManager : MonoBehaviour
 
     private void SpawnObject()
     {
-        spawn = (Rigidbody2D)Instantiate(myObjectClone, transform.position, transform.rotation);
+        shootDirection.z = 0.0f;
+        shootDirection = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        shootDirection = shootDirection - transform.position;
+        spawn = (Rigidbody2D)Instantiate(myObjectClone, transform.position, Quaternion.Euler(new Vector3(0,0,0))) as Rigidbody2D;
+    }
+
+    public Vector3 getShootDirection()
+    {
+        return shootDirection;
     }
 
     private void ChangeObject()
@@ -88,6 +100,10 @@ public class ProjectileManager : MonoBehaviour
        
     }
 
+    public void SetDirection(Vector3 direction)
+    {
+        myDirection = direction;
+    }
 
     public Vector3 GetDirection()
     {
@@ -98,6 +114,11 @@ public class ProjectileManager : MonoBehaviour
     public void SetCoolDownTime(float cool)
     {
         cooldown = cool;
+    }
+
+    public void SetDone(bool mybool)
+    {
+        done = mybool;
     }
 
 }

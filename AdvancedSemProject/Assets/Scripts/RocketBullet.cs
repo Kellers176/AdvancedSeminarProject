@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class RocketBullet : MonoBehaviour {
-    public float speed = 50f;
-    public float rotatingSpeed = 200;
-    public GameObject target;
+    [SerializeField] float speed = 50f;
+    [SerializeField] float rotatingSpeed = 200;
+    [SerializeField] GameObject target;
     Vector3 toTransform;
+
+    ProjectileManager manager;
 
     Rigidbody2D rb;
 
+    Vector3 myTransform;
     
 
     // Use this for initialization
@@ -17,7 +20,10 @@ public class RocketBullet : MonoBehaviour {
     {
         Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), GameObject.FindGameObjectWithTag("Player").GetComponent<Collider2D>());
         Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), GameObject.FindGameObjectWithTag("Rocket").GetComponent<Collider2D>());
+        manager = GameObject.FindGameObjectWithTag("SpawnManager").GetComponent<ProjectileManager>();
+        toTransform = manager.GetDirection();
         target = GameObject.FindGameObjectWithTag("Enemy");
+       
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -30,15 +36,15 @@ public class RocketBullet : MonoBehaviour {
 
             pointToTarget.Normalize();
 
-            float value = Vector3.Cross(pointToTarget, transform.right).z;
+            float value = Vector3.Cross(pointToTarget, transform.up).z;
         
             rb.angularVelocity = rotatingSpeed * value;
 
-            rb.velocity = transform.right * speed;
+            rb.velocity = transform.up * speed;
         }
         else
         {
-           rb.velocity = transform.right * speed;
+           rb.velocity = transform.up * speed;
         }
     }
 
