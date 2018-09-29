@@ -1,10 +1,15 @@
 Adv. sem
 Stuff to get done for alpha:
-Making bubble weapon
+Making bubble weapon - doneeeee
 Make Ray Gun
 Enemies Shoot you
-Case state for Room
+Case state for Room -mostly done
 Airforce strike Launch
 Enemy AI behavior
-Spawing Enemies
+Spawing Enemies - DONE
 Different Enemies
+waves of enemies
+Add win state - done
+Color feedback for when player gets hit - done
+Flamethrower
+Lightning

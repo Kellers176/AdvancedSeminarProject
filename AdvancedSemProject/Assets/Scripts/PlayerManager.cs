@@ -6,16 +6,18 @@ using UnityEngine.SceneManagement;
 public class PlayerManager : MonoBehaviour 
 {
 
-	float maxHealth = 5;
-    [SerializeField] float currentHealth;
-
+	int maxHealth = 100;
+    [SerializeField] int currentHealth;
+    private Renderer rend;
     Rigidbody2D rb;
 
 	// Use this for initialization
 	void Start () 
 	{
 		currentHealth = maxHealth;
-	}
+        rend = GetComponent<Renderer>();
+        rend.material.color = Color.white;
+    }
 	
 	// Update is called once per frame
 	private void Update () 
@@ -25,6 +27,20 @@ public class PlayerManager : MonoBehaviour
 
     private void checkHealth()
     {
+        switch (currentHealth)
+        {
+            case 40:
+                rend.material.color = Color.grey;
+                break;
+            case 20:
+                rend.material.color = Color.yellow;
+                break;
+            case 0:
+                Destroy(this.gameObject);
+                break;
+            default:
+                break;
+        }
         if (currentHealth <= 0)
         {
             Destroy(this.gameObject);
@@ -35,7 +51,7 @@ public class PlayerManager : MonoBehaviour
 	{
 		if(col.gameObject.tag == "Enemy")
 		{
-			currentHealth -= 1;
+			currentHealth -= 20;
 		}
 	}
 

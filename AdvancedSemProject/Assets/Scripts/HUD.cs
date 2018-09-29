@@ -13,6 +13,8 @@ public class HUD : MonoBehaviour
 
     [SerializeField] Sprite[] HeartSprites;
 
+    bool winCase;
+
     [SerializeField] Image HeartUI;
 	private PlayerManager myPlayer;
     ProjectileManager mManager;
@@ -24,12 +26,13 @@ public class HUD : MonoBehaviour
 		myPlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerManager>();
         mManager = GameObject.FindGameObjectWithTag("SpawnManager").GetComponent<ProjectileManager>();
         Time.timeScale = 1;
+        winCase = false;
 	}
 	
 	// Update is called once per frame
 	private void Update () 
     {
-		HeartUI.sprite = HeartSprites[(int)myPlayer.GetHealth()];
+		HeartUI.sprite = HeartSprites[(int)myPlayer.GetHealth()/ 20];
         countdown.text = ("" + timeLeft);
         ChangeTimeColor();
         ResetTime();
@@ -73,8 +76,15 @@ public class HUD : MonoBehaviour
         }
     }
 
+
+
     public int GetTimeLeft()
     {
         return timeLeft;
+    }
+
+    public void setWinCase(bool other)
+    {
+        winCase = other;
     }
 }

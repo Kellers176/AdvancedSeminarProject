@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class EnemyFollowScript : MonoBehaviour 
 {
-    [SerializeField] Transform target;
+    Transform target;
     [SerializeField] float speed = 20.0f;
+    EnemyManager mManager;
 
     int maxHealth = 100;
     int currentHealth;
@@ -14,9 +15,11 @@ public class EnemyFollowScript : MonoBehaviour
     // Use this for initialization
     void Start () 
     {
+        target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         currentHealth = maxHealth;
         rend = GetComponent<Renderer>();
         rend.material.color = Color.white;
+        mManager = GameObject.FindGameObjectWithTag("EnemyManager").GetComponent<EnemyManager>();
     }
 	
 	// Update is called once per frame
@@ -39,6 +42,7 @@ public class EnemyFollowScript : MonoBehaviour
     {
         if (currentHealth <= 0)
         {
+            mManager.SubtractEnemyCount();
             Destroy(this.gameObject);
         }
     }

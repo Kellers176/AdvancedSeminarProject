@@ -22,9 +22,14 @@ public class rayGun : MonoBehaviour {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if(Physics.Raycast(ray, out hit, range))
         {
-            line.enabled = true;
-            line.SetPosition(0, transform.position);
-            line.SetPosition(1, hit.point + hit.normal);
+            if (Input.GetMouseButtonDown(0))
+            {
+                line.enabled = true;
+                line.SetPosition(0, transform.position);
+                line.SetPosition(1, hit.point + hit.normal);
+            }
+            else
+                line.enabled = false;
         }
 	}
 }

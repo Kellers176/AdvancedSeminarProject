@@ -7,8 +7,8 @@ public class ProjectileManager : MonoBehaviour
 {
     [SerializeField] bool canShoot = false;
     //make more clear
-    [SerializeField] Rigidbody2D[] myObject;
-    private Rigidbody2D myObjectClone;
+    [SerializeField] Rigidbody2D[] myBulletType;
+    private Rigidbody2D myBullet;
     private Rigidbody2D spawn;
     [SerializeField] Vector3 myDirection;
     bool done;
@@ -31,9 +31,9 @@ public class ProjectileManager : MonoBehaviour
         myDirection = Vector3.up;
         //switch to random element in array 
         myCountdown = GameObject.FindGameObjectWithTag("HUD").GetComponent<HUD>();
-        myObjectClone = myObject[0];
+        myBullet = myBulletType[Random.Range(0, myBulletType.Length)];
         done = true;
-        cooldown = 0.2f;
+        CheckCooldown();
     }
 
     // Update is called once per frame
@@ -43,11 +43,28 @@ public class ProjectileManager : MonoBehaviour
         MoveInput();
     }
 
+    private void CheckCooldown()
+    {
+        if (myBulletType[random].tag == "Bullet")
+        {
+            cooldown = 0.2f;
+        }
+        if (myBulletType[random].tag == "Rocket")
+        {
+            cooldown = 1.0f;
+        }
+        if (myBulletType[random].tag == "Bubbles")
+        {
+            cooldown = 0.4f;
+        }
+    }
+
     private void MoveInput()
     {
         time += Time.deltaTime;
         if (Input.GetMouseButton(0) && !(myCountdown.GetTimeLeft() <= 0) && time > cooldown)
         {
+            Debug.Log(time);
             SpawnObject();
             time = 0;
         }
@@ -58,7 +75,7 @@ public class ProjectileManager : MonoBehaviour
         shootDirection.z = 0.0f;
         shootDirection = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         shootDirection = shootDirection - transform.position;
-        spawn = (Rigidbody2D)Instantiate(myObjectClone, transform.position, Quaternion.Euler(new Vector3(0,0,0))) as Rigidbody2D;
+        spawn = (Rigidbody2D)Instantiate(myBullet, transform.position, Quaternion.Euler(new Vector3(0,0,0))) as Rigidbody2D;
     }
 
     public Vector3 getShootDirection()
@@ -68,33 +85,26 @@ public class ProjectileManager : MonoBehaviour
 
     private void ChangeObject()
     {
-        random = Random.Range(0, myObject.Length);
+        random = Random.Range(0, myBulletType.Length);
 
         if (myCountdown.GetTimeLeft() <= 0 && done)
         {
-            if (myObject[random] != myObjectClone)
+            if (myBulletType[random] != myBullet)
             {
-                myObjectClone = myObject[random];
+                myBullet = myBulletType[random];
             }
             else
             {
                 //switch to list instead of a while loop
-                while (myObject[random] == myObjectClone)
+                while (myBulletType[random] == myBullet)
                 {
-                    random = Random.Range(0, myObject.Length);
+                    random = Random.Range(0, myBulletType.Length);
                 }
-                myObjectClone = myObject[random];
+                myBullet = myBulletType[random];
             }
 
 
-            if(myObject[random].tag == "Bullet")
-            {
-                cooldown = 0.2f;
-            }
-            if(myObject[random].tag == "Rocket")
-            {
-                cooldown = 0.7f;
-            }
+            CheckCooldown();
             done = false;
         }
        
@@ -110,11 +120,6 @@ public class ProjectileManager : MonoBehaviour
         return myDirection;
     }
 
-
-    public void SetCoolDownTime(float cool)
-    {
-        cooldown = cool;
-    }
 
     public void SetDone(bool mybool)
     {
