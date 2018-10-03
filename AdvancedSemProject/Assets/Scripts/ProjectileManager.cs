@@ -7,7 +7,9 @@ public class ProjectileManager : MonoBehaviour
 {
     [SerializeField] bool canShoot = false;
     //make more clear
-    [SerializeField] Rigidbody2D[] myBulletType;
+    //[SerializeField] Rigidbody2D[] myBulletType;
+    [SerializeField] List<Rigidbody2D> myBulletType = new List<Rigidbody2D>();
+    List<Rigidbody2D> myBulletTypeDeleted = new List<Rigidbody2D>();
     private Rigidbody2D myBullet;
     private Rigidbody2D spawn;
     [SerializeField] Vector3 myDirection;
@@ -20,6 +22,7 @@ public class ProjectileManager : MonoBehaviour
     float cooldown;
 
     int random;
+    int count;
 
     HUD myCountdown;
 
@@ -31,9 +34,10 @@ public class ProjectileManager : MonoBehaviour
         myDirection = Vector3.up;
         //switch to random element in array 
         myCountdown = GameObject.FindGameObjectWithTag("HUD").GetComponent<HUD>();
-        myBullet = myBulletType[Random.Range(0, myBulletType.Length)];
-        done = true;
+        myBullet = myBulletType[Random.Range(0, myBulletType.Count)];
         CheckCooldown();
+        count = 0;
+        done = true;
     }
 
     // Update is called once per frame
@@ -45,15 +49,15 @@ public class ProjectileManager : MonoBehaviour
 
     private void CheckCooldown()
     {
-        if (myBulletType[random].tag == "Bullet")
+        if (myBullet.tag == "Bullet")
         {
             cooldown = 0.2f;
         }
-        if (myBulletType[random].tag == "Rocket")
+        else if (myBullet.tag == "Rocket")
         {
             cooldown = 1.0f;
         }
-        if (myBulletType[random].tag == "Bubbles")
+        else if (myBullet.tag == "Bubbles")
         {
             cooldown = 0.4f;
         }
@@ -64,7 +68,7 @@ public class ProjectileManager : MonoBehaviour
         time += Time.deltaTime;
         if (Input.GetMouseButton(0) && !(myCountdown.GetTimeLeft() <= 0) && time > cooldown)
         {
-            Debug.Log(time);
+            //Debug.Log(time);
             SpawnObject();
             time = 0;
         }
@@ -85,25 +89,29 @@ public class ProjectileManager : MonoBehaviour
 
     private void ChangeObject()
     {
-        random = Random.Range(0, myBulletType.Length);
-
+        //fix this shit
         if (myCountdown.GetTimeLeft() <= 0 && done)
         {
-            if (myBulletType[random] != myBullet)
+            //checks to see if list is empty
+            if (myBulletType.Count <= 0)
             {
+                //moves all deleted bullets back to original list
+                for(int i = 0; i < myBulletTypeDeleted.Count; i++)
+                {
+                    myBulletType.Add(myBulletTypeDeleted[i]);
+                    myBulletTypeDeleted.RemoveAt(i);
+                    i--; //??
+                }
+                random = Random.Range(0, myBulletType.Count);
                 myBullet = myBulletType[random];
             }
             else
             {
-                //switch to list instead of a while loop
-                while (myBulletType[random] == myBullet)
-                {
-                    random = Random.Range(0, myBulletType.Length);
-                }
+                myBulletTypeDeleted.Add(myBullet);
+                myBulletType.Remove(myBullet);
+                random = Random.Range(0, myBulletType.Count);
                 myBullet = myBulletType[random];
             }
-
-
             CheckCooldown();
             done = false;
         }

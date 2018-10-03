@@ -32,7 +32,7 @@ public class HUD : MonoBehaviour
 	// Update is called once per frame
 	private void Update () 
     {
-		HeartUI.sprite = HeartSprites[(int)myPlayer.GetHealth()/ 20];
+		HeartUI.sprite = HeartSprites[(int)myPlayer.GetHealth() / 10];
         countdown.text = ("" + timeLeft);
         ChangeTimeColor();
         ResetTime();

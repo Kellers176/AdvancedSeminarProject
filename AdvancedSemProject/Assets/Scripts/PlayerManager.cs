@@ -51,7 +51,7 @@ public class PlayerManager : MonoBehaviour
 	{
 		if(col.gameObject.tag == "Enemy")
 		{
-			currentHealth -= 20;
+			currentHealth -= 10;
 		}
 	}
 

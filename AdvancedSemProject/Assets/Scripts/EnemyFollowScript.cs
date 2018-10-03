@@ -11,10 +11,13 @@ public class EnemyFollowScript : MonoBehaviour
     int maxHealth = 100;
     int currentHealth;
     private Renderer rend;
+    Rigidbody2D rb;
 
     // Use this for initialization
     void Start () 
     {
+        rb = GetComponent<Rigidbody2D>();
+        rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         currentHealth = maxHealth;
         rend = GetComponent<Renderer>();

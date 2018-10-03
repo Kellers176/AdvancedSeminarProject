@@ -2204,12 +2204,17 @@ MonoBehaviour:
   reload: {fileID: 0}
   timeLeft: 10
   HeartSprites:
-  - {fileID: 21300010, guid: 3e476dd1a0c99cc4988342d44f8ce96a, type: 3}
-  - {fileID: 21300008, guid: 3e476dd1a0c99cc4988342d44f8ce96a, type: 3}
-  - {fileID: 21300006, guid: 3e476dd1a0c99cc4988342d44f8ce96a, type: 3}
-  - {fileID: 21300004, guid: 3e476dd1a0c99cc4988342d44f8ce96a, type: 3}
-  - {fileID: 21300002, guid: 3e476dd1a0c99cc4988342d44f8ce96a, type: 3}
-  - {fileID: 21300000, guid: 3e476dd1a0c99cc4988342d44f8ce96a, type: 3}
+  - {fileID: 21300020, guid: 265ffc4fb31f999479d82911c67f6a34, type: 3}
+  - {fileID: 21300018, guid: 265ffc4fb31f999479d82911c67f6a34, type: 3}
+  - {fileID: 21300016, guid: 265ffc4fb31f999479d82911c67f6a34, type: 3}
+  - {fileID: 21300014, guid: 265ffc4fb31f999479d82911c67f6a34, type: 3}
+  - {fileID: 21300012, guid: 265ffc4fb31f999479d82911c67f6a34, type: 3}
+  - {fileID: 21300010, guid: 265ffc4fb31f999479d82911c67f6a34, type: 3}
+  - {fileID: 21300008, guid: 265ffc4fb31f999479d82911c67f6a34, type: 3}
+  - {fileID: 21300006, guid: 265ffc4fb31f999479d82911c67f6a34, type: 3}
+  - {fileID: 21300004, guid: 265ffc4fb31f999479d82911c67f6a34, type: 3}
+  - {fileID: 21300002, guid: 265ffc4fb31f999479d82911c67f6a34, type: 3}
+  - {fileID: 21300000, guid: 265ffc4fb31f999479d82911c67f6a34, type: 3}
   HeartUI: {fileID: 417804559}
 --- !u!1 &417804557
 GameObject:
@@ -2265,7 +2270,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 3e476dd1a0c99cc4988342d44f8ce96a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 265ffc4fb31f999479d82911c67f6a34, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -3574,7 +3579,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1426424581
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4168,6 +4173,11 @@ Prefab:
     - target: {fileID: 4603696072223076, guid: 1d29f8317840f1048a8363e51b2bde5c, type: 2}
       propertyPath: m_RootOrder
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114979772178167388, guid: 1d29f8317840f1048a8363e51b2bde5c,
+        type: 2}
+      propertyPath: canShoot
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d29f8317840f1048a8363e51b2bde5c, type: 2}
