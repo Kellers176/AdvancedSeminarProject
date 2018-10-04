@@ -12,6 +12,7 @@ public class EnemyFollowScript : MonoBehaviour
     int currentHealth;
     private Renderer rend;
     Rigidbody2D rb;
+    bool collidingIntoWall;
 
     // Use this for initialization
     void Start () 
@@ -22,6 +23,7 @@ public class EnemyFollowScript : MonoBehaviour
         currentHealth = maxHealth;
         rend = GetComponent<Renderer>();
         rend.material.color = Color.white;
+        collidingIntoWall = false;
         mManager = GameObject.FindGameObjectWithTag("EnemyManager").GetComponent<EnemyManager>();
     }
 	
@@ -38,7 +40,10 @@ public class EnemyFollowScript : MonoBehaviour
 
     private void Move()
     {
-        transform.position = Vector2.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);
+        if(!collidingIntoWall)
+            transform.position = Vector2.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);
+        else
+            rb.velocity = transform.up * speed * Time.deltaTime;
     }
 
     private void DestroyObject()
@@ -77,6 +82,15 @@ public class EnemyFollowScript : MonoBehaviour
         if (collision.gameObject.tag == "Rocket")
         {
             currentHealth -= 50;
+        }
+    }
+
+    void OnCollisionEnter2D(Collider2D col)
+    {
+        if (col.gameObject.tag == "Wall")
+        {
+            collidingIntoWall = true;
+            //transform.position = transfom.up
         }
     }
 }

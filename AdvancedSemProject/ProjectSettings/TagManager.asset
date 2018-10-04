@@ -12,6 +12,7 @@ TagManager:
   - Rocket
   - EnemyManager
   - Bubbles
+  - Wall
   layers:
   - Default
   - TransparentFX
