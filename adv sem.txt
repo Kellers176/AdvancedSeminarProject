@@ -7,6 +7,7 @@ Enemy AI behavior
 Different Enemies
 waves of enemies
 Flamethrower
+Show what is in queue next
 Lightning
 
 DONE:

@@ -93,7 +93,7 @@ public class ProjectileManager : MonoBehaviour
         if (myCountdown.GetTimeLeft() <= 0 && done)
         {
             //checks to see if list is empty
-            if (myBulletType.Count <= 0)
+            if (myBulletType.Count <= 1)
             {
                 //moves all deleted bullets back to original list
                 for(int i = 0; i < myBulletTypeDeleted.Count; i++)
@@ -102,16 +102,14 @@ public class ProjectileManager : MonoBehaviour
                     myBulletTypeDeleted.RemoveAt(i);
                     i--; //??
                 }
-                random = Random.Range(0, myBulletType.Count);
-                myBullet = myBulletType[random];
             }
             else
             {
                 myBulletTypeDeleted.Add(myBullet);
                 myBulletType.Remove(myBullet);
-                random = Random.Range(0, myBulletType.Count);
-                myBullet = myBulletType[random];
             }
+            random = Random.Range(0, myBulletType.Count);
+            myBullet = myBulletType[random];
             CheckCooldown();
             done = false;
         }

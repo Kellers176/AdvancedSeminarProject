@@ -2,49 +2,56 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyFollowScript : MonoBehaviour 
-{
-    Transform target;
-    [SerializeField] float speed = 20.0f;
+public class EnemyAIBehaviors : MonoBehaviour {
+
+    GameObject target;
     EnemyManager mManager;
+    float moveSpeed = 1.0f;
+    float rotateSpeed = 1.0f;
+
+    float minimumDistance = 5.0f;
+    float safeDistance = 60.0f;
 
     int maxHealth = 100;
     int currentHealth;
     private Renderer rend;
-    Rigidbody2D rb;
-    bool collidingIntoWall;
 
-    // Use this for initialization
-    void Start () 
-    {
+
+    Rigidbody2D rb;
+
+	// Use this for initialization
+	void Start () {
+        target = GameObject.FindGameObjectWithTag("Player");
+        mManager = GameObject.FindGameObjectWithTag("EnemyManager").GetComponent<EnemyManager>();
         rb = GetComponent<Rigidbody2D>();
-        rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
-        target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         currentHealth = maxHealth;
         rend = GetComponent<Renderer>();
         rend.material.color = Color.white;
-        collidingIntoWall = false;
-        mManager = GameObject.FindGameObjectWithTag("EnemyManager").GetComponent<EnemyManager>();
     }
 	
 	// Update is called once per frame
-	void Update () 
-    {
+	void Update () {
         if(target != null)
         {
             ChangeColor();
             DestroyObject();
-            Move();
+            Seek();
         }
+
     }
 
-    private void Move()
+    void Seek()
     {
-        if(!collidingIntoWall)
-            transform.position = Vector2.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);
-        else
-            rb.velocity = transform.up * speed * Time.deltaTime;
+        Vector3 enemyDirection = target.transform.position - transform.position;
+        enemyDirection.z = 0;
+
+        
+        Vector3 moving = enemyDirection.normalized * moveSpeed * Time.deltaTime;
+
+        transform.position += moving;
+        rb.velocity = moving * moveSpeed * Time.deltaTime;
     }
+
 
     private void DestroyObject()
     {
@@ -82,15 +89,6 @@ public class EnemyFollowScript : MonoBehaviour
         if (collision.gameObject.tag == "Rocket")
         {
             currentHealth -= 50;
-        }
-    }
-
-    void OnCollisionEnter2D(Collider2D col)
-    {
-        if (col.gameObject.tag == "Wall")
-        {
-            collidingIntoWall = true;
-            //transform.position = transfom.up
         }
     }
 }
