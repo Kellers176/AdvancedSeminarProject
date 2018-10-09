@@ -22,4 +22,13 @@ public class MainMenuSceneScript : MonoBehaviour
     {
         SceneManager.LoadScene("Level1");
     }
+    public void Credits()
+    {
+        SceneManager.LoadScene("Credits");
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
+    }
 }

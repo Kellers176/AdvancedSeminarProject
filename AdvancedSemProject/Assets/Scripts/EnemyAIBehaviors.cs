@@ -35,7 +35,7 @@ public class EnemyAIBehaviors : MonoBehaviour {
         {
             ChangeColor();
             DestroyObject();
-            Seek();
+            Arrive();
         }
 
     }
@@ -50,6 +50,33 @@ public class EnemyAIBehaviors : MonoBehaviour {
 
         transform.position += moving;
         rb.velocity = moving * moveSpeed * Time.deltaTime;
+    }
+
+    void Flee()
+    {
+        Vector3 enemyDirection = transform.position - target.transform.position;
+        enemyDirection.z = 0;
+
+        if(enemyDirection.magnitude < safeDistance)
+        {
+            Vector3 moveVector = enemyDirection.normalized * moveSpeed * Time.deltaTime;
+            transform.position += moveVector;
+            rb.velocity = moveVector * moveSpeed * Time.deltaTime;
+        }
+    }
+
+    void Arrive()
+    {
+        Vector3 enemyDirection = target.transform.position - transform.position;
+        enemyDirection.z = 0;
+        float distance = enemyDirection.magnitude;
+        float deecelelrationFactor = distance / 5;
+        float speed = moveSpeed * deecelelrationFactor;
+
+        Vector3 moveVector = enemyDirection.normalized * Time.deltaTime * speed;
+        transform.position += moveVector;
+        rb.velocity = moveVector * moveSpeed * Time.deltaTime;
+        
     }
 
 
