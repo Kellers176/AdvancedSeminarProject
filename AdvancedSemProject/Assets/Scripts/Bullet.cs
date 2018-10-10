@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour 
 {
 
-    [SerializeField] float speed = 50f;
+    [SerializeField] float speed;
     float[] SpreadRange = { 10, 8, 6, 4, 2, 0, -2, -4, -6, -8, -10 };
 
 
@@ -14,7 +14,8 @@ public class Bullet : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
-		Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), GameObject.FindGameObjectWithTag("Player").GetComponent<Collider2D>());
+        //Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), GameObject.FindGameObjectWithTag("Well").GetComponent<Collider2D>());
+        Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), GameObject.FindGameObjectWithTag("Player").GetComponent<Collider2D>());
         myProjectile = GameObject.FindGameObjectWithTag("SpawnManager").GetComponent<ProjectileManager>();
         Movement();
     }
@@ -32,8 +33,9 @@ public class Bullet : MonoBehaviour
     private void Movement()
     {
 
-        gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(myProjectile.getShootDirection().x * speed, myProjectile.getShootDirection().y * speed);
-        
-        
+        Vector2 direction = new Vector2(myProjectile.getShootDirection().x, myProjectile.getShootDirection().y);
+        direction.Normalize();
+        gameObject.GetComponent<Rigidbody2D>().velocity = direction * speed;
+
     }
 }

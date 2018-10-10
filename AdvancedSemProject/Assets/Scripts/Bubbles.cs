@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Bubbles : MonoBehaviour {
 
-    [SerializeField] float speed = 50f;
+    [SerializeField] float speed;
     GameObject spawn;
     Vector3 newPosition;
     ProjectileManager myProjectile;
@@ -15,6 +15,7 @@ public class Bubbles : MonoBehaviour {
     {
         Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), GameObject.FindGameObjectWithTag("Player").GetComponent<Collider2D>());
         Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), GameObject.FindGameObjectWithTag("Bubbles").GetComponent<Collider2D>());
+        //Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), GameObject.FindGameObjectWithTag("Well").GetComponent<Collider2D>());
         myProjectile = GameObject.FindGameObjectWithTag("SpawnManager").GetComponent<ProjectileManager>();
         Movement();
     }
@@ -38,7 +39,9 @@ public class Bubbles : MonoBehaviour {
 
     private void Movement()
     {
-        gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(myProjectile.getShootDirection().x * speed, myProjectile.getShootDirection().y * speed);
+        Vector2 direction = new Vector2(myProjectile.getShootDirection().x, myProjectile.getShootDirection().y);
+        direction.Normalize();
+        gameObject.GetComponent<Rigidbody2D>().velocity = direction * speed;
         float RandomRange = SpreadRange[Random.Range(0, SpreadRange.Length)];
         if (gameObject.transform.position == Vector3.right)
         {

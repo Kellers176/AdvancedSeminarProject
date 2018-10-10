@@ -7,6 +7,7 @@ public class EnemyAIBehaviors : MonoBehaviour {
     GameObject target;
     EnemyManager mManager;
     float moveSpeed = 1.0f;
+    float impulseForce = 10.0f;
     float rotateSpeed = 1.0f;
 
     float minimumDistance = 5.0f;
@@ -14,6 +15,9 @@ public class EnemyAIBehaviors : MonoBehaviour {
 
     int maxHealth = 100;
     int currentHealth;
+    bool flee = false;
+    float timeToSeek = 0.0f;
+
     private Renderer rend;
 
 
@@ -35,8 +39,25 @@ public class EnemyAIBehaviors : MonoBehaviour {
         {
             ChangeColor();
             DestroyObject();
-            Arrive();
+            
         }
+
+        timeToSeek += Time.deltaTime;
+        if(flee == false)
+        {
+            Seek();
+        }
+        else
+        {
+            Flee();
+        }
+
+        if(timeToSeek > 2.0)
+        {
+            flee = false;
+            timeToSeek = 0.0f;
+        }
+
 
     }
 
@@ -49,7 +70,7 @@ public class EnemyAIBehaviors : MonoBehaviour {
         Vector3 moving = enemyDirection.normalized * moveSpeed * Time.deltaTime;
 
         transform.position += moving;
-        rb.velocity = moving * moveSpeed * Time.deltaTime;
+        rb.velocity *= moving * moveSpeed * Time.deltaTime;
     }
 
     void Flee()
@@ -61,7 +82,7 @@ public class EnemyAIBehaviors : MonoBehaviour {
         {
             Vector3 moveVector = enemyDirection.normalized * moveSpeed * Time.deltaTime;
             transform.position += moveVector;
-            rb.velocity = moveVector * moveSpeed * Time.deltaTime;
+            rb.velocity *= moveVector * moveSpeed * Time.deltaTime;
         }
     }
 
@@ -75,7 +96,7 @@ public class EnemyAIBehaviors : MonoBehaviour {
 
         Vector3 moveVector = enemyDirection.normalized * Time.deltaTime * speed;
         transform.position += moveVector;
-        rb.velocity = moveVector * moveSpeed * Time.deltaTime;
+        rb.velocity *= moveVector * moveSpeed * Time.deltaTime;
         
     }
 
@@ -116,6 +137,23 @@ public class EnemyAIBehaviors : MonoBehaviour {
         if (collision.gameObject.tag == "Rocket")
         {
             currentHealth -= 50;
+        }
+        if(collision.gameObject.tag == "Bubbles")
+        {
+            Vector3 distance =  transform.position - collision.gameObject.transform.position;
+            distance.Normalize();
+            rb.AddForce(distance * impulseForce);
+        }
+
+        if(collision.gameObject.tag == "Player")
+        {
+            currentHealth -= 50;
+            rb.velocity = Vector3.zero;
+        }
+        if(collision.gameObject.tag == "Well")
+        {
+            flee = true;
+            //Destroy(this.gameObject);
         }
     }
 }

@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 50305515003757620}
   - component: {fileID: 114567028438230826}
   - component: {fileID: 114571949873991824}
-  - component: {fileID: 58851050182453184}
+  - component: {fileID: 61437868755769312}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -94,8 +94,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!58 &58851050182453184
-CircleCollider2D:
+--- !u!61 &61437868755769312
+BoxCollider2D:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -106,9 +106,19 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.12062585, y: -0.36169577}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.1, y: 1.5}
+    newSize: {x: 1.1, y: 1.5}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Radius: 0.45
+  m_Size: {x: 0.85874844, y: 0.77660847}
+  m_EdgeRadius: 0
 --- !u!114 &114567028438230826
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -122,10 +132,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 20
   playerSprites:
-  - {fileID: 21300000, guid: e2c82629e197b864da5c920bcb01de36, type: 3}
-  - {fileID: 21300002, guid: e2c82629e197b864da5c920bcb01de36, type: 3}
-  - {fileID: 21300004, guid: e2c82629e197b864da5c920bcb01de36, type: 3}
-  - {fileID: 21300006, guid: e2c82629e197b864da5c920bcb01de36, type: 3}
+  - {fileID: 21300002, guid: 2850edcee334c1a478110a6e045d89f3, type: 3}
+  - {fileID: 21300020, guid: 2850edcee334c1a478110a6e045d89f3, type: 3}
+  - {fileID: 21300014, guid: 2850edcee334c1a478110a6e045d89f3, type: 3}
+  - {fileID: 21300008, guid: 2850edcee334c1a478110a6e045d89f3, type: 3}
 --- !u!114 &114571949873991824
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -151,9 +161,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canShoot: 0
   myBulletType:
-  - {fileID: 50743966099289980, guid: 277a2acb4faf8e24c825805605663648, type: 2}
-  - {fileID: 50356382330083222, guid: dbd3c22658fb1bc45a890de07c0a62e0, type: 2}
   - {fileID: 50312620009802562, guid: 269dddbc6d9bfcd4abcc277af3febcd3, type: 2}
+  - {fileID: 50356382330083222, guid: dbd3c22658fb1bc45a890de07c0a62e0, type: 2}
+  - {fileID: 50743966099289980, guid: 277a2acb4faf8e24c825805605663648, type: 2}
   myDirection: {x: 0, y: 0, z: 0}
 --- !u!212 &212236653988508336
 SpriteRenderer:
@@ -190,12 +200,12 @@ SpriteRenderer:
   m_SortingLayerID: -1962034469
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e2c82629e197b864da5c920bcb01de36, type: 3}
+  m_Sprite: {fileID: 21300002, guid: 2850edcee334c1a478110a6e045d89f3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.8, y: 0.8}
+  m_Size: {x: 1.1, y: 1.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

@@ -8,6 +8,8 @@ public class RocketBullet : MonoBehaviour {
     [SerializeField] GameObject target;
     Vector3 toTransform;
 
+    float lifetime;
+
     ProjectileManager manager;
 
     Rigidbody2D rb;
@@ -18,6 +20,7 @@ public class RocketBullet : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
+        //Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), GameObject.FindGameObjectWithTag("Well").GetComponent<Collider2D>());
         Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), GameObject.FindGameObjectWithTag("Player").GetComponent<Collider2D>());
         Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), GameObject.FindGameObjectWithTag("Rocket").GetComponent<Collider2D>());
         manager = GameObject.FindGameObjectWithTag("SpawnManager").GetComponent<ProjectileManager>();
@@ -30,6 +33,7 @@ public class RocketBullet : MonoBehaviour {
     // Update is called once per frame
     void FixedUpdate()
     {
+        lifetime += Time.deltaTime;
         if(target != null)
         {
             Vector2 pointToTarget = (Vector2)transform.position - (Vector2)target.transform.position;
@@ -45,6 +49,11 @@ public class RocketBullet : MonoBehaviour {
         else
         {
            rb.velocity = transform.up * speed;
+        }
+
+        if(lifetime > 3.0)
+        {
+            Destroy(this.gameObject);
         }
     }
 

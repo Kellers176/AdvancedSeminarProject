@@ -5,6 +5,7 @@ using UnityEngine;
 public class SceneManagerScript : MonoBehaviour {
     [SerializeField] EnemyManager myEnemyManager;
     [SerializeField] GameObject oldSprite;
+    bool done = false;
 
     // Use this for initialization
     private void Start () {
@@ -21,6 +22,12 @@ public class SceneManagerScript : MonoBehaviour {
         if(myEnemyManager.GetEnemyCount() == 0)
         {
             oldSprite.SetActive(false);
+            done = true;
         }
+    }
+
+    public bool getDone()
+    {
+        return done;
     }
 }

@@ -100,7 +100,7 @@ public class ProjectileManager : MonoBehaviour
                 {
                     myBulletType.Add(myBulletTypeDeleted[i]);
                     myBulletTypeDeleted.RemoveAt(i);
-                    i--; //??
+                    i--;
                 }
             }
             else
