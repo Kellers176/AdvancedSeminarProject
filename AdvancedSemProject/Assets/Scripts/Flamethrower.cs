@@ -27,13 +27,13 @@ public class Flamethrower : MonoBehaviour {
     {
         //this.transform.localScale *= Time.deltaTime;
 
-        if (transform.localScale.x <= 2.0 && transform.localScale.x <= 2.0)
+        if (transform.localScale.x <= 5.0 && transform.localScale.x <= 5.0)
         {
-            transform.localScale += new Vector3(0.05f, 0.05f, 0);
+            transform.localScale += new Vector3(0.3f, 0.3f, 0);
         }
         lifetime += Time.deltaTime;
         ChangeColor();
-        if (lifetime > 3.0)
+        if (lifetime > 1.0)
         {
             Destroy(this.gameObject);
         }
@@ -53,7 +53,7 @@ public class Flamethrower : MonoBehaviour {
         {
             rend.material.color = Color.red;
         }
-        if (lifetime > 1.0f)
+        if (lifetime > 0.8f)
         {
             rend.material.color = Color.gray;
         }
