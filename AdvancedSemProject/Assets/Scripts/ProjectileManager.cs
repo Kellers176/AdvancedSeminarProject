@@ -61,10 +61,15 @@ public class ProjectileManager : MonoBehaviour
         {
             cooldown = 0.4f;
         }
+        else if(myBullet.tag == "FlameThrower")
+        {
+            cooldown = 0.1f;
+        }
     }
 
     private void MoveInput()
     {
+      
         time += Time.deltaTime;
         if (Input.GetMouseButton(0) && !(myCountdown.GetTimeLeft() <= 0) && time > cooldown)
         {
@@ -76,10 +81,11 @@ public class ProjectileManager : MonoBehaviour
 
     private void SpawnObject()
     {
-        shootDirection.z = 0.0f;
-        shootDirection = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        shootDirection = shootDirection - transform.position;
-        spawn = (Rigidbody2D)Instantiate(myBullet, transform.position, Quaternion.Euler(new Vector3(0,0,0))) as Rigidbody2D;
+            shootDirection.z = 0.0f;
+            shootDirection = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            shootDirection = shootDirection - transform.position;
+            spawn = (Rigidbody2D)Instantiate(myBullet, transform.position, Quaternion.Euler(new Vector3(0,0,0))) as Rigidbody2D;
+
     }
 
     public Vector3 getShootDirection()

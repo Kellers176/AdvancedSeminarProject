@@ -6,26 +6,30 @@ public class EnemyAIBehaviors : MonoBehaviour {
 
     GameObject target;
     EnemyManager mManager;
-    float moveSpeed = 1.0f;
+    float moveSpeed = 2.0f;
     float impulseForce = 10.0f;
     float rotateSpeed = 1.0f;
 
     float minimumDistance = 5.0f;
-    float safeDistance = 60.0f;
+    float safeDistance = 2f;
 
     int maxHealth = 100;
     int currentHealth;
     bool flee = false;
     float timeToSeek = 0.0f;
+    int mRandom;
 
     private Renderer rend;
 
-
+    int numberOfAIBehaviors = 3;
+    enum AIBehaviors {SEEK, ARRIVE, FLEE }
+    AIBehaviors myBehavior;
     Rigidbody2D rb;
 
 	// Use this for initialization
 	void Start () {
         target = GameObject.FindGameObjectWithTag("Player");
+        mRandom = Random.Range(0, numberOfAIBehaviors);
         mManager = GameObject.FindGameObjectWithTag("EnemyManager").GetComponent<EnemyManager>();
         rb = GetComponent<Rigidbody2D>();
         currentHealth = maxHealth;
@@ -39,23 +43,31 @@ public class EnemyAIBehaviors : MonoBehaviour {
         {
             ChangeColor();
             DestroyObject();
-            
+            timeToSeek += Time.deltaTime;  
         }
 
-        timeToSeek += Time.deltaTime;
-        if(flee == false)
+        switch(mRandom)
         {
-            Seek();
+            case (int)AIBehaviors.SEEK:
+                Seek();
+                break;
+            case (int)AIBehaviors.ARRIVE:
+                Arrive();
+                break;
+            case (int)AIBehaviors.FLEE:
+                Flee();
+                flee = true;
+                break;
+            default:
+                break;
         }
-        else
-        {
-            Flee();
-        }
+        
 
-        if(timeToSeek > 2.0)
+        if(timeToSeek > 2.0 && flee)
         {
             flee = false;
             timeToSeek = 0.0f;
+            Seek();
         }
 
 
@@ -65,12 +77,11 @@ public class EnemyAIBehaviors : MonoBehaviour {
     {
         Vector3 enemyDirection = target.transform.position - transform.position;
         enemyDirection.z = 0;
-
+        enemyDirection.Normalize();
+        enemyDirection *= moveSpeed * Time.deltaTime;
         
-        Vector3 moving = enemyDirection.normalized * moveSpeed * Time.deltaTime;
-
-        transform.position += moving;
-        rb.velocity *= moving * moveSpeed * Time.deltaTime;
+        transform.position += enemyDirection;
+        rb.velocity *= enemyDirection * moveSpeed * Time.deltaTime;
     }
 
     void Flee()
@@ -83,6 +94,10 @@ public class EnemyAIBehaviors : MonoBehaviour {
             Vector3 moveVector = enemyDirection.normalized * moveSpeed * Time.deltaTime;
             transform.position += moveVector;
             rb.velocity *= moveVector * moveSpeed * Time.deltaTime;
+        }
+        else
+        {
+            Seek();
         }
     }
 
@@ -127,7 +142,13 @@ public class EnemyAIBehaviors : MonoBehaviour {
                 break;
         }
     }
-
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "FlameThrower")
+        {
+            currentHealth -= 10;
+        }
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Bullet")
