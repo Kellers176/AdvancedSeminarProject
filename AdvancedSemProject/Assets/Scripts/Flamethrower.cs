@@ -29,7 +29,7 @@ public class Flamethrower : MonoBehaviour {
 
         if (transform.localScale.x <= 5.0 && transform.localScale.x <= 5.0)
         {
-            transform.localScale += new Vector3(0.3f, 0.3f, 0);
+            transform.localScale += new Vector3(0.1f, 0.1f, 0);
         }
         lifetime += Time.deltaTime;
         ChangeColor();

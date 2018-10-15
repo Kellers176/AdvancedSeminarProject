@@ -1,14 +1,26 @@
 Adv. sem
 Stuff to get done for alpha:
-Make Ray Gun
 Enemies Shoot you
 Airforce strike Launch
 Enemy AI behavior
-Different Enemies
+Different Enemie Types
 waves of enemies
-Flamethrower
 Show what is in queue next
 Lightning
+Add enemies left
+Push force against other enemies
+Add Traps for players
+more guns
+More guns that dont necessarily help you
+More levels (Not too many though)
+More challenges for the player
+More environment holes
+More enemy types
+Good feedback but can be worked on
+Work more on challenges first and the add more guns
+Fix goblet particle effect cause sometimes it spawns behind goblet
+explosion for the rockets
+Indicator for damage with enemies
 
 DONE:
 Making bubble weapon - doneeeee
@@ -16,3 +28,4 @@ Case state for Room -mostly done
 Color feedback for when player gets hit - done
 Add win state - done
 Spawing Enemies - DONE
+Flamethrower - DONE

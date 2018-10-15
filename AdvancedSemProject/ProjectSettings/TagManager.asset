@@ -15,6 +15,7 @@ TagManager:
   - Wall
   - Well
   - FlameThrower
+  - Sit
   layers:
   - Default
   - TransparentFX

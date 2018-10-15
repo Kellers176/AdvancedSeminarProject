@@ -5,72 +5,80 @@ using UnityEngine;
 public class EnemyAIBehaviors : MonoBehaviour {
 
     GameObject target;
+    List<GameObject> closeEnemies = new List<GameObject>();
     EnemyManager mManager;
+    private Renderer rend;
+    
+    Vector2 positionVector;
+    Transform sitPoint;
+    private GameObject spawn;
+    public GameObject bullet;
+
     float moveSpeed = 2.0f;
     float impulseForce = 10.0f;
-    float rotateSpeed = 1.0f;
-
-    float minimumDistance = 5.0f;
-    float safeDistance = 2f;
-
+    int neighborCount;
+    float safeDistance = 3f;
     int maxHealth = 100;
     int currentHealth;
     bool flee = false;
     float timeToSeek = 0.0f;
     int mRandom;
+    float time;
+    float cooldown;
 
-    private Renderer rend;
-
-    int numberOfAIBehaviors = 3;
-    enum AIBehaviors {SEEK, ARRIVE, FLEE }
+    int numberOfAIBehaviors = 4;
+    enum AIBehaviors {SEEK, ARRIVE, FLEE, MOVETOPOINT }
     AIBehaviors myBehavior;
     Rigidbody2D rb;
 
 	// Use this for initialization
 	void Start () {
         target = GameObject.FindGameObjectWithTag("Player");
+        sitPoint = GameObject.FindGameObjectWithTag("Sit").GetComponent<Transform>();
         mRandom = Random.Range(0, numberOfAIBehaviors);
         mManager = GameObject.FindGameObjectWithTag("EnemyManager").GetComponent<EnemyManager>();
         rb = GetComponent<Rigidbody2D>();
         currentHealth = maxHealth;
         rend = GetComponent<Renderer>();
         rend.material.color = Color.white;
+        cooldown = 0.6f;
     }
 	
 	// Update is called once per frame
 	void Update () {
-        if(target != null)
+        if (target != null)
         {
             ChangeColor();
             DestroyObject();
-            timeToSeek += Time.deltaTime;  
-        }
+            time += Time.deltaTime;
+            timeToSeek += Time.deltaTime;
+            switch (mRandom)
+            {
+                case (int)AIBehaviors.SEEK:
+                    Seek();
+                    break;
+                case (int)AIBehaviors.ARRIVE:
+                    Arrive();
+                    break;
+                case (int)AIBehaviors.FLEE:
+                    Flee();
+                    flee = true;
+                    break;
+                case (int)AIBehaviors.MOVETOPOINT:
+                    MoveAway();
+                    break;
+                default:
+                    break;
+            }
 
-        switch(mRandom)
-        {
-            case (int)AIBehaviors.SEEK:
+            if (timeToSeek > 2.0 && flee)
+            {
+                flee = false;
+                timeToSeek = 0.0f;
                 Seek();
-                break;
-            case (int)AIBehaviors.ARRIVE:
-                Arrive();
-                break;
-            case (int)AIBehaviors.FLEE:
-                Flee();
-                flee = true;
-                break;
-            default:
-                break;
+            }
+            Seperation();
         }
-        
-
-        if(timeToSeek > 2.0 && flee)
-        {
-            flee = false;
-            timeToSeek = 0.0f;
-            Seek();
-        }
-
-
     }
 
     void Seek()
@@ -115,6 +123,66 @@ public class EnemyAIBehaviors : MonoBehaviour {
         
     }
 
+    void Shoot()
+    {
+        if(time > cooldown)
+        {
+            spawn = Instantiate(bullet, transform.position, Quaternion.identity);
+            time = 0;
+        }
+
+    }
+    void MoveAway()
+    {
+        Vector3 enemyDirection = sitPoint.position - transform.position;
+        enemyDirection.z = 0;
+        float distance = enemyDirection.magnitude;
+
+        if (distance < 3)
+        {
+            //do nothing
+        }
+        else
+        {
+            float deecelelrationFactor = distance / 5;
+            float speed = moveSpeed * deecelelrationFactor;
+
+            Vector3 moveVector = enemyDirection.normalized * Time.deltaTime * speed;
+            transform.position += moveVector;
+            rb.velocity *= moveVector * moveSpeed * Time.deltaTime;
+        }
+        Shoot();
+    }
+
+    void Seperation()
+    {
+        neighborCount = 0;
+        
+        closeEnemies = mManager.getEnemyList();
+
+        for (int k = 0; k < closeEnemies.Count; k++)
+        {
+            if(closeEnemies[k].gameObject != this.gameObject && closeEnemies[k] != null)
+            {
+                Vector2 direction = closeEnemies[k].transform.position - this.gameObject.transform.position;
+                float distance = direction.magnitude;
+                if (distance <= 1)
+                {
+                    float strength = Mathf.Min(20.0f / 1.0f, moveSpeed);
+                    direction.Normalize();
+                    rb.velocity += (-direction * strength);
+                    
+                    neighborCount++;
+                }
+            }
+        }
+
+        if (neighborCount == 0)
+        {
+            //do nothing
+            rb.velocity = Vector3.zero;
+        }
+    }
 
     private void DestroyObject()
     {
@@ -161,6 +229,7 @@ public class EnemyAIBehaviors : MonoBehaviour {
         }
         if(collision.gameObject.tag == "Bubbles")
         {
+            currentHealth -= 5;
             Vector3 distance =  transform.position - collision.gameObject.transform.position;
             distance.Normalize();
             rb.AddForce(distance * impulseForce);
@@ -171,10 +240,12 @@ public class EnemyAIBehaviors : MonoBehaviour {
             currentHealth -= 50;
             rb.velocity = Vector3.zero;
         }
+
         if(collision.gameObject.tag == "Well")
         {
             flee = true;
             //Destroy(this.gameObject);
         }
     }
+    
 }

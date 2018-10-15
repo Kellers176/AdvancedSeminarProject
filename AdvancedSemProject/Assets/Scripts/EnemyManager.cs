@@ -4,19 +4,23 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class EnemyManager : MonoBehaviour {
     [SerializeField] Transform[] spawnPoints;
-    private GameObject spawn;
     [SerializeField] GameObject enemy;
+    [SerializeField] int totalEnemies = 5;
+    List<GameObject> currentEnemies = new List<GameObject>();
+    HUD mHud;
+    private GameObject spawn;
+
     int remainingEnemyCount = 5;
     int spawnedEnemies;
-    [SerializeField] int totalEnemies = 5;
     float count;
-    bool canSpawn;
-    HUD mHud;
+    int j = 0;
+
+
+
     // Use this for initialization
     void Start () {
         count = Random.Range(0, 5);
         remainingEnemyCount = totalEnemies;
-        canSpawn = true;
         mHud = GameObject.FindGameObjectWithTag("HUD").GetComponent<HUD>();
     }
 	
@@ -24,12 +28,6 @@ public class EnemyManager : MonoBehaviour {
 	private void Update ()
     {
         IncreaseTime();
-        //if(spawnEnemyCount == 0)
-        //{
-        //    Debug.Log("DONE!");
-        //    oldSprite.SetActive(false);
-        //    //SceneManager.LoadScene("WinScene");
-        //}
         if(count >= 5.0f && spawnedEnemies < totalEnemies)
         {
             Spawning();
@@ -41,6 +39,7 @@ public class EnemyManager : MonoBehaviour {
     {
         int random = Random.Range(0, spawnPoints.Length);
         spawn = Instantiate(enemy, spawnPoints[random].position, Quaternion.Euler(new Vector3(0, 0, 0)));
+        currentEnemies.Add(spawn);
         spawnedEnemies++;
     }
 
@@ -56,6 +55,11 @@ public class EnemyManager : MonoBehaviour {
     public int GetEnemyCount()
     {
         return remainingEnemyCount;
+    }
+
+    public List<GameObject> getEnemyList()
+    {
+         return currentEnemies;
     }
     
 }

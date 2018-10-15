@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82a5b1820dfaf1a49b97f3d92c80013b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bullet: {fileID: 1391532663678568, guid: 4e35f2280d8e8684f97144be991c3a41, type: 2}
 --- !u!212 &212654862775163510
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -131,8 +132,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -947196027
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b2757a08f99a85f42aaf2cf93127b032, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
