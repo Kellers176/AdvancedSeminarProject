@@ -1,19 +1,19 @@
 fileFormatVersion: 2
-guid: 2850edcee334c1a478110a6e045d89f3
+guid: a0e5c2d7030b9d34695aed0878f3fab9
 TextureImporter:
   fileIDToRecycleName:
-    21300000: reaper_blade_3_0
-    21300002: reaper_blade_3_1
-    21300004: reaper_blade_3_2
-    21300006: reaper_blade_3_3
-    21300008: reaper_blade_3_4
-    21300010: reaper_blade_3_5
-    21300012: reaper_blade_3_6
-    21300014: reaper_blade_3_7
-    21300016: reaper_blade_3_8
-    21300018: reaper_blade_3_9
-    21300020: reaper_blade_3_10
-    21300022: reaper_blade_3_11
+    21300000: reaper_blade_4_0
+    21300002: reaper_blade_4_1
+    21300004: reaper_blade_4_2
+    21300006: reaper_blade_4_3
+    21300008: reaper_blade_4_4
+    21300010: reaper_blade_4_5
+    21300012: reaper_blade_4_6
+    21300014: reaper_blade_4_7
+    21300016: reaper_blade_4_8
+    21300018: reaper_blade_4_9
+    21300020: reaper_blade_4_10
+    21300022: reaper_blade_4_11
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -96,7 +96,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: reaper_blade_3_0
+      name: reaper_blade_4_0
       rect:
         serializedVersion: 2
         x: 0
@@ -104,39 +104,39 @@ TextureImporter:
         width: 64
         height: 72
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1cf5380e789c93c4f80074d09ba8e3be
+      spriteID: 8eac6875ba90b05479a2155ea58be8e1
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: reaper_blade_3_1
+      name: reaper_blade_4_1
       rect:
         serializedVersion: 2
-        x: 64
+        x: 62
         y: 216
         width: 64
         height: 72
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5cfc35632b411734584f5f7172e30bbc
+      spriteID: 1305e2c061c48c74e82ca3ccb6a20fa8
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: reaper_blade_3_2
+      name: reaper_blade_4_2
       rect:
         serializedVersion: 2
         x: 128
@@ -144,19 +144,19 @@ TextureImporter:
         width: 64
         height: 72
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f79696a7f0a4a624ea2495041de6acf8
+      spriteID: 1370a7bffc5cfd044a4d077b881eac20
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: reaper_blade_3_3
+      name: reaper_blade_4_3
       rect:
         serializedVersion: 2
         x: 0
@@ -164,19 +164,19 @@ TextureImporter:
         width: 64
         height: 72
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5941307366e227f44a9fe68da7f416fb
+      spriteID: a6061ef5f762f244a895ca40efa75fe5
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: reaper_blade_3_4
+      name: reaper_blade_4_4
       rect:
         serializedVersion: 2
         x: 64
@@ -184,19 +184,19 @@ TextureImporter:
         width: 64
         height: 72
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0130ccc4ccfce0f49bbe45c80795e54b
+      spriteID: 8c9584979d1a92c4ba0bac998a6018a4
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: reaper_blade_3_5
+      name: reaper_blade_4_5
       rect:
         serializedVersion: 2
         x: 128
@@ -204,19 +204,19 @@ TextureImporter:
         width: 64
         height: 72
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6ba5f814fd9fba941a877feb0da859d7
+      spriteID: 9dad0ab7f443087428ca3c03f47118c4
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: reaper_blade_3_6
+      name: reaper_blade_4_6
       rect:
         serializedVersion: 2
         x: 0
@@ -224,19 +224,19 @@ TextureImporter:
         width: 64
         height: 72
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1901c85ff650a394396b1f9759e112a4
+      spriteID: edab49094af05784fb931eec280705cf
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: reaper_blade_3_7
+      name: reaper_blade_4_7
       rect:
         serializedVersion: 2
         x: 64
@@ -244,19 +244,19 @@ TextureImporter:
         width: 64
         height: 72
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e23a76d624e2052499a4e98cdea054b1
+      spriteID: 179be78c82211b748acbb14e550c57a2
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: reaper_blade_3_8
+      name: reaper_blade_4_8
       rect:
         serializedVersion: 2
         x: 128
@@ -264,19 +264,19 @@ TextureImporter:
         width: 64
         height: 72
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bde879074db28e54196382f0b38df8ca
+      spriteID: 54794b578003fb94b941529ba222b5a7
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: reaper_blade_3_9
+      name: reaper_blade_4_9
       rect:
         serializedVersion: 2
         x: 0
@@ -284,19 +284,19 @@ TextureImporter:
         width: 64
         height: 72
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e42c3ab37c0f64040b5bea3173c2e9bd
+      spriteID: b70326ed780a28c438ca5d7ce041c056
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: reaper_blade_3_10
+      name: reaper_blade_4_10
       rect:
         serializedVersion: 2
         x: 64
@@ -304,19 +304,19 @@ TextureImporter:
         width: 64
         height: 72
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8ff869f5eb674b7489bb93f16bbf0704
+      spriteID: 5aeca4427fd0bd34b904aaad21f80b54
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: reaper_blade_3_11
+      name: reaper_blade_4_11
       rect:
         serializedVersion: 2
         x: 128
@@ -324,13 +324,13 @@ TextureImporter:
         width: 64
         height: 72
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: efec45beecb34c141ac8125ffa9a28c5
+      spriteID: 493591d08fd0c2a4a982f85088cdc17b
       vertices: []
       indices: 
       edges: []
@@ -338,7 +338,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: f5dc7cf513660c249988da1a132db99d
+    spriteID: 4ca5aab2c2f9b5544844a347412be2ee
     vertices: []
     indices: 
     edges: []
