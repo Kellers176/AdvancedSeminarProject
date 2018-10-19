@@ -53,12 +53,15 @@ public class PlayerManager : MonoBehaviour
 		{
 			currentHealth -= 10;
 		}
-
-        if(col.gameObject.tag == "EnemyBullet")
+        
+	}
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "EnemyBullet")
         {
             currentHealth -= 10;
         }
-	}
+    }
 
 
     public float GetHealth()

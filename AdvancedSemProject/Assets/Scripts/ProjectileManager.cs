@@ -12,6 +12,7 @@ public class ProjectileManager : MonoBehaviour
     List<Rigidbody2D> myBulletTypeDeleted = new List<Rigidbody2D>();
     private Rigidbody2D myBullet;
     private Rigidbody2D spawn;
+    Vector3 oldDirection;
     [SerializeField] Vector3 myDirection;
     bool done;
 
@@ -35,6 +36,7 @@ public class ProjectileManager : MonoBehaviour
         //switch to random element in array 
         myCountdown = GameObject.FindGameObjectWithTag("HUD").GetComponent<HUD>();
         myBullet = myBulletType[Random.Range(0, myBulletType.Count)];
+        oldDirection = myDirection;
         CheckCooldown();
         count = 0;
         done = true;
@@ -84,6 +86,7 @@ public class ProjectileManager : MonoBehaviour
             shootDirection.z = 0.0f;
             shootDirection = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             shootDirection = shootDirection - transform.position;
+            oldDirection = myDirection;
             spawn = (Rigidbody2D)Instantiate(myBullet, transform.position, Quaternion.Euler(new Vector3(0,0,0))) as Rigidbody2D;
 
     }
@@ -129,7 +132,7 @@ public class ProjectileManager : MonoBehaviour
 
     public Vector3 GetDirection()
     {
-        return myDirection;
+        return oldDirection;
     }
 
 

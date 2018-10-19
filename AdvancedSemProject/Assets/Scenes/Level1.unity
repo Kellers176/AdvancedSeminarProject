@@ -18710,30 +18710,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114567028438230826, guid: 1d29f8317840f1048a8363e51b2bde5c,
-        type: 2}
-      propertyPath: playerSprites.Array.data[0]
-      value: 
-      objectReference: {fileID: 21300002, guid: 2850edcee334c1a478110a6e045d89f3,
-        type: 3}
-    - target: {fileID: 114567028438230826, guid: 1d29f8317840f1048a8363e51b2bde5c,
-        type: 2}
-      propertyPath: playerSprites.Array.data[1]
-      value: 
-      objectReference: {fileID: 21300008, guid: 2850edcee334c1a478110a6e045d89f3,
-        type: 3}
-    - target: {fileID: 114567028438230826, guid: 1d29f8317840f1048a8363e51b2bde5c,
-        type: 2}
-      propertyPath: playerSprites.Array.data[2]
-      value: 
-      objectReference: {fileID: 21300014, guid: 2850edcee334c1a478110a6e045d89f3,
-        type: 3}
-    - target: {fileID: 114567028438230826, guid: 1d29f8317840f1048a8363e51b2bde5c,
-        type: 2}
-      propertyPath: playerSprites.Array.data[3]
-      value: 
-      objectReference: {fileID: 21300020, guid: 2850edcee334c1a478110a6e045d89f3,
-        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d29f8317840f1048a8363e51b2bde5c, type: 2}
   m_IsPrefabAsset: 0

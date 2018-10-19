@@ -29,30 +29,46 @@ public class RocketBullet : MonoBehaviour {
         myShake = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>();
         toTransform = manager.GetDirection();
         target = GameObject.FindGameObjectWithTag("Enemy");
-       
         rb = GetComponent<Rigidbody2D>();
+        rb.velocity = manager.GetDirection() * speed;
+        if(manager.GetDirection() == Vector3.left)
+        {
+            transform.Rotate(0, 0, 90);
+        }
+        if(manager.GetDirection() == Vector3.right)
+        {
+            transform.Rotate(0, 0, -90);
+        }
+        if (manager.GetDirection() == Vector3.up)
+        {
+            transform.Rotate(0, 0, 0);
+        }
+        if (manager.GetDirection() == Vector3.down)
+        {
+            transform.Rotate(0, 0, 180);
+        }
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
         lifetime += Time.deltaTime;
-        if(target != null)
-        {
-            Vector2 pointToTarget = (Vector2)transform.position - (Vector2)target.transform.position;
+        //if(target != null)
+        //{
+        //    Vector2 pointToTarget = (Vector2)transform.position - (Vector2)target.transform.position;
 
-            pointToTarget.Normalize();
+        //    pointToTarget.Normalize();
 
-            float value = Vector3.Cross(pointToTarget, transform.up).z;
+        //    float value = Vector3.Cross(pointToTarget, transform.up).z;
         
-            rb.angularVelocity = rotatingSpeed * value;
+        //    rb.angularVelocity = rotatingSpeed * value;
 
-            rb.velocity = transform.up * speed;
-        }
-        else
-        {
-           rb.velocity = transform.up * speed;
-        }
+        //    rb.velocity = transform.up * speed;
+        //}
+        //else
+        //{
+        //   rb.velocity = manager.GetDirection() * speed;
+        //}
 
         if(lifetime > 3.0)
         {

@@ -27,10 +27,12 @@ public class EnemyBullet : MonoBehaviour {
         
     }
 
-    private void OnCollisionEnter2D(Collision2D col)
+    private void OnTriggerEnter2D(Collider2D col)
     {
-        Destroy(this.gameObject);
+        if(col.tag == "Player" || col.tag == "Wall")
+            Destroy(this.gameObject);
     }
+
 
     private void Movement()
     {
