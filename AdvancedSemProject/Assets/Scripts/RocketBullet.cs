@@ -15,6 +15,8 @@ public class RocketBullet : MonoBehaviour {
     Rigidbody2D rb;
 
     Vector3 myTransform;
+
+    CameraShake myShake;
     
 
     // Use this for initialization
@@ -24,6 +26,7 @@ public class RocketBullet : MonoBehaviour {
         Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), GameObject.FindGameObjectWithTag("Player").GetComponent<Collider2D>());
         Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), GameObject.FindGameObjectWithTag("Rocket").GetComponent<Collider2D>());
         manager = GameObject.FindGameObjectWithTag("SpawnManager").GetComponent<ProjectileManager>();
+        myShake = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>();
         toTransform = manager.GetDirection();
         target = GameObject.FindGameObjectWithTag("Enemy");
        
@@ -59,6 +62,7 @@ public class RocketBullet : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D col)
     {
+        myShake.TriggerShake();
         Destroy(this.gameObject);
     }
 }

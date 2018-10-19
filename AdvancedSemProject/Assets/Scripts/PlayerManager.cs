@@ -53,7 +53,13 @@ public class PlayerManager : MonoBehaviour
 		{
 			currentHealth -= 10;
 		}
+
+        if(col.gameObject.tag == "EnemyBullet")
+        {
+            currentHealth -= 10;
+        }
 	}
+
 
     public float GetHealth()
     {

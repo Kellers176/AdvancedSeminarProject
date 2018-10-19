@@ -17,6 +17,7 @@ TagManager:
   - FlameThrower
   - Sit
   - Cower
+  - EnemyBullet
   layers:
   - Default
   - TransparentFX

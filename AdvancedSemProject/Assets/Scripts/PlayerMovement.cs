@@ -62,7 +62,7 @@ public class PlayerMovement : MonoBehaviour {
         {
             //up
             myProjectile.SetDirection(transform.up);
-            this.GetComponent<SpriteRenderer>().sprite = playerSprites[1];
+            this.GetComponent<SpriteRenderer>().sprite = playerSprites[3];
 
         }
         else if (angle < 45 && angle > -45)
@@ -83,7 +83,7 @@ public class PlayerMovement : MonoBehaviour {
         {
             //left
             myProjectile.SetDirection(-transform.right);
-            this.GetComponent<SpriteRenderer>().sprite = playerSprites[3];
+            this.GetComponent<SpriteRenderer>().sprite = playerSprites[1];
 
         }
     }
