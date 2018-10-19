@@ -1,14 +1,11 @@
 Adv. sem
 Stuff to get done for alpha:
-Enemies Shoot you
 Airforce strike Launch
-Enemy AI behavior
 Different Enemie Types
 waves of enemies
 Show what is in queue next
 Lightning
 Add enemies left
-Push force against other enemies
 Add Traps for players
 more guns
 More guns that dont necessarily help you
@@ -18,14 +15,28 @@ More environment holes
 More enemy types
 Good feedback but can be worked on
 Work more on challenges first and the add more guns
-Fix goblet particle effect cause sometimes it spawns behind goblet
 explosion for the rockets
 Indicator for damage with enemies
+Add maybe an ice enemy that takes more damage from flamethrower and a fire enemy that takes less damage or heals
+Bubble enemy who increases in size
+--different enemies to help increase size
+Level progression
+increase size of levels
+
+For next week:
+Different enemies
+Another level
+Bigger level
 
 DONE:
+Enemies Shoot you-DONE
 Making bubble weapon - doneeeee
 Case state for Room -mostly done
 Color feedback for when player gets hit - done
 Add win state - done
 Spawing Enemies - DONE
 Flamethrower - DONE
+Screen Shake - DONE
+Enemy AI behavior-DONE
+Fix goblet particle effect cause sometimes it spawns behind goblet -DONE
+Push force against other enemies -DONE
