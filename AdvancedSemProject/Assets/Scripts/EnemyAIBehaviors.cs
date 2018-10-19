@@ -11,6 +11,7 @@ public class EnemyAIBehaviors : MonoBehaviour {
     
     Vector2 positionVector;
     Transform sitPoint;
+    Transform cowerPoint;
     private GameObject spawn;
     public GameObject bullet;
 
@@ -26,8 +27,8 @@ public class EnemyAIBehaviors : MonoBehaviour {
     float time;
     float cooldown;
 
-    int numberOfAIBehaviors = 4;
-    enum AIBehaviors {SEEK, ARRIVE, FLEE, MOVETOPOINT }
+    int numberOfAIBehaviors = 5;
+    enum AIBehaviors {SEEK, ARRIVE, FLEE, MOVETOPOINT, COWER }
     AIBehaviors myBehavior;
     Rigidbody2D rb;
 
@@ -35,6 +36,7 @@ public class EnemyAIBehaviors : MonoBehaviour {
 	void Start () {
         target = GameObject.FindGameObjectWithTag("Player");
         sitPoint = GameObject.FindGameObjectWithTag("Sit").GetComponent<Transform>();
+        cowerPoint = GameObject.FindGameObjectWithTag("Cower").GetComponent<Transform>();
         mRandom = Random.Range(0, numberOfAIBehaviors);
         mManager = GameObject.FindGameObjectWithTag("EnemyManager").GetComponent<EnemyManager>();
         rb = GetComponent<Rigidbody2D>();
@@ -66,6 +68,9 @@ public class EnemyAIBehaviors : MonoBehaviour {
                     break;
                 case (int)AIBehaviors.MOVETOPOINT:
                     MoveAway();
+                    break;
+                case (int)AIBehaviors.COWER:
+                    Cower();
                     break;
                 default:
                     break;
@@ -121,6 +126,27 @@ public class EnemyAIBehaviors : MonoBehaviour {
         transform.position += moveVector;
         rb.velocity *= moveVector * moveSpeed * Time.deltaTime;
         
+    }
+
+    void Cower()
+    {
+        Vector3 enemyDirection = cowerPoint.position - transform.position;
+        enemyDirection.z = 0;
+        float distance = enemyDirection.magnitude;
+        rend.material.color = Color.blue;
+        if (distance < 1)
+        {
+            //do nothing
+        }
+        else
+        {
+            float deecelelrationFactor = distance / 5;
+            float speed = moveSpeed * deecelelrationFactor;
+
+            Vector3 moveVector = enemyDirection.normalized * Time.deltaTime * speed;
+            transform.position += moveVector;
+            rb.velocity *= moveVector * moveSpeed * Time.deltaTime;
+        }
     }
 
     void Shoot()
@@ -229,7 +255,6 @@ public class EnemyAIBehaviors : MonoBehaviour {
         }
         if(collision.gameObject.tag == "Bubbles")
         {
-            currentHealth -= 5;
             Vector3 distance =  transform.position - collision.gameObject.transform.position;
             distance.Normalize();
             rb.AddForce(distance * impulseForce);
