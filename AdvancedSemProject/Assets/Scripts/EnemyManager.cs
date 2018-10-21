@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class EnemyManager : MonoBehaviour {
     [SerializeField] Transform[] spawnPoints;
-    [SerializeField] GameObject enemy;
+    [SerializeField] GameObject[] enemy;
     [SerializeField] int totalEnemies = 5;
     List<GameObject> currentEnemies = new List<GameObject>();
     HUD mHud;
@@ -38,7 +38,7 @@ public class EnemyManager : MonoBehaviour {
     private void Spawning()
     {
         int random = Random.Range(0, spawnPoints.Length);
-        spawn = Instantiate(enemy, spawnPoints[random].position, Quaternion.Euler(new Vector3(0, 0, 0)));
+        spawn = Instantiate(enemy[Random.Range(0, enemy.Length)], spawnPoints[random].position, Quaternion.Euler(new Vector3(0, 0, 0)));
         currentEnemies.Add(spawn);
         spawnedEnemies++;
     }
