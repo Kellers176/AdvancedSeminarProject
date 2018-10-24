@@ -7,8 +7,8 @@ public class HUD : MonoBehaviour
 {
 
     [SerializeField] TextMeshProUGUI countdown;
-    [SerializeField] TextMeshProUGUI reload;
-
+    TextMeshProUGUI reload;
+    [SerializeField] TextMeshProUGUI enemiesLeft;
     [SerializeField] int timeLeft = 10;
 
     [SerializeField] Sprite[] HeartSprites;
@@ -18,6 +18,7 @@ public class HUD : MonoBehaviour
     [SerializeField] Image HeartUI;
 	private PlayerManager myPlayer;
     ProjectileManager mManager;
+    EnemyManager mEnemyManager;
 
 	// Use this for initialization
 	void Start () 
@@ -25,6 +26,7 @@ public class HUD : MonoBehaviour
         StartCoroutine("LoseTime");
 		myPlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerManager>();
         mManager = GameObject.FindGameObjectWithTag("SpawnManager").GetComponent<ProjectileManager>();
+        mEnemyManager = GameObject.FindGameObjectWithTag("EnemyManager").GetComponent<EnemyManager>();
         Time.timeScale = 1;
         winCase = false;
 	}
@@ -34,6 +36,7 @@ public class HUD : MonoBehaviour
     {
 		HeartUI.sprite = HeartSprites[(int)myPlayer.GetHealth() / 10];
         countdown.text = ("" + timeLeft);
+        enemiesLeft.text = ("" + mEnemyManager.GetEnemyCount());
         ChangeTimeColor();
         ResetTime();
     }

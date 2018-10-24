@@ -19,7 +19,7 @@ public class ChangeToWin : MonoBehaviour {
     {
         if(myScene.getDone() == true && collision.gameObject.tag == "Player")
         {
-            SceneManager.LoadScene("WinScene");
+            SceneManager.LoadScene("Level2");
         }
     }
 }

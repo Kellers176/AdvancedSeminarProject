@@ -15,8 +15,8 @@ public class EnemyAIBehaviors : MonoBehaviour {
     private GameObject spawn;
     public GameObject bullet;
 
-    float moveSpeed = 2.0f;
-    float impulseForce = 10.0f;
+    float moveSpeed = 1.5f;
+    float impulseForce = 30.0f;
     int neighborCount;
     float safeDistance = 3f;
     int maxHealth = 100;
@@ -43,7 +43,7 @@ public class EnemyAIBehaviors : MonoBehaviour {
         currentHealth = maxHealth;
         rend = GetComponent<Renderer>();
         rend.material.color = Color.white;
-        cooldown = 0.6f;
+        cooldown = 1.0f;
     }
 	
 	// Update is called once per frame

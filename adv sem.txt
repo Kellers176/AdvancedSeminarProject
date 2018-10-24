@@ -1,5 +1,5 @@
 Adv. sem
-Stuff to get done for alpha:
+Stuff to get done for beta
 Airforce strike Launch
 Different Enemie Types
 waves of enemies
@@ -20,13 +20,9 @@ Indicator for damage with enemies
 Add maybe an ice enemy that takes more damage from flamethrower and a fire enemy that takes less damage or heals
 Bubble enemy who increases in size
 --different enemies to help increase size
-Level progression
-increase size of levels
 
 For next week:
-Different enemies
-Another level
-Bigger level
+
 
 DONE:
 Enemies Shoot you-DONE
@@ -40,3 +36,12 @@ Screen Shake - DONE
 Enemy AI behavior-DONE
 Fix goblet particle effect cause sometimes it spawns behind goblet -DONE
 Push force against other enemies -DONE
+Different enemies -DONE
+Another level -DONE
+Bigger level -DONE
+Level progression -Done
+
+Enemy SPrites:
+Oryx Design Lab
+Fire Sprite:
+ dmitriylo

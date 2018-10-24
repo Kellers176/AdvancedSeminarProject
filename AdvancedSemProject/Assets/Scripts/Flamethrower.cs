@@ -69,22 +69,6 @@ public class Flamethrower : MonoBehaviour {
         Vector2 direction = new Vector2(myProjectile.getShootDirection().x, myProjectile.getShootDirection().y);
         direction.Normalize();
         gameObject.GetComponent<Rigidbody2D>().velocity = direction * speed;
-        float RandomRange = SpreadRange[Random.Range(0, SpreadRange.Length)];
-        if (gameObject.transform.position == Vector3.right)
-        {
-            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(speed, RandomRange));
-        }
-        if (gameObject.transform.position == Vector3.left)
-        {
-            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-speed, RandomRange));
-        }
-        if (gameObject.transform.position == Vector3.up)
-        {
-            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(RandomRange, speed));
-        }
-        if (gameObject.transform.position == Vector3.down)
-        {
-            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(RandomRange, -speed));
-        }
+
     }
 }
