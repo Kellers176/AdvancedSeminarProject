@@ -1,8 +1,6 @@
 Adv. sem
-Stuff to get done for beta
+Stuff to get done for beta:
 Airforce strike Launch
-Different Enemie Types
-waves of enemies
 Show what is in queue next
 Lightning
 Add enemies left
@@ -12,16 +10,17 @@ More guns that dont necessarily help you
 More levels (Not too many though)
 More challenges for the player
 More environment holes
-More enemy types
 Good feedback but can be worked on
 Work more on challenges first and the add more guns
 explosion for the rockets
 Indicator for damage with enemies
 Add maybe an ice enemy that takes more damage from flamethrower and a fire enemy that takes less damage or heals
-Bubble enemy who increases in size
---different enemies to help increase size
 
 For next week:
+Increase level of difficulty
+Provide different class levels for each enemy (different difficulties)
+Bubble has health
+Feedback for how much health enemy has left
 
 
 DONE:
@@ -40,8 +39,4 @@ Different enemies -DONE
 Another level -DONE
 Bigger level -DONE
 Level progression -Done
-
-Enemy SPrites:
-Oryx Design Lab
-Fire Sprite:
- dmitriylo
+Bubble enemy who gains a shield - DONE

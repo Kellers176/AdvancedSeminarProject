@@ -26,6 +26,7 @@ public class FireEnemyAIBehaviors : MonoBehaviour {
     int mRandom;
     float time;
     float cooldown;
+    bool ifDying;
 
     int numberOfAIBehaviors = 5;
     enum AIBehaviors {SEEK, ARRIVE, FLEE, MOVETOPOINT, COWER }
@@ -44,11 +45,12 @@ public class FireEnemyAIBehaviors : MonoBehaviour {
         rend = GetComponent<Renderer>();
         rend.material.color = Color.white;
         cooldown = 0.6f;
+        ifDying = false;
     }
 	
 	// Update is called once per frame
 	void Update () {
-        if (target != null)
+        if (target != null && !ifDying)
         {
             ChangeColor();
             DestroyObject();
@@ -241,10 +243,15 @@ public class FireEnemyAIBehaviors : MonoBehaviour {
         if(collision.tag == "FlameThrower")
         {
             currentHealth += 1;
-			if(transform.localScale.x <= 2.0 && transform.localScale.x <= 2.0)
-        {
-            transform.localScale += new Vector3(0.05f, 0.05f, 0);
+            if(transform.localScale.x <= 2.0 && transform.localScale.x <= 2.0)
+            {
+                transform.localScale += new Vector3(0.05f, 0.05f, 0);
+            }
         }
+        if(collision.gameObject.tag == "Well")
+        {
+            Debug.Log("Colliding");
+            Destroy(this.gameObject);
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
@@ -269,12 +276,9 @@ public class FireEnemyAIBehaviors : MonoBehaviour {
             currentHealth -= 50;
             rb.velocity = Vector3.zero;
         }
+        
 
-        if(collision.gameObject.tag == "Well")
-        {
-            flee = true;
-            //Destroy(this.gameObject);
-        }
     }
+
     
 }

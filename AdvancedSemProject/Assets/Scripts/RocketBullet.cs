@@ -7,7 +7,7 @@ public class RocketBullet : MonoBehaviour {
     [SerializeField] float rotatingSpeed = 200;
     [SerializeField] GameObject target;
     Vector3 toTransform;
-
+    [SerializeField] GameObject myExplosion;
     float lifetime;
 
     ProjectileManager manager;
@@ -22,11 +22,11 @@ public class RocketBullet : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        //Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), GameObject.FindGameObjectWithTag("Well").GetComponent<Collider2D>());
         Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), GameObject.FindGameObjectWithTag("Player").GetComponent<Collider2D>());
         Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), GameObject.FindGameObjectWithTag("Rocket").GetComponent<Collider2D>());
         manager = GameObject.FindGameObjectWithTag("SpawnManager").GetComponent<ProjectileManager>();
         myShake = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>();
+        //myExplosion = GetComponent<GameObject>();
         toTransform = manager.GetDirection();
         target = GameObject.FindGameObjectWithTag("Enemy");
         rb = GetComponent<Rigidbody2D>();
@@ -53,23 +53,6 @@ public class RocketBullet : MonoBehaviour {
     void FixedUpdate()
     {
         lifetime += Time.deltaTime;
-        //if(target != null)
-        //{
-        //    Vector2 pointToTarget = (Vector2)transform.position - (Vector2)target.transform.position;
-
-        //    pointToTarget.Normalize();
-
-        //    float value = Vector3.Cross(pointToTarget, transform.up).z;
-        
-        //    rb.angularVelocity = rotatingSpeed * value;
-
-        //    rb.velocity = transform.up * speed;
-        //}
-        //else
-        //{
-        //   rb.velocity = manager.GetDirection() * speed;
-        //}
-
         if(lifetime > 3.0)
         {
             Destroy(this.gameObject);
@@ -79,6 +62,9 @@ public class RocketBullet : MonoBehaviour {
     void OnCollisionEnter2D(Collision2D col)
     {
         myShake.TriggerShake();
-        Destroy(this.gameObject);
+        GameObject explosion = Instantiate(myExplosion, transform.position, Quaternion.identity) as GameObject;
+        Destroy(explosion, 0.5f);
+        this.gameObject.GetComponent<Renderer>().enabled = false;
+        Destroy(this.gameObject, 0.5f);
     }
 }

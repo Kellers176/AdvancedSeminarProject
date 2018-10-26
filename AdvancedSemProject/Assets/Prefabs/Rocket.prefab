@@ -133,6 +133,8 @@ MonoBehaviour:
   speed: 5
   rotatingSpeed: 200
   target: {fileID: 0}
+  myExplosion: {fileID: 1046786526472100, guid: 84dc385b9fa3a634bac437bafbfa0e90,
+    type: 2}
 --- !u!198 &198209478404387014
 ParticleSystem:
   m_ObjectHideFlags: 1

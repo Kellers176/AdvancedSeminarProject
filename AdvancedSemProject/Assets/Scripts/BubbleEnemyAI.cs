@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyAIBehaviors : MonoBehaviour {
+public class BubbleEnemyAI : MonoBehaviour {
 
-    GameObject target;
+GameObject target;
     List<GameObject> closeEnemies = new List<GameObject>();
     EnemyManager mManager;
     private Renderer rend;
@@ -15,6 +15,7 @@ public class EnemyAIBehaviors : MonoBehaviour {
     Transform cowerPoint;
     private GameObject spawn;
     public GameObject bullet;
+	private GameObject shield;
 
     float moveSpeed = 2.0f;
     float impulseForce = 30.0f;
@@ -24,9 +25,11 @@ public class EnemyAIBehaviors : MonoBehaviour {
     int currentHealth;
     bool flee = false;
     float timeToSeek = 0.0f;
+	float timeTillDeactive;
     int mRandom;
     float time;
     float cooldown;
+	bool shieldIsActive;
 
     int numberOfAIBehaviors = 5;
     enum AIBehaviors {SEEK, ARRIVE, FLEE, MOVETOPOINT, COWER }
@@ -38,13 +41,16 @@ public class EnemyAIBehaviors : MonoBehaviour {
         target = GameObject.FindGameObjectWithTag("Player");
         sitPoint = GameObject.FindGameObjectWithTag("Sit").GetComponent<Transform>();
         cowerPoint = GameObject.FindGameObjectWithTag("Cower").GetComponent<Transform>();
+		shield = this.gameObject.transform.GetChild(0).gameObject;
         mRandom = Random.Range(0, numberOfAIBehaviors);
         mManager = GameObject.FindGameObjectWithTag("EnemyManager").GetComponent<EnemyManager>();
         rb = GetComponent<Rigidbody2D>();
         currentHealth = maxHealth;
         rend = GetComponent<Renderer>();
+		shieldIsActive = false;
         rend.material.color = Color.white;
         cooldown = 1.0f;
+		timeTillDeactive = 0.0f;
         ifDying = false;
     }
 	
@@ -84,6 +90,7 @@ public class EnemyAIBehaviors : MonoBehaviour {
                 timeToSeek = 0.0f;
                 Seek();
             }
+
             Seperation();
         }
     }
@@ -240,47 +247,51 @@ public class EnemyAIBehaviors : MonoBehaviour {
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "FlameThrower")
-        {
-            currentHealth -= 10;
-        }
-        if(collision.gameObject.tag == "Well")
-        {
-            Debug.Log("Colliding");
-            Destroy(this.gameObject);
-            Vector3 enemyDirection = collision.transform.position - target.transform.position;
-            enemyDirection.z = 0;
+		if(!shieldIsActive)
+		{
+			if(collision.tag == "FlameThrower")
+			{
+				currentHealth -= 10;
+			}
+			if(collision.gameObject.tag == "Well")
+			{
+				Debug.Log("Colliding");
+				Destroy(this.gameObject);
+				Vector3 enemyDirection = collision.transform.position - target.transform.position;
+				enemyDirection.z = 0;
 
-            if(enemyDirection.magnitude < safeDistance)
-            {
-                Vector3 moveVector = enemyDirection.normalized * moveSpeed * Time.deltaTime;
-                transform.position += moveVector;
-                rb.velocity *= moveVector * moveSpeed * Time.deltaTime;
-            }
-        }
+				if(enemyDirection.magnitude < safeDistance)
+				{
+					Vector3 moveVector = enemyDirection.normalized * moveSpeed * Time.deltaTime;
+					transform.position += moveVector;
+					rb.velocity *= moveVector * moveSpeed * Time.deltaTime;
+				}
+			}
+		}
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Bullet")
-        {
-            currentHealth -= 10;
-        }
-        if (collision.gameObject.tag == "Rocket")
-        {
-            currentHealth -= 50;
-        }
+		if(!shieldIsActive)
+		{
+			if (collision.gameObject.tag == "Bullet")
+			{
+				currentHealth -= 10;
+			}
+			if (collision.gameObject.tag == "Rocket")
+			{
+				currentHealth -= 50;
+			}
+			if(collision.gameObject.tag == "Player")
+			{
+				currentHealth -= 50;
+				rb.velocity = Vector3.zero;
+			}
+		}
         if(collision.gameObject.tag == "Bubbles")
         {
-            Vector3 distance =  transform.position - collision.gameObject.transform.position;
-            distance.Normalize();
-            rb.AddForce(distance * impulseForce);
-        }
-        if(collision.gameObject.tag == "Player")
-        {
-            currentHealth -= 50;
-            rb.velocity = Vector3.zero;
+			shield.SetActive(true);
+			shieldIsActive = true;
         }
 
     }
-    
 }

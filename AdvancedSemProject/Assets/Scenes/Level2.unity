@@ -882,7 +882,7 @@ GameObject:
   - component: {fileID: 549920936}
   m_Layer: 0
   m_Name: Hole (2)
-  m_TagString: Untagged
+  m_TagString: Well
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -909,7 +909,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -1000,6 +1000,7 @@ MonoBehaviour:
   enemy:
   - {fileID: 1716093821872682, guid: de366cb17bf3d3646ba3cc5c8df4e816, type: 2}
   - {fileID: 1582906118884014, guid: 9ae1872b625b5734c92cecd55f28e7af, type: 2}
+  - {fileID: 1097915554495368, guid: 72ee778e6d0287a45b01b9f056dbdb87, type: 2}
   totalEnemies: 10
 --- !u!4 &583268612
 Transform:
@@ -1029,7 +1030,7 @@ GameObject:
   - component: {fileID: 660895455}
   m_Layer: 0
   m_Name: Hole
-  m_TagString: Untagged
+  m_TagString: Well
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1056,7 +1057,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -1083,7 +1084,7 @@ GameObject:
   - component: {fileID: 939622505}
   m_Layer: 0
   m_Name: Hole (3)
-  m_TagString: Untagged
+  m_TagString: Well
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1110,7 +1111,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -16171,7 +16172,7 @@ GameObject:
   - component: {fileID: 2096950758}
   m_Layer: 0
   m_Name: Hole (1)
-  m_TagString: Untagged
+  m_TagString: Well
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16198,7 +16199,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
