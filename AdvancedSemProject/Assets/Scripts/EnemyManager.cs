@@ -5,15 +5,20 @@ using UnityEngine.SceneManagement;
 public class EnemyManager : MonoBehaviour {
     [SerializeField] Transform[] spawnPoints;
     [SerializeField] GameObject[] enemy;
-    [SerializeField] int totalEnemies = 5;
+    [SerializeField] int totalEnemies;
+    int inputEnemy;
     List<GameObject> currentEnemies = new List<GameObject>();
     HUD mHud;
     private GameObject spawn;
+    bool stopSpawning;
 
     int remainingEnemyCount = 5;
     int spawnedEnemies;
     float count;
     int j = 0;
+
+    int wave;
+    [SerializeField] int finalWave;
 
 
 
@@ -21,19 +26,43 @@ public class EnemyManager : MonoBehaviour {
     void Start () {
         count = Random.Range(0, 5);
         remainingEnemyCount = totalEnemies;
+        inputEnemy = totalEnemies;
         mHud = GameObject.FindGameObjectWithTag("HUD").GetComponent<HUD>();
+        wave = 1;
+        stopSpawning = false;
     }
 	
 	// Update is called once per frame
 	private void Update ()
     {
+        Wave();
+	}
+
+    private void Wave()
+    {
         IncreaseTime();
-        if(count >= 5.0f && spawnedEnemies < totalEnemies)
+        if(count >= 5.0f && spawnedEnemies < totalEnemies && !stopSpawning)
         {
             Spawning();
             count = Random.Range(0, 5);
+            if(wave == finalWave && spawnedEnemies >= totalEnemies)
+            {
+                stopSpawning = true;
+            }
         }
-	}
+        CheckEnemyCount();
+    }
+
+    private void CheckEnemyCount()
+    {
+        if(remainingEnemyCount <= 0 && wave <= finalWave)
+        {
+            totalEnemies = inputEnemy + 2;
+            remainingEnemyCount = totalEnemies;
+            spawnedEnemies = 0;
+            wave++;
+        }
+    }
 
     private void Spawning()
     {
@@ -52,6 +81,10 @@ public class EnemyManager : MonoBehaviour {
     {
         remainingEnemyCount--;
     }
+    public int GetWaves()
+    {
+        return wave;
+    }
     public int GetEnemyCount()
     {
         return remainingEnemyCount;
@@ -60,6 +93,11 @@ public class EnemyManager : MonoBehaviour {
     public List<GameObject> getEnemyList()
     {
          return currentEnemies;
+    }
+
+    public int getFinalWaveCount()
+    {
+        return finalWave;
     }
     
 }

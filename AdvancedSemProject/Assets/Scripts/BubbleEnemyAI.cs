@@ -52,6 +52,7 @@ GameObject target;
         cooldown = 1.0f;
 		timeTillDeactive = 0.0f;
         ifDying = false;
+        Wave();
     }
 	
 	// Update is called once per frame
@@ -92,6 +93,34 @@ GameObject target;
             }
 
             Seperation();
+        }
+    }
+
+    void Wave()
+    {
+        int myCurrentWave = mManager.GetWaves();
+        switch(myCurrentWave)
+        {
+            case 1: 
+                moveSpeed = 2.0f;
+                maxHealth = 100;
+                break;
+            case 2:
+                moveSpeed = 2.3f;
+                maxHealth = 120;
+                break;
+            case 3:
+                moveSpeed = 2.5f;
+                maxHealth = 130;
+                break;
+            case 4:
+                moveSpeed = 2.6f;
+                maxHealth = 140;
+                break;
+            default:
+                moveSpeed = 2.0f;
+                maxHealth = 100;
+                break;
         }
     }
 
@@ -245,6 +274,24 @@ GameObject target;
                 break;
         }
     }
+
+    public void SetHealth(int myHealth)
+    {
+        maxHealth = myHealth;
+    }
+
+    int GetHealth()
+    {
+        return currentHealth;
+    }
+
+    public void SetSpeed(float mySpeed)
+    {
+        moveSpeed = mySpeed;
+    }
+
+
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
 		if(!shieldIsActive)

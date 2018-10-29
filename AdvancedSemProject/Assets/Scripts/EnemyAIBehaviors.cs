@@ -88,6 +88,34 @@ public class EnemyAIBehaviors : MonoBehaviour {
         }
     }
 
+     void Wave()
+    {
+        int myCurrentWave = mManager.GetWaves();
+        switch(myCurrentWave)
+        {
+            case 1: 
+                moveSpeed = 2.0f;
+                maxHealth = 100;
+                break;
+            case 2:
+                moveSpeed = 2.3f;
+                maxHealth = 120;
+                break;
+            case 3:
+                moveSpeed = 2.5f;
+                maxHealth = 130;
+                break;
+            case 4:
+                moveSpeed = 2.6f;
+                maxHealth = 140;
+                break;
+            default:
+                moveSpeed = 2.0f;
+                maxHealth = 100;
+                break;
+        }
+    }
+
     void Seek()
     {
         Vector3 enemyDirection = target.transform.position - transform.position;
@@ -237,6 +265,20 @@ public class EnemyAIBehaviors : MonoBehaviour {
             default:
                 break;
         }
+    }
+    public void SetHealth(int myHealth)
+    {
+        maxHealth = myHealth;
+    }
+
+    int GetHealth()
+    {
+        return currentHealth;
+    }
+
+    public void SetSpeed(float mySpeed)
+    {
+        moveSpeed = mySpeed;
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

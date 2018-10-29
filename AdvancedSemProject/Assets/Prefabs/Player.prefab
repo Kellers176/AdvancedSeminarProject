@@ -205,10 +205,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canShoot: 0
   myBulletType:
+  - {fileID: 50743966099289980, guid: 277a2acb4faf8e24c825805605663648, type: 2}
+  - {fileID: 50165453067624230, guid: 652aaa969de82e04da70f3f667f73510, type: 2}
   - {fileID: 50312620009802562, guid: 269dddbc6d9bfcd4abcc277af3febcd3, type: 2}
   - {fileID: 50356382330083222, guid: dbd3c22658fb1bc45a890de07c0a62e0, type: 2}
-  - {fileID: 50165453067624230, guid: 652aaa969de82e04da70f3f667f73510, type: 2}
-  - {fileID: 50743966099289980, guid: 277a2acb4faf8e24c825805605663648, type: 2}
   myDirection: {x: 0, y: 0, z: 0}
 --- !u!198 &198856844617372708
 ParticleSystem:
