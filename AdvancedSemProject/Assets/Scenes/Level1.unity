@@ -23112,7 +23112,7 @@ MonoBehaviour:
   enemy:
   - {fileID: 1716093821872682, guid: de366cb17bf3d3646ba3cc5c8df4e816, type: 2}
   - {fileID: 1582906118884014, guid: 9ae1872b625b5734c92cecd55f28e7af, type: 2}
-  totalEnemies: 10
+  totalEnemies: 2
   finalWave: 2
 --- !u!4 &1426424582
 Transform:

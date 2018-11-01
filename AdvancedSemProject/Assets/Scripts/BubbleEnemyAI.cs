@@ -54,13 +54,18 @@ GameObject target;
         ifDying = false;
         Wave();
     }
+
+    public void SetShieldActive(bool myShield)
+    {
+        shieldIsActive = myShield;
+    }
 	
 	// Update is called once per frame
 	void Update () {
+        DestroyObject();
         if (target != null && !ifDying)
         {
             ChangeColor();
-            DestroyObject();
             time += Time.deltaTime;
             timeToSeek += Time.deltaTime;
             switch (mRandom)
@@ -84,7 +89,9 @@ GameObject target;
                 default:
                     break;
             }
-
+            //Debug.Log(moveSpeed + "BUBBLE");
+            //Debug.Log(maxHealth + "BUBBLE");
+            Debug.Log(currentHealth);
             if (timeToSeek > 2.0 && flee)
             {
                 flee = false;

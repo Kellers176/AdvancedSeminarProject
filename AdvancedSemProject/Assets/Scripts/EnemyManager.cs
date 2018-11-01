@@ -57,6 +57,7 @@ public class EnemyManager : MonoBehaviour {
     {
         if(remainingEnemyCount <= 0 && wave <= finalWave)
         {
+            inputEnemy = totalEnemies;
             totalEnemies = inputEnemy + 2;
             remainingEnemyCount = totalEnemies;
             spawnedEnemies = 0;

@@ -46,6 +46,7 @@ public class EnemyAIBehaviors : MonoBehaviour {
         rend.material.color = Color.white;
         cooldown = 1.0f;
         ifDying = false;
+        Wave();
     }
 	
 	// Update is called once per frame
@@ -77,7 +78,6 @@ public class EnemyAIBehaviors : MonoBehaviour {
                 default:
                     break;
             }
-
             if (timeToSeek > 2.0 && flee)
             {
                 flee = false;

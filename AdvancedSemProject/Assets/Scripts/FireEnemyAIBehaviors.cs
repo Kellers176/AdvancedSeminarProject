@@ -46,6 +46,7 @@ public class FireEnemyAIBehaviors : MonoBehaviour {
         rend.material.color = Color.white;
         cooldown = 0.6f;
         ifDying = false;
+        Wave();
     }
 	
 	// Update is called once per frame
@@ -77,6 +78,8 @@ public class FireEnemyAIBehaviors : MonoBehaviour {
                 default:
                     break;
             }
+            //Debug.Log(moveSpeed + "FIRE");
+            //Debug.Log(maxHealth + "FIRE");
 
             if (timeToSeek > 2.0 && flee)
             {
