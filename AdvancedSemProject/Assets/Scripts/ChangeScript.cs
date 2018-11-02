@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class ChangeScript : MonoBehaviour {
     [SerializeField] SceneManagerScript myScene;
+    [SerializeField] LevelChanger myLevel;
 	// Use this for initialization
 	void Start () {
 		
@@ -19,7 +20,8 @@ public class ChangeScript : MonoBehaviour {
     {
         if(myScene.getDone() == true && collision.gameObject.tag == "Player")
         {
-            SceneManager.LoadScene("WinScene");
+            myLevel.FadeToNextLevel(4);
+            //SceneManager.LoadScene("WinScene");
         }
     }
 }

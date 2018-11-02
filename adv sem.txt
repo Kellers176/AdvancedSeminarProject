@@ -1,26 +1,13 @@
 Adv. sem
 Stuff to get done for beta:
-Airforce strike Launch
-Show what is in queue next
-Lightning
-Add enemies left
-Add Traps for players
-more guns
-More guns that dont necessarily help you
 More levels (Not too many though)
-More challenges for the player
-More environment holes
-Good feedback but can be worked on
-Work more on challenges first and the add more guns
-explosion for the rockets
-Indicator for damage with enemies
-Add maybe an ice enemy that takes more damage from flamethrower and a fire enemy that takes less damage or heals
+Tutorial!!!!
+Show what gun you have (With text)
+Show what you got killed by
+Balance
 
 For next week:
-Increase level of difficulty
-Provide different class levels for each enemy (different difficulties)
-Bubble has health
-Feedback for how much health enemy has left
+
 
 
 DONE:
@@ -33,6 +20,7 @@ Spawing Enemies - DONE
 Flamethrower - DONE
 Screen Shake - DONE
 Enemy AI behavior-DONE
+Rocket Exploding Enemy-DONe
 Fix goblet particle effect cause sometimes it spawns behind goblet -DONE
 Push force against other enemies -DONE
 Different enemies -DONE
@@ -40,3 +28,7 @@ Another level -DONE
 Bigger level -DONE
 Level progression -Done
 Bubble enemy who gains a shield - DONE
+Increase level of difficulty -DONE
+Provide different class levels for each enemy (different difficulties) - DONE
+Bubble has health - DONE
+Feedback for how much health enemy has left - DONE

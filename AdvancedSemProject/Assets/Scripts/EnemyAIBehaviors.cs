@@ -9,7 +9,8 @@ public class EnemyAIBehaviors : MonoBehaviour {
     EnemyManager mManager;
     private Renderer rend;
     bool ifDying;
-    
+    [SerializeField] int deecelerationFactor;
+
     Vector2 positionVector;
     Transform sitPoint;
     Transform cowerPoint;
@@ -44,7 +45,7 @@ public class EnemyAIBehaviors : MonoBehaviour {
         currentHealth = maxHealth;
         rend = GetComponent<Renderer>();
         rend.material.color = Color.white;
-        cooldown = 1.0f;
+        deecelerationFactor = 10;
         ifDying = false;
         Wave();
     }
@@ -93,24 +94,28 @@ public class EnemyAIBehaviors : MonoBehaviour {
         int myCurrentWave = mManager.GetWaves();
         switch(myCurrentWave)
         {
-            case 1: 
+           case 1: 
+                cooldown = 1.5f;
                 moveSpeed = 2.0f;
                 maxHealth = 100;
                 break;
             case 2:
-                moveSpeed = 2.3f;
+                cooldown = 1.0f;
+                moveSpeed = 2.5f;
                 maxHealth = 120;
                 break;
             case 3:
-                moveSpeed = 2.5f;
+             cooldown = 0.7f;
+                moveSpeed = 3.0f;
                 maxHealth = 130;
                 break;
             case 4:
-                moveSpeed = 2.6f;
+                cooldown = 0.6f;
+                moveSpeed = 3.5f;
                 maxHealth = 140;
                 break;
             default:
-                moveSpeed = 2.0f;
+                moveSpeed = 1.5f;
                 maxHealth = 100;
                 break;
         }
@@ -149,7 +154,7 @@ public class EnemyAIBehaviors : MonoBehaviour {
         Vector3 enemyDirection = target.transform.position - transform.position;
         enemyDirection.z = 0;
         float distance = enemyDirection.magnitude;
-        float deecelelrationFactor = distance / 5;
+        float deecelelrationFactor = distance / deecelerationFactor;
         float speed = moveSpeed * deecelelrationFactor;
 
         Vector3 moveVector = enemyDirection.normalized * Time.deltaTime * speed;
@@ -170,7 +175,7 @@ public class EnemyAIBehaviors : MonoBehaviour {
         }
         else
         {
-            float deecelelrationFactor = distance / 5;
+            float deecelelrationFactor = distance / deecelerationFactor;
             float speed = moveSpeed * deecelelrationFactor;
 
             Vector3 moveVector = enemyDirection.normalized * Time.deltaTime * speed;
@@ -200,7 +205,7 @@ public class EnemyAIBehaviors : MonoBehaviour {
         }
         else
         {
-            float deecelelrationFactor = distance / 5;
+            float deecelelrationFactor = distance / deecelerationFactor;
             float speed = moveSpeed * deecelelrationFactor;
 
             Vector3 moveVector = enemyDirection.normalized * Time.deltaTime * speed;
@@ -321,6 +326,10 @@ public class EnemyAIBehaviors : MonoBehaviour {
         {
             currentHealth -= 50;
             rb.velocity = Vector3.zero;
+        }
+        if(collision.gameObject.tag == "DeathWall")
+        {
+            currentHealth = 0;
         }
 
     }

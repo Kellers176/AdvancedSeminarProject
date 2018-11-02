@@ -18,6 +18,8 @@ TagManager:
   - Sit
   - Cower
   - EnemyBullet
+  - DeathWall
+  - Explosion
   layers:
   - Default
   - TransparentFX

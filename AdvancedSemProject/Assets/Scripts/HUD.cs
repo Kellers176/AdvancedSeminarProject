@@ -37,11 +37,11 @@ public class HUD : MonoBehaviour
     {
 		HeartUI.sprite = HeartSprites[(int)myPlayer.GetHealth() / 10];
         countdown.text = ("" + timeLeft);
-        enemiesLeft.text = ("" + mEnemyManager.GetEnemyCount());
         //getFinal wave + 1 - get current wave gives the waves left
+        wavesLeft.text = ("" + (mEnemyManager.getFinalWaveCount() + 1 - mEnemyManager.GetWaves()));
         if(mEnemyManager.GetWaves() <= mEnemyManager.getFinalWaveCount())
         {
-            wavesLeft.text = ("" + mEnemyManager.GetWaves());
+            enemiesLeft.text = ("" + mEnemyManager.GetEnemyCount());
 
         }
         ChangeTimeColor();

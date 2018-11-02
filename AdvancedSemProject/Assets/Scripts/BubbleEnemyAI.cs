@@ -9,6 +9,7 @@ GameObject target;
     EnemyManager mManager;
     private Renderer rend;
     bool ifDying;
+    [SerializeField] int deecelerationFactor;
     
     Vector2 positionVector;
     Transform sitPoint;
@@ -49,8 +50,8 @@ GameObject target;
         rend = GetComponent<Renderer>();
 		shieldIsActive = false;
         rend.material.color = Color.white;
-        cooldown = 1.0f;
 		timeTillDeactive = 0.0f;
+        deecelerationFactor = 10;
         ifDying = false;
         Wave();
     }
@@ -109,23 +110,27 @@ GameObject target;
         switch(myCurrentWave)
         {
             case 1: 
+                cooldown = 1.5f;
                 moveSpeed = 2.0f;
                 maxHealth = 100;
                 break;
             case 2:
-                moveSpeed = 2.3f;
+                cooldown = 1.0f;
+                moveSpeed = 2.5f;
                 maxHealth = 120;
                 break;
             case 3:
-                moveSpeed = 2.5f;
+             cooldown = 0.7f;
+                moveSpeed = 3.0f;
                 maxHealth = 130;
                 break;
             case 4:
-                moveSpeed = 2.6f;
+                cooldown = 0.6f;
+                moveSpeed = 3.5f;
                 maxHealth = 140;
                 break;
             default:
-                moveSpeed = 2.0f;
+                moveSpeed = 1.5f;
                 maxHealth = 100;
                 break;
         }
@@ -164,7 +169,7 @@ GameObject target;
         Vector3 enemyDirection = target.transform.position - transform.position;
         enemyDirection.z = 0;
         float distance = enemyDirection.magnitude;
-        float deecelelrationFactor = distance / 5;
+        float deecelelrationFactor = distance / deecelerationFactor;
         float speed = moveSpeed * deecelelrationFactor;
 
         Vector3 moveVector = enemyDirection.normalized * Time.deltaTime * speed;
@@ -185,7 +190,7 @@ GameObject target;
         }
         else
         {
-            float deecelelrationFactor = distance / 5;
+            float deecelelrationFactor = distance / deecelerationFactor;
             float speed = moveSpeed * deecelelrationFactor;
 
             Vector3 moveVector = enemyDirection.normalized * Time.deltaTime * speed;
@@ -215,7 +220,7 @@ GameObject target;
         }
         else
         {
-            float deecelelrationFactor = distance / 5;
+            float deecelelrationFactor = distance / deecelerationFactor;
             float speed = moveSpeed * deecelelrationFactor;
 
             Vector3 moveVector = enemyDirection.normalized * Time.deltaTime * speed;
@@ -321,6 +326,7 @@ GameObject target;
 					rb.velocity *= moveVector * moveSpeed * Time.deltaTime;
 				}
 			}
+
 		}
     }
     private void OnCollisionEnter2D(Collision2D collision)
@@ -340,6 +346,10 @@ GameObject target;
 				currentHealth -= 50;
 				rb.velocity = Vector3.zero;
 			}
+            if(collision.gameObject.tag == "DeathWall")
+            {
+                currentHealth = 0;
+            }
 		}
         if(collision.gameObject.tag == "Bubbles")
         {

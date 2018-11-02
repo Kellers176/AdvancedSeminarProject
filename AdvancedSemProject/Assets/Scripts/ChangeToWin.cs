@@ -5,9 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class ChangeToWin : MonoBehaviour {
     [SerializeField] SceneManagerScript myScene;
+    [SerializeField] LevelChanger myLevel;
 	// Use this for initialization
 	void Start () {
-		
+        
 	}
 	
 	// Update is called once per frame
@@ -19,7 +20,9 @@ public class ChangeToWin : MonoBehaviour {
     {
         if(myScene.getDone() == true && collision.gameObject.tag == "Player")
         {
-            SceneManager.LoadScene("Level2");
+            Debug.Log("Hit");
+            myLevel.FadeToNextLevel();
+            //SceneManager.LoadScene("Level2");
         }
     }
 }

@@ -1,13 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SceneManagerScript : MonoBehaviour {
     [SerializeField] EnemyManager myEnemyManager;
     [SerializeField] GameObject oldSprite;
     bool done = false;
     int finalWaveNum;
-
     // Use this for initialization
     private void Start () {
         finalWaveNum = 1;

@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FireEnemyAIBehaviors : MonoBehaviour {
+public class RocketEnemyAIBehaviors : MonoBehaviour {
 
     GameObject target;
     List<GameObject> closeEnemies = new List<GameObject>();
     EnemyManager mManager;
     private Renderer rend;
+    bool ifDying;
     [SerializeField] int deecelerationFactor;
+    [SerializeField] GameObject explosion;
 
     Vector2 positionVector;
     Transform sitPoint;
@@ -27,15 +29,15 @@ public class FireEnemyAIBehaviors : MonoBehaviour {
     int mRandom;
     float time;
     float cooldown;
-    bool ifDying;
 
     int numberOfAIBehaviors = 5;
-    enum AIBehaviors {SEEK, ARRIVE, FLEE, MOVETOPOINT, COWER }
+    enum AIBehaviors { SEEK, ARRIVE, FLEE, MOVETOPOINT, COWER }
     AIBehaviors myBehavior;
     Rigidbody2D rb;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
         target = GameObject.FindGameObjectWithTag("Player");
         sitPoint = GameObject.FindGameObjectWithTag("Sit").GetComponent<Transform>();
         cowerPoint = GameObject.FindGameObjectWithTag("Cower").GetComponent<Transform>();
@@ -49,9 +51,10 @@ public class FireEnemyAIBehaviors : MonoBehaviour {
         ifDying = false;
         Wave();
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update()
+    {
         if (target != null && !ifDying)
         {
             ChangeColor();
@@ -79,9 +82,6 @@ public class FireEnemyAIBehaviors : MonoBehaviour {
                 default:
                     break;
             }
-            //Debug.Log(moveSpeed + "FIRE");
-            //Debug.Log(maxHealth + "FIRE");
-
             if (timeToSeek > 2.0 && flee)
             {
                 flee = false;
@@ -92,12 +92,12 @@ public class FireEnemyAIBehaviors : MonoBehaviour {
         }
     }
 
-     void Wave()
+    void Wave()
     {
         int myCurrentWave = mManager.GetWaves();
-        switch(myCurrentWave)
+        switch (myCurrentWave)
         {
-            case 1: 
+            case 1:
                 cooldown = 1.5f;
                 moveSpeed = 2.0f;
                 maxHealth = 100;
@@ -108,7 +108,7 @@ public class FireEnemyAIBehaviors : MonoBehaviour {
                 maxHealth = 120;
                 break;
             case 3:
-             cooldown = 0.7f;
+                cooldown = 0.7f;
                 moveSpeed = 3.0f;
                 maxHealth = 130;
                 break;
@@ -130,7 +130,7 @@ public class FireEnemyAIBehaviors : MonoBehaviour {
         enemyDirection.z = 0;
         enemyDirection.Normalize();
         enemyDirection *= moveSpeed * Time.deltaTime;
-        
+
         transform.position += enemyDirection;
         rb.velocity *= enemyDirection * moveSpeed * Time.deltaTime;
     }
@@ -140,7 +140,7 @@ public class FireEnemyAIBehaviors : MonoBehaviour {
         Vector3 enemyDirection = transform.position - target.transform.position;
         enemyDirection.z = 0;
 
-        if(enemyDirection.magnitude < safeDistance)
+        if (enemyDirection.magnitude < safeDistance)
         {
             Vector3 moveVector = enemyDirection.normalized * moveSpeed * Time.deltaTime;
             transform.position += moveVector;
@@ -163,7 +163,7 @@ public class FireEnemyAIBehaviors : MonoBehaviour {
         Vector3 moveVector = enemyDirection.normalized * Time.deltaTime * speed;
         transform.position += moveVector;
         rb.velocity *= moveVector * moveSpeed * Time.deltaTime;
-        
+
     }
 
     void Cower()
@@ -189,7 +189,7 @@ public class FireEnemyAIBehaviors : MonoBehaviour {
 
     void Shoot()
     {
-        if(time > cooldown)
+        if (time > cooldown)
         {
             spawn = Instantiate(bullet, transform.position, Quaternion.identity);
             time = 0;
@@ -221,12 +221,12 @@ public class FireEnemyAIBehaviors : MonoBehaviour {
     void Seperation()
     {
         neighborCount = 0;
-        
+
         closeEnemies = mManager.getEnemyList();
 
         for (int k = 0; k < closeEnemies.Count; k++)
         {
-            if(closeEnemies[k].gameObject != this.gameObject && closeEnemies[k] != null)
+            if (closeEnemies[k].gameObject != this.gameObject && closeEnemies[k] != null)
             {
                 Vector2 direction = closeEnemies[k].transform.position - this.gameObject.transform.position;
                 float distance = direction.magnitude;
@@ -235,7 +235,7 @@ public class FireEnemyAIBehaviors : MonoBehaviour {
                     float strength = Mathf.Min(20.0f / 1.0f, moveSpeed);
                     direction.Normalize();
                     rb.velocity += (-direction * strength);
-                    
+
                     neighborCount++;
                 }
             }
@@ -290,18 +290,23 @@ public class FireEnemyAIBehaviors : MonoBehaviour {
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "FlameThrower")
+        if (collision.tag == "FlameThrower")
         {
-            currentHealth += 1;
-            if(transform.localScale.x <= 2.0 && transform.localScale.x <= 2.0)
-            {
-                transform.localScale += new Vector3(0.05f, 0.05f, 0);
-            }
+            currentHealth -= 10;
         }
-        if(collision.gameObject.tag == "Well")
+        if (collision.gameObject.tag == "Well")
         {
             Debug.Log("Colliding");
             Destroy(this.gameObject);
+            Vector3 enemyDirection = collision.transform.position - target.transform.position;
+            enemyDirection.z = 0;
+
+            if (enemyDirection.magnitude < safeDistance)
+            {
+                Vector3 moveVector = enemyDirection.normalized * moveSpeed * Time.deltaTime;
+                transform.position += moveVector;
+                rb.velocity *= moveVector * moveSpeed * Time.deltaTime;
+            }
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
@@ -312,27 +317,27 @@ public class FireEnemyAIBehaviors : MonoBehaviour {
         }
         if (collision.gameObject.tag == "Rocket")
         {
-            currentHealth -= 50;
+            //explode
+            GameObject myExplosion = Instantiate(explosion, transform.position, Quaternion.identity) as GameObject;
+            Destroy(myExplosion, 1.0f);
+            this.gameObject.GetComponent<Renderer>().enabled = false;
+            Destroy(this.gameObject, 1.0f);
         }
-        if(collision.gameObject.tag == "Bubbles")
+        if (collision.gameObject.tag == "Bubbles")
         {
-            Vector3 distance =  transform.position - collision.gameObject.transform.position;
+            Vector3 distance = transform.position - collision.gameObject.transform.position;
             distance.Normalize();
             rb.AddForce(distance * impulseForce);
         }
-
-        if(collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player")
         {
-            currentHealth -= 50;
+            currentHealth -= 20;
             rb.velocity = Vector3.zero;
         }
-        if(collision.gameObject.tag == "DeathWall")
+        if (collision.gameObject.tag == "DeathWall")
         {
             currentHealth = 0;
         }
-        
 
     }
-
-    
 }
