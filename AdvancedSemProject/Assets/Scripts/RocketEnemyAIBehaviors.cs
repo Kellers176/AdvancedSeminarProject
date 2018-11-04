@@ -103,19 +103,19 @@ public class RocketEnemyAIBehaviors : MonoBehaviour {
                 maxHealth = 100;
                 break;
             case 2:
-                cooldown = 1.0f;
-                moveSpeed = 2.5f;
-                maxHealth = 120;
+                cooldown = 1.3f;
+                moveSpeed = 2.2f;
+                maxHealth = 110;
                 break;
             case 3:
-                cooldown = 0.7f;
-                moveSpeed = 3.0f;
-                maxHealth = 130;
+                cooldown = 1.1f;
+                moveSpeed = 2.4f;
+                maxHealth = 120;
                 break;
             case 4:
-                cooldown = 0.6f;
-                moveSpeed = 3.5f;
-                maxHealth = 140;
+                cooldown = 1.0f;
+                moveSpeed = 2.6f;
+                maxHealth = 130;
                 break;
             default:
                 moveSpeed = 1.5f;

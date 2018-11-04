@@ -1,19 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ProjectileManager : MonoBehaviour
 {
     [SerializeField] bool canShoot = false;
+    [SerializeField] Tutorial myTutorial;
     //make more clear
     //[SerializeField] Rigidbody2D[] myBulletType;
     [SerializeField] List<Rigidbody2D> myBulletType = new List<Rigidbody2D>();
     List<Rigidbody2D> myBulletTypeDeleted = new List<Rigidbody2D>();
     private Rigidbody2D myBullet;
     private Rigidbody2D spawn;
+    int firstRocket, firstBullet, firstBubble, firstFlamethrower;
     Vector3 oldDirection;
     [SerializeField] Vector3 myDirection;
+    int activeGun;
+    bool canShow;
     bool done;
 
     float speed = 10f;
@@ -21,12 +26,13 @@ public class ProjectileManager : MonoBehaviour
     float time;
 
     float cooldown;
-
+    
     int random;
     int count;
+    float showTimer;
 
     HUD myCountdown;
-
+    [SerializeField] TextMeshProUGUI[] CurrentType;
     Vector3 shootDirection;
 
     // Use this for initialization
@@ -39,7 +45,12 @@ public class ProjectileManager : MonoBehaviour
         oldDirection = myDirection;
         CheckCooldown();
         count = 0;
+        canShow = true;
         done = true;
+        firstRocket = 0;
+        firstBullet = 0;
+        firstBubble = 0;
+        firstFlamethrower = 0;
     }
 
     // Update is called once per frame
@@ -47,27 +58,84 @@ public class ProjectileManager : MonoBehaviour
     {
         ChangeObject();
         MoveInput();
+        if(canShow)
+        {
+            showTimer += Time.deltaTime;
+            CurrentType[activeGun].enabled = true;
+            //Debug.Log(showTimer);
+            if(showTimer > 3.0)
+            {
+                showTimer = 0;
+                CurrentType[activeGun].enabled = false;
+                canShow = false;
+            }
+        }
     }
 
     private void CheckCooldown()
     {
         if (myBullet.tag == "Bullet")
         {
+            canShow = true;
+            activeGun = 0;
             cooldown = 0.2f;
+            //GetTutorial
+            firstBullet++;
         }
         else if (myBullet.tag == "Rocket")
         {
+            canShow = true;
+            activeGun = 1;
             cooldown = 1.0f;
+            //GetTutorial
+            firstRocket++;
         }
         else if (myBullet.tag == "Bubbles")
         {
+            canShow = true;
+            activeGun = 2;
             cooldown = 0.4f;
+            //GetTutorial
+            firstBubble++;
         }
         else if(myBullet.tag == "FlameThrower")
         {
+            canShow = true;
+            activeGun = 3;
             cooldown = 0.1f;
+            //GetTutorial
+            firstFlamethrower++;
+        }
+        CheckTutorial();
+    }
+    public void CheckTutorial()
+    {
+        if (firstFlamethrower < 2)
+        {
+            //Tutorial
+            if(myTutorial != null)
+                myTutorial.ShowFlameThrowerTutorial();
+        }
+        else if (firstBubble < 2)
+        {
+            //tutorial
+            if (myTutorial != null)
+                myTutorial.ShowBubbleTutorial();
+        }
+        else if(firstBullet < 2)
+        {
+            //tutorial
+            if (myTutorial != null)
+                myTutorial.ShowBulletTutorial();
+        }
+        else if(firstRocket < 2)
+        {
+            //tutorial
+            if (myTutorial != null)
+                myTutorial.ShowRocketTutorial();
         }
     }
+    
 
     private void MoveInput()
     {

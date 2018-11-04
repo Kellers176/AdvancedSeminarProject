@@ -85,9 +85,7 @@ public class HUD : MonoBehaviour
 
         }
     }
-
-
-
+    
     public int GetTimeLeft()
     {
         return timeLeft;

@@ -1,13 +1,12 @@
 Adv. sem
 Stuff to get done for beta:
+For next week:
 More levels (Not too many though)
-Tutorial!!!!
-Show what gun you have (With text)
 Show what you got killed by
 Balance
 
-For next week:
-
+Working on:
+Tutorial!!!!
 
 
 DONE:
@@ -32,3 +31,4 @@ Increase level of difficulty -DONE
 Provide different class levels for each enemy (different difficulties) - DONE
 Bubble has health - DONE
 Feedback for how much health enemy has left - DONE
+Show what gun you have (With text) -done
