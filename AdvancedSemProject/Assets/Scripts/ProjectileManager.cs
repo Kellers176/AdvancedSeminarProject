@@ -14,11 +14,12 @@ public class ProjectileManager : MonoBehaviour
     List<Rigidbody2D> myBulletTypeDeleted = new List<Rigidbody2D>();
     private Rigidbody2D myBullet;
     private Rigidbody2D spawn;
-    int firstRocket, firstBullet, firstBubble, firstFlamethrower;
+    bool firstRocket, firstBullet, firstBubble, firstFlamethrower;
     Vector3 oldDirection;
     [SerializeField] Vector3 myDirection;
     int activeGun;
     bool canShow;
+    int notDone = 0;
     bool done;
 
     float speed = 10f;
@@ -47,10 +48,6 @@ public class ProjectileManager : MonoBehaviour
         count = 0;
         canShow = true;
         done = true;
-        firstRocket = 0;
-        firstBullet = 0;
-        firstBubble = 0;
-        firstFlamethrower = 0;
     }
 
     // Update is called once per frame
@@ -74,65 +71,90 @@ public class ProjectileManager : MonoBehaviour
 
     private void CheckCooldown()
     {
-        if (myBullet.tag == "Bullet")
-        {
-            canShow = true;
-            activeGun = 0;
-            cooldown = 0.2f;
-            //GetTutorial
-            firstBullet++;
+       
+            if (myBullet.tag == "Bullet")
+            {
+                canShow = true;
+                activeGun = 0;
+                cooldown = 0.2f;
+                //GetTutorial
+                firstBullet = true;
+                if (notDone < 4)
+                {
+                    CheckTutorial();
+                    notDone++;
+                }
+            }
+            else if (myBullet.tag == "Rocket")
+            {
+                canShow = true;
+                activeGun = 1;
+                cooldown = 1.0f;
+                //GetTutorial
+                firstRocket = true;
+                if (notDone < 4)
+                {
+                    CheckTutorial();
+                    notDone++;
+                }
         }
-        else if (myBullet.tag == "Rocket")
-        {
-            canShow = true;
-            activeGun = 1;
-            cooldown = 1.0f;
-            //GetTutorial
-            firstRocket++;
+            else if (myBullet.tag == "Bubbles")
+            {
+                canShow = true;
+                activeGun = 2;
+                cooldown = 0.4f;
+                //GetTutorial
+                firstBubble = true;
+                if (notDone < 4)
+                {
+                    CheckTutorial();
+                    notDone++;
+                }
         }
-        else if (myBullet.tag == "Bubbles")
-        {
-            canShow = true;
-            activeGun = 2;
-            cooldown = 0.4f;
-            //GetTutorial
-            firstBubble++;
+            else if (myBullet.tag == "FlameThrower")
+            {
+                canShow = true;
+                activeGun = 3;
+                cooldown = 0.1f;
+                //GetTutorial
+                firstFlamethrower = true;
+                if (notDone < 4)
+                {
+                    CheckTutorial();
+                    notDone++;
+                }
         }
-        else if(myBullet.tag == "FlameThrower")
-        {
-            canShow = true;
-            activeGun = 3;
-            cooldown = 0.1f;
-            //GetTutorial
-            firstFlamethrower++;
-        }
-        CheckTutorial();
+        
+        
     }
     public void CheckTutorial()
     {
-        if (firstFlamethrower < 2)
+        if (myTutorial != null)
         {
-            //Tutorial
-            if(myTutorial != null)
+            if (firstFlamethrower)
+            {
+                //Tutorial
                 myTutorial.ShowFlameThrowerTutorial();
-        }
-        else if (firstBubble < 2)
-        {
-            //tutorial
-            if (myTutorial != null)
+                firstFlamethrower = false;
+            }
+            else if (firstBubble)
+            {
+                //tutorial
                 myTutorial.ShowBubbleTutorial();
-        }
-        else if(firstBullet < 2)
-        {
-            //tutorial
-            if (myTutorial != null)
+                firstBubble = false;
+            }
+            else if (firstBullet)
+            {
+                //tutorial
                 myTutorial.ShowBulletTutorial();
-        }
-        else if(firstRocket < 2)
-        {
-            //tutorial
-            if (myTutorial != null)
+                firstBullet = false;
+            }
+            else if (firstRocket)
+            {
+                //tutorial
                 myTutorial.ShowRocketTutorial();
+                firstRocket = false;
+            }
         }
     }
     

@@ -321,6 +321,7 @@ public class RocketEnemyAIBehaviors : MonoBehaviour {
             GameObject myExplosion = Instantiate(explosion, transform.position, Quaternion.identity) as GameObject;
             Destroy(myExplosion, 1.0f);
             this.gameObject.GetComponent<Renderer>().enabled = false;
+            mManager.SubtractEnemyCount();
             Destroy(this.gameObject, 1.0f);
         }
         if (collision.gameObject.tag == "Bubbles")
