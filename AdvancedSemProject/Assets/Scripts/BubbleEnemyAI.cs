@@ -90,9 +90,6 @@ GameObject target;
                 default:
                     break;
             }
-            //Debug.Log(moveSpeed + "BUBBLE");
-            //Debug.Log(maxHealth + "BUBBLE");
-            Debug.Log(currentHealth);
             if (timeToSeek > 2.0 && flee)
             {
                 flee = false;

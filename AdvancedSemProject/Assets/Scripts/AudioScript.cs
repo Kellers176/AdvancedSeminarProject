@@ -19,5 +19,9 @@ public class AudioScript : MonoBehaviour {
         }
         DontDestroyOnLoad(this.gameObject);
     }
-	
+    //void Start()
+    //{
+    //    Destroy(GameObject.Find("*thegameobjecttobedestroyed*"));
+
+    //}
 }

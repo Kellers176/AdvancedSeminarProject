@@ -10,6 +10,7 @@ public class HUD : MonoBehaviour
     TextMeshProUGUI reload;
     [SerializeField] TextMeshProUGUI enemiesLeft;
     [SerializeField] TextMeshProUGUI wavesLeft;
+    [SerializeField] TextMeshProUGUI threeTwoOne;
     [SerializeField] int timeLeft = 10;
 
     [SerializeField] Sprite[] HeartSprites;
@@ -37,6 +38,7 @@ public class HUD : MonoBehaviour
     {
 		HeartUI.sprite = HeartSprites[(int)myPlayer.GetHealth() / 10];
         countdown.text = ("" + timeLeft);
+        ShowCountdown();
         //getFinal wave + 1 - get current wave gives the waves left
         wavesLeft.text = ("" + (mEnemyManager.getFinalWaveCount() + 1 - mEnemyManager.GetWaves()));
         if(mEnemyManager.GetWaves() <= mEnemyManager.getFinalWaveCount())
@@ -47,7 +49,20 @@ public class HUD : MonoBehaviour
         ChangeTimeColor();
         ResetTime();
     }
-    
+
+    public void ShowCountdown()
+    {
+        if(timeLeft <= 3 && timeLeft >= 1)
+        {
+            threeTwoOne.enabled = true;
+            threeTwoOne.text = ("" + timeLeft);
+        }
+        else
+        {
+            threeTwoOne.enabled = false;
+        }
+        
+    }    
     private void ChangeTimeColor()
     {
         switch (timeLeft)

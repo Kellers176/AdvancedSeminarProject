@@ -3,10 +3,8 @@ Stuff to get done for beta:
 For next week:
 More levels (Not too many though)
 Show what you got killed by
-Balance
 
 Working on:
-Tutorial!!!!
 
 
 DONE:
@@ -32,3 +30,5 @@ Provide different class levels for each enemy (different difficulties) - DONE
 Bubble has health - DONE
 Feedback for how much health enemy has left - DONE
 Show what gun you have (With text) -done
+Tutorial!!!! -done
+Balance -done
