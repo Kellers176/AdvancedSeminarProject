@@ -8,13 +8,22 @@ public class Tutorial : MonoBehaviour {
     // Use this for initialization
     [SerializeField] GameObject bubbleTutorial, bulletTutorial, rocketTutorial, flameTutorial;
     bool fire = false, bullet = false, bubble = false, rocket = false;
+    float timer;
+    bool can;
 	void Start () {
-        Time.timeScale = 0.0f;
+        timer = 0.0f;
+        can = false;
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
+        timer += Time.deltaTime;
+        if(timer > 1 && !can)
+        {
+            Time.timeScale = 0.0f;
+            can = true;
+        }
         //Time.timescale = 0;
 	}
 
@@ -68,5 +77,6 @@ public class Tutorial : MonoBehaviour {
             bubble = false;
         }
     }
+    
 
 }
