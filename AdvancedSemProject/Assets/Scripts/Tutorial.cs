@@ -18,12 +18,8 @@ public class Tutorial : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        timer += Time.deltaTime;
-        if(timer > 0.2 && !can)
-        {
-            Time.timeScale = 0.0f;
-            can = true;
-        }
+        
+       // Time.timeScale = 0.0f;
         //Time.timescale = 0;
 	}
 

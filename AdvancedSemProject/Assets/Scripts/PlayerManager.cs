@@ -61,7 +61,7 @@ public class PlayerManager : MonoBehaviour
         {
             currentHealth -= 10;
         }
-        if(collision.gameObject.tag == "Explosion")
+        if(collision.gameObject.tag == "RocketExplosion")
         {
             currentHealth -= 50;
         }

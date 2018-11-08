@@ -81,6 +81,7 @@ public class EnemyManager : MonoBehaviour {
     public void SubtractEnemyCount()
     {
         remainingEnemyCount--;
+        Debug.Log(remainingEnemyCount);
     }
     public int GetWaves()
     {

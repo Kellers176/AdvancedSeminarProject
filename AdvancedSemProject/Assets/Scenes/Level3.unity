@@ -21868,7 +21868,7 @@ MonoBehaviour:
   - {fileID: 1582906118884014, guid: 9ae1872b625b5734c92cecd55f28e7af, type: 2}
   - {fileID: 1097915554495368, guid: 72ee778e6d0287a45b01b9f056dbdb87, type: 2}
   - {fileID: 1976183167658142, guid: 88eb0e105408b6a4faed05e6e38857fa, type: 2}
-  totalEnemies: 5
+  totalEnemies: 4
   finalWave: 4
 --- !u!4 &1503608833
 Transform:

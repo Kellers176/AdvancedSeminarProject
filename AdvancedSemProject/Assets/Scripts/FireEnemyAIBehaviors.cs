@@ -313,15 +313,6 @@ public class FireEnemyAIBehaviors : MonoBehaviour {
                 transform.localScale += new Vector3(0.05f, 0.05f, 0);
             }
         }
-        if(collision.gameObject.tag == "Well")
-        {
-            Debug.Log("Colliding");
-            Destroy(this.gameObject);
-        }
-        if (collision.gameObject.tag == "RocketExplosion")
-        {
-            currentHealth -= 20;
-        }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
