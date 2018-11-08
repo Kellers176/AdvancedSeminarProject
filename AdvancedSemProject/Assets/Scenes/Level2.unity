@@ -156,7 +156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myScene: {fileID: 1954986637}
-  myLevel: {fileID: 0}
+  myLevel: {fileID: 1591571801}
 --- !u!61 &130552328
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5776,7 +5776,7 @@ MonoBehaviour:
   - {fileID: 1582906118884014, guid: 9ae1872b625b5734c92cecd55f28e7af, type: 2}
   - {fileID: 1097915554495368, guid: 72ee778e6d0287a45b01b9f056dbdb87, type: 2}
   totalEnemies: 5
-  finalWave: 4
+  finalWave: 5
 --- !u!4 &583268612
 Transform:
   m_ObjectHideFlags: 0
@@ -20439,6 +20439,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf824b8540c73414dbd15995f0043cad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1591571801 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114985773443268386, guid: 903c2e7f09e50284d995307c62572e06,
+    type: 2}
+  m_PrefabInternal: {fileID: 550365355}
+  m_Script: {fileID: 11500000, guid: 8dea7e39cc836314991328b0a7d7c5db, type: 3}
 --- !u!114 &1648245223 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114844773024076814, guid: 903c2e7f09e50284d995307c62572e06,

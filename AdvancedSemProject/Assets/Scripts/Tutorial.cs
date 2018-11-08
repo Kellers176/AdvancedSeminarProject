@@ -19,7 +19,7 @@ public class Tutorial : MonoBehaviour {
 	void Update ()
     {
         timer += Time.deltaTime;
-        if(timer > 1 && !can)
+        if(timer > 0.2 && !can)
         {
             Time.timeScale = 0.0f;
             can = true;
