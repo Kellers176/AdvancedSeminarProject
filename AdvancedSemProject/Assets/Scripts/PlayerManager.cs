@@ -65,6 +65,10 @@ public class PlayerManager : MonoBehaviour
         {
             currentHealth -= 50;
         }
+        if (collision.gameObject.tag == "SpikeTrap")
+        {
+            currentHealth -= 10;
+        }
     }
 
 

@@ -151,7 +151,22 @@ public class FireEnemyAIBehaviors : MonoBehaviour {
             Seek();
         }
     }
+    void Flee(GameObject myObject)
+    {
+        Vector3 enemyDirection = transform.position - myObject.transform.position;
+        enemyDirection.z = 0;
 
+        if (enemyDirection.magnitude < safeDistance)
+        {
+            Vector3 moveVector = enemyDirection.normalized * moveSpeed * Time.deltaTime;
+            transform.position += moveVector;
+            rb.velocity *= moveVector * moveSpeed * Time.deltaTime;
+        }
+        else
+        {
+            Seek();
+        }
+    }
     void Arrive()
     {
         Vector3 enemyDirection = target.transform.position - transform.position;
@@ -303,6 +318,10 @@ public class FireEnemyAIBehaviors : MonoBehaviour {
             Debug.Log("Colliding");
             Destroy(this.gameObject);
         }
+        if (collision.gameObject.tag == "RocketExplosion")
+        {
+            currentHealth -= 20;
+        }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -330,7 +349,12 @@ public class FireEnemyAIBehaviors : MonoBehaviour {
         {
             currentHealth = 0;
         }
-        
+        //if (collision.gameObject.tag == "Wall")
+        //{
+        //    Vector3 distance = transform.position - collision.gameObject.transform.position;
+        //    distance.Normalize();
+        //    rb.AddForce(distance * impulseForce);
+        //}
 
     }
 

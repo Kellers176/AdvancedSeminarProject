@@ -5776,7 +5776,7 @@ MonoBehaviour:
   - {fileID: 1582906118884014, guid: 9ae1872b625b5734c92cecd55f28e7af, type: 2}
   - {fileID: 1097915554495368, guid: 72ee778e6d0287a45b01b9f056dbdb87, type: 2}
   totalEnemies: 5
-  finalWave: 5
+  finalWave: 3
 --- !u!4 &583268612
 Transform:
   m_ObjectHideFlags: 0

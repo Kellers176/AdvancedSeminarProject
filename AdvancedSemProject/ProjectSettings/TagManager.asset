@@ -21,6 +21,8 @@ TagManager:
   - DeathWall
   - Explosion
   - music
+  - RocketExplosion
+  - SpikeTrap
   layers:
   - Default
   - TransparentFX

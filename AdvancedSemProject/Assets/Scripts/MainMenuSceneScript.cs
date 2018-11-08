@@ -13,7 +13,7 @@ public class MainMenuSceneScript : MonoBehaviour
 	void Start () 
 	{
         //track1 = gameObject.GetComponent<AudioSource>();
-        Destroy(GameObject.Find("Music"));
+        //Destroy(GameObject.Find("Music"));
     }
 	
 	// Update is called once per frame

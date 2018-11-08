@@ -161,6 +161,23 @@ GameObject target;
         }
     }
 
+    void Flee(GameObject myObject)
+    {
+        Vector3 enemyDirection = transform.position - myObject.transform.position;
+        enemyDirection.z = 0;
+
+        if (enemyDirection.magnitude < safeDistance)
+        {
+            Vector3 moveVector = enemyDirection.normalized * moveSpeed * Time.deltaTime;
+            transform.position += moveVector;
+            rb.velocity *= moveVector * moveSpeed * Time.deltaTime;
+        }
+        else
+        {
+            Seek();
+        }
+    }
+
     void Arrive()
     {
         Vector3 enemyDirection = target.transform.position - transform.position;
@@ -323,8 +340,12 @@ GameObject target;
 					rb.velocity *= moveVector * moveSpeed * Time.deltaTime;
 				}
 			}
+            if (collision.gameObject.tag == "RocketExplosion")
+            {
+                currentHealth -= 20;
+            }
 
-		}
+        }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -347,7 +368,9 @@ GameObject target;
             {
                 currentHealth = 0;
             }
-		}
+            
+            
+        }
         if(collision.gameObject.tag == "Bubbles")
         {
 			shield.SetActive(true);

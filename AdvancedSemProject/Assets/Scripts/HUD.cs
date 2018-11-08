@@ -43,7 +43,7 @@ public class HUD : MonoBehaviour
         wavesLeft.text = ("" + (mEnemyManager.getFinalWaveCount() + 1 - mEnemyManager.GetWaves()));
         if(mEnemyManager.GetWaves() <= mEnemyManager.getFinalWaveCount())
         {
-            enemiesLeft.text = ("" + mEnemyManager.GetEnemyCount());
+             enemiesLeft.text = ("" + mEnemyManager.GetEnemyCount());
 
         }
         ChangeTimeColor();

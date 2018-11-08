@@ -1,7 +1,6 @@
 Adv. sem
 Stuff to get done for beta:
 For next week:
-More levels (Not too many though)
 Show what you got killed by
 
 Working on:
@@ -32,3 +31,11 @@ Feedback for how much health enemy has left - DONE
 Show what gun you have (With text) -done
 Tutorial!!!! -done
 Balance -done
+More levels (Not too many though) -done
+
+
+Level DAta:
+1 - 5,2
+2 - 5,3
+3 - 5,4
+4 - 5,2
