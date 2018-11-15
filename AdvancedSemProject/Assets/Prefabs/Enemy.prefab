@@ -41,6 +41,7 @@ GameObject:
   - component: {fileID: 61138361610042874}
   - component: {fileID: 114903150059420680}
   - component: {fileID: 95192051608565276}
+  - component: {fileID: 114782869303798600}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -138,6 +139,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114782869303798600
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1716093821872682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 151475a673b906548980f58a7fb1f037, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deecelerationFactor: 0
+  bullet: {fileID: 1391532663678568, guid: 4e35f2280d8e8684f97144be991c3a41, type: 2}
 --- !u!114 &114903150059420680
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -149,9 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82a5b1820dfaf1a49b97f3d92c80013b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deecelerationFactor: 0
-  explosion: {fileID: 1071785424465296}
-  bullet: {fileID: 1391532663678568, guid: 4e35f2280d8e8684f97144be991c3a41, type: 2}
+  explosion: {fileID: 1046786526472100, guid: 84dc385b9fa3a634bac437bafbfa0e90, type: 2}
 --- !u!198 &198652113413648776
 ParticleSystem:
   m_ObjectHideFlags: 1

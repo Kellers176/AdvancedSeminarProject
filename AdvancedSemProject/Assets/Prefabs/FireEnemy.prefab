@@ -41,6 +41,7 @@ GameObject:
   - component: {fileID: 61079703882386906}
   - component: {fileID: 50116468753917144}
   - component: {fileID: 114293512472141734}
+  - component: {fileID: 114772420454443768}
   m_Layer: 0
   m_Name: FireEnemy
   m_TagString: Enemy
@@ -149,8 +150,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e96b65baed56ef742b93193d108b336d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosion: {fileID: 1046786526472100, guid: 84dc385b9fa3a634bac437bafbfa0e90, type: 2}
+--- !u!114 &114772420454443768
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1582906118884014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 151475a673b906548980f58a7fb1f037, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   deecelerationFactor: 0
-  explosion: {fileID: 1457589121034420}
   bullet: {fileID: 1391532663678568, guid: 4e35f2280d8e8684f97144be991c3a41, type: 2}
 --- !u!198 &198210744925432606
 ParticleSystem:

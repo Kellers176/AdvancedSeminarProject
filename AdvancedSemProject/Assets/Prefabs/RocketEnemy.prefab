@@ -41,6 +41,7 @@ GameObject:
   - component: {fileID: 50955009047129916}
   - component: {fileID: 95328644770826848}
   - component: {fileID: 114430963037914896}
+  - component: {fileID: 114915658356453742}
   m_Layer: 0
   m_Name: RocketEnemy
   m_TagString: Enemy
@@ -68,7 +69,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1976183167658142}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.63, y: 4.29, z: -4.3600984}
+  m_LocalPosition: {x: 7.59, y: 4.35, z: -4.3600984}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4301584797805196}
@@ -149,8 +150,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce7911cb56767b34aa235e984990aea3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deecelerationFactor: 0
   explosion: {fileID: 1978475420090330, guid: 64dfa5ac3202e8e45a545dbbdd6d26bb, type: 2}
+--- !u!114 &114915658356453742
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1976183167658142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 151475a673b906548980f58a7fb1f037, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deecelerationFactor: 0
   bullet: {fileID: 1391532663678568, guid: 4e35f2280d8e8684f97144be991c3a41, type: 2}
 --- !u!198 &198593865156337560
 ParticleSystem:
@@ -4721,7 +4733,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2047461113
   m_SortingLayer: 4
-  m_SortingOrder: 5
+  m_SortingOrder: 10
   m_RenderMode: 0
   m_SortMode: 0
   m_MinParticleSize: 0

@@ -36,7 +36,12 @@ public class HUD : MonoBehaviour
 	// Update is called once per frame
 	private void Update () 
     {
-		HeartUI.sprite = HeartSprites[(int)myPlayer.GetHealth() / 10];
+
+        if(!((int)myPlayer.GetHealth() < 0))
+        {
+		    HeartUI.sprite = HeartSprites[(int)myPlayer.GetHealth() / 10];
+
+        }
         countdown.text = ("" + timeLeft);
         ShowCountdown();
         //getFinal wave + 1 - get current wave gives the waves left
