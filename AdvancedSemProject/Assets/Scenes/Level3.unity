@@ -20900,6 +20900,62 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!1001 &1013979824
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1288010621}
+    m_Modifications:
+    - target: {fileID: 4450853444412464, guid: 4fd3b0a5d868c4e479e9231073a8b6b9, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4450853444412464, guid: 4fd3b0a5d868c4e479e9231073a8b6b9, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4450853444412464, guid: 4fd3b0a5d868c4e479e9231073a8b6b9, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4450853444412464, guid: 4fd3b0a5d868c4e479e9231073a8b6b9, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4450853444412464, guid: 4fd3b0a5d868c4e479e9231073a8b6b9, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4450853444412464, guid: 4fd3b0a5d868c4e479e9231073a8b6b9, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4450853444412464, guid: 4fd3b0a5d868c4e479e9231073a8b6b9, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4450853444412464, guid: 4fd3b0a5d868c4e479e9231073a8b6b9, type: 2}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1897596499203674, guid: 4fd3b0a5d868c4e479e9231073a8b6b9, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4fd3b0a5d868c4e479e9231073a8b6b9, type: 2}
+  m_IsPrefabAsset: 0
+--- !u!1 &1013979825 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1897596499203674, guid: 4fd3b0a5d868c4e479e9231073a8b6b9,
+    type: 2}
+  m_PrefabInternal: {fileID: 1013979824}
+--- !u!4 &1013979826 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4450853444412464, guid: 4fd3b0a5d868c4e479e9231073a8b6b9,
+    type: 2}
+  m_PrefabInternal: {fileID: 1013979824}
 --- !u!1 &1030460649
 GameObject:
   m_ObjectHideFlags: 0
@@ -21264,6 +21320,7 @@ Transform:
   - {fileID: 1775907033}
   - {fileID: 686028552}
   - {fileID: 136899014}
+  - {fileID: 1013979826}
   m_Father: {fileID: 460995509}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -21296,6 +21353,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myEnemyManager: {fileID: 1503608832}
   oldSprite: {fileID: 1921599403}
+  particles: {fileID: 1013979825}
 --- !u!4 &1296141564
 Transform:
   m_ObjectHideFlags: 0

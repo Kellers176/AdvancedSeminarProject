@@ -10,16 +10,17 @@ GameObject target;
     private Renderer rend;
     bool ifDying;
     [SerializeField] int deecelerationFactor;
-    
+    [SerializeField] GameObject explosion;
     Vector2 positionVector;
     Transform sitPoint;
     Transform cowerPoint;
     private GameObject spawn;
     public GameObject bullet;
 	private GameObject shield;
+    bool canSubtract;
 
     float moveSpeed = 2.0f;
-    float impulseForce = 30.0f;
+    float impulseForce = 10.0f;
     int neighborCount;
     float safeDistance = 3f;
     int maxHealth = 100;
@@ -54,6 +55,7 @@ GameObject target;
         deecelerationFactor = 10;
         ifDying = false;
         Wave();
+        canSubtract = true;
     }
 
     public void SetShieldActive(bool myShield)
@@ -197,7 +199,7 @@ GameObject target;
         Vector3 enemyDirection = cowerPoint.position - transform.position;
         enemyDirection.z = 0;
         float distance = enemyDirection.magnitude;
-        rend.material.color = Color.blue;
+        //rend.material.color = Color.blue;
         if (distance < 1)
         {
             //do nothing
@@ -276,10 +278,14 @@ GameObject target;
 
     private void DestroyObject()
     {
-        if (currentHealth <= 0)
+        if (currentHealth <= 0 && canSubtract) 
         {
+            GameObject myExplosion = Instantiate(explosion, transform.position, Quaternion.identity) as GameObject;
+            Destroy(myExplosion, 1.0f);
+            this.gameObject.GetComponent<Renderer>().enabled = false;
             mManager.SubtractEnemyCount();
-            Destroy(this.gameObject);
+            Destroy(this.gameObject, 1.0f);
+            canSubtract = false;
         }
     }
 

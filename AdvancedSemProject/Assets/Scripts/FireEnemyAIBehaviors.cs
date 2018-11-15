@@ -9,15 +9,15 @@ public class FireEnemyAIBehaviors : MonoBehaviour {
     EnemyManager mManager;
     private Renderer rend;
     [SerializeField] int deecelerationFactor;
-
+    [SerializeField] GameObject explosion;
     Vector2 positionVector;
     Transform sitPoint;
     Transform cowerPoint;
     private GameObject spawn;
     public GameObject bullet;
-
+    bool canSubtract;
     float moveSpeed = 2.0f;
-    float impulseForce = 30.0f;
+    float impulseForce = 100.0f;
     int neighborCount;
     float safeDistance = 3f;
     int maxHealth = 100;
@@ -47,6 +47,7 @@ public class FireEnemyAIBehaviors : MonoBehaviour {
         rend.material.color = Color.white;
         deecelerationFactor = 10;
         ifDying = false;
+        canSubtract = true;
         Wave();
     }
 	
@@ -186,7 +187,7 @@ public class FireEnemyAIBehaviors : MonoBehaviour {
         Vector3 enemyDirection = cowerPoint.position - transform.position;
         enemyDirection.z = 0;
         float distance = enemyDirection.magnitude;
-        rend.material.color = Color.blue;
+        //rend.material.color = Color.blue;
         if (distance < 1)
         {
             //do nothing
@@ -265,10 +266,14 @@ public class FireEnemyAIBehaviors : MonoBehaviour {
 
     private void DestroyObject()
     {
-        if (currentHealth <= 0)
+        if (currentHealth <= 0 && canSubtract)
         {
+            GameObject myExplosion = Instantiate(explosion, transform.position, Quaternion.identity) as GameObject;
+            Destroy(myExplosion, 1.0f);
+            this.gameObject.GetComponent<Renderer>().enabled = false;
             mManager.SubtractEnemyCount();
-            Destroy(this.gameObject);
+            Destroy(this.gameObject, 1.0f);
+            canSubtract = false;
         }
     }
 
@@ -328,7 +333,7 @@ public class FireEnemyAIBehaviors : MonoBehaviour {
         {
             Vector3 distance =  transform.position - collision.gameObject.transform.position;
             distance.Normalize();
-            rb.AddForce(distance * impulseForce);
+            rb.AddForce(distance * impulseForce * Time.deltaTime);
         }
 
         if(collision.gameObject.tag == "Player")

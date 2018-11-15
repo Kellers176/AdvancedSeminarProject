@@ -85,7 +85,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1733890744837356}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.09, y: 0.02, z: 0}
+  m_LocalPosition: {x: 0.01, y: -0.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4635035841782782}
@@ -117,7 +117,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.01
+  m_Mass: 10
   m_LinearDrag: 2
   m_AngularDrag: 2
   m_GravityScale: 1
@@ -163,7 +163,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canShoot: 0
-  myTutorial: {fileID: 0}
   myBulletType:
   - {fileID: 50743966099289980, guid: 277a2acb4faf8e24c825805605663648, type: 2}
   - {fileID: 50165453067624230, guid: 652aaa969de82e04da70f3f667f73510, type: 2}

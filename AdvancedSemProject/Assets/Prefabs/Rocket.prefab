@@ -68,7 +68,7 @@ Transform:
   m_GameObject: {fileID: 1609318984005894}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.7579734, y: 0.3107535, z: 0.5410156}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children:
   - {fileID: 4225415328196796}
   m_Father: {fileID: 0}
@@ -85,7 +85,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.01
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -130,7 +130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 424071267e546884eb55d391ad7de9ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 10
   rotatingSpeed: 200
   target: {fileID: 0}
   myExplosion: {fileID: 1046786526472100, guid: 84dc385b9fa3a634bac437bafbfa0e90,

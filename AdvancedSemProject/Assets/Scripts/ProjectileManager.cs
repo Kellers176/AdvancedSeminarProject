@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class ProjectileManager : MonoBehaviour
 {
     [SerializeField] bool canShoot = false;
-    [SerializeField] Tutorial myTutorial;
+    //[SerializeField] Tutorial myTutorial;
     //make more clear
     //[SerializeField] Rigidbody2D[] myBulletType;
     [SerializeField] List<Rigidbody2D> myBulletType = new List<Rigidbody2D>();
@@ -129,33 +129,33 @@ public class ProjectileManager : MonoBehaviour
     }
     public void CheckTutorial()
     {
-        if (myTutorial != null)
-        {
-            if (firstFlamethrower)
-            {
-                //Tutorial
-                myTutorial.ShowFlameThrowerTutorial();
-                firstFlamethrower = false;
-            }
-            else if (firstBubble)
-            {
-                //tutorial
-                myTutorial.ShowBubbleTutorial();
-                firstBubble = false;
-            }
-            else if (firstBullet)
-            {
-                //tutorial
-                myTutorial.ShowBulletTutorial();
-                firstBullet = false;
-            }
-            else if (firstRocket)
-            {
-                //tutorial
-                myTutorial.ShowRocketTutorial();
-                firstRocket = false;
-            }
-        }
+        //if (myTutorial != null)
+        //{
+        //    if (firstFlamethrower)
+        //    {
+        //        //Tutorial
+        //        myTutorial.ShowFlameThrowerTutorial();
+        //        firstFlamethrower = false;
+        //    }
+        //    else if (firstBubble)
+        //    {
+        //        //tutorial
+        //        myTutorial.ShowBubbleTutorial();
+        //        firstBubble = false;
+        //    }
+        //    else if (firstBullet)
+        //    {
+        //        //tutorial
+        //        myTutorial.ShowBulletTutorial();
+        //        firstBullet = false;
+        //    }
+        //    else if (firstRocket)
+        //    {
+        //        //tutorial
+        //        myTutorial.ShowRocketTutorial();
+        //        firstRocket = false;
+        //    }
+        //}
     }
     
 

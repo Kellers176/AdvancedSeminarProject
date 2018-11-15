@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class SceneManagerScript : MonoBehaviour {
     [SerializeField] EnemyManager myEnemyManager;
     [SerializeField] GameObject oldSprite;
+    [SerializeField] GameObject particles;
     bool done = false;
     int finalWaveNum;
     // Use this for initialization
@@ -26,6 +27,7 @@ public class SceneManagerScript : MonoBehaviour {
         if(myEnemyManager.GetWaves() > finalWaveNum)
         {
             oldSprite.SetActive(false);
+            particles.SetActive(true);
             done = true;
         }
         //Debug.Log(myEnemyManager.GetWaves());

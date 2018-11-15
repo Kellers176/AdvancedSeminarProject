@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class RocketBullet : MonoBehaviour {
-    [SerializeField] float speed = 50f;
+    [SerializeField] float speed = 80f;
     [SerializeField] float rotatingSpeed = 200;
     [SerializeField] GameObject target;
     Vector3 toTransform;
