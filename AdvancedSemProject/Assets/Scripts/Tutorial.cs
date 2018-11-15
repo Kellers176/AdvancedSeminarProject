@@ -19,7 +19,7 @@ public class Tutorial : MonoBehaviour {
 	void Update ()
     {
         
-       // Time.timeScale = 0.0f;
+        //Time.timeScale = 0.0f;
         //Time.timescale = 0;
 	}
 
