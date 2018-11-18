@@ -79,11 +79,7 @@ public class ProjectileManager : MonoBehaviour
                 cooldown = 0.2f;
                 //GetTutorial
                 firstBullet = true;
-                if (notDone < 4)
-                {
-                    CheckTutorial();
-                    notDone++;
-                }
+                
             }
             else if (myBullet.tag == "Rocket")
             {
@@ -92,12 +88,8 @@ public class ProjectileManager : MonoBehaviour
                 cooldown = 1.0f;
                 //GetTutorial
                 firstRocket = true;
-                if (notDone < 4)
-                {
-                    CheckTutorial();
-                    notDone++;
-                }
-        }
+               
+            }
             else if (myBullet.tag == "Bubbles")
             {
                 canShow = true;
@@ -105,12 +97,7 @@ public class ProjectileManager : MonoBehaviour
                 cooldown = 0.4f;
                 //GetTutorial
                 firstBubble = true;
-                if (notDone < 4)
-                {
-                    CheckTutorial();
-                    notDone++;
-                }
-        }
+            }
             else if (myBullet.tag == "FlameThrower")
             {
                 canShow = true;
@@ -118,45 +105,11 @@ public class ProjectileManager : MonoBehaviour
                 cooldown = 0.1f;
                 //GetTutorial
                 firstFlamethrower = true;
-                if (notDone < 4)
-                {
-                    CheckTutorial();
-                    notDone++;
-                }
-        }
+            }
         
         
     }
-    public void CheckTutorial()
-    {
-        //if (myTutorial != null)
-        //{
-        //    if (firstFlamethrower)
-        //    {
-        //        //Tutorial
-        //        myTutorial.ShowFlameThrowerTutorial();
-        //        firstFlamethrower = false;
-        //    }
-        //    else if (firstBubble)
-        //    {
-        //        //tutorial
-        //        myTutorial.ShowBubbleTutorial();
-        //        firstBubble = false;
-        //    }
-        //    else if (firstBullet)
-        //    {
-        //        //tutorial
-        //        myTutorial.ShowBulletTutorial();
-        //        firstBullet = false;
-        //    }
-        //    else if (firstRocket)
-        //    {
-        //        //tutorial
-        //        myTutorial.ShowRocketTutorial();
-        //        firstRocket = false;
-        //    }
-        //}
-    }
+ 
     
 
     private void MoveInput()
