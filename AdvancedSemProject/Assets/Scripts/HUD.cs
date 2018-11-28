@@ -2,6 +2,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class HUD : MonoBehaviour 
 {
@@ -26,9 +27,12 @@ public class HUD : MonoBehaviour
 	void Start () 
     {
         StartCoroutine("LoseTime");
-		myPlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerManager>();
-        mManager = GameObject.FindGameObjectWithTag("SpawnManager").GetComponent<ProjectileManager>();
-        mEnemyManager = GameObject.FindGameObjectWithTag("EnemyManager").GetComponent<EnemyManager>();
+        if (SceneManager.GetActiveScene().name != "Tutorial")
+        {
+            myPlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerManager>();
+            mManager = GameObject.FindGameObjectWithTag("SpawnManager").GetComponent<ProjectileManager>();
+            mEnemyManager = GameObject.FindGameObjectWithTag("EnemyManager").GetComponent<EnemyManager>();
+        }
         Time.timeScale = 1;
         winCase = false;
 	}
@@ -36,27 +40,29 @@ public class HUD : MonoBehaviour
 	// Update is called once per frame
 	private void Update () 
     {
-
-        if(!((int)myPlayer.GetHealth() < 0))
+        if(SceneManager.GetActiveScene().name != "Tutorial")
         {
-		    HeartUI.sprite = HeartSprites[(int)myPlayer.GetHealth() / 10];
-
-        }
-        countdown.text = ("" + timeLeft);
-        ShowCountdown();
-        //getFinal wave + 1 - get current wave gives the waves left
-        wavesLeft.text = ("" + (mEnemyManager.getFinalWaveCount() + 1 - mEnemyManager.GetWaves()));
-        if(mEnemyManager.GetWaves() <= mEnemyManager.getFinalWaveCount())
-        {
-             enemiesLeft.text = ("" + mEnemyManager.GetEnemyCount());
-            if(mEnemyManager.GetEnemyCount() < 0)
+            if(!((int)myPlayer.GetHealth() < 0))
             {
-                enemiesLeft.text = ("0");
-            }
+		        HeartUI.sprite = HeartSprites[(int)myPlayer.GetHealth() / 10];
 
+            }
+            countdown.text = ("" + timeLeft);
+            ShowCountdown();
+            //getFinal wave + 1 - get current wave gives the waves left
+            wavesLeft.text = ("" + (mEnemyManager.getFinalWaveCount() + 1 - mEnemyManager.GetWaves()));
+            if(mEnemyManager.GetWaves() <= mEnemyManager.getFinalWaveCount())
+            {
+                 enemiesLeft.text = ("" + mEnemyManager.GetEnemyCount());
+                if(mEnemyManager.GetEnemyCount() < 0)
+                {
+                    enemiesLeft.text = ("0");
+                }
+
+            }
+            ChangeTimeColor();
+            ResetTime();
         }
-        ChangeTimeColor();
-        ResetTime();
     }
 
     public void ShowCountdown()

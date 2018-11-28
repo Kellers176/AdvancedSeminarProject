@@ -21,6 +21,11 @@ public class MainMenuSceneScript : MonoBehaviour
 	{
 		
 	}
+    public void LoadTutorial()
+    {
+        myType = 3;
+        StartCoroutine(MainMenuSceneScript.FadeOut(track1, myType));
+    }
 
     public void LoadLevel1()
     {
@@ -62,6 +67,9 @@ public class MainMenuSceneScript : MonoBehaviour
                 break;
             case 2:
                 Application.Quit();
+                break;
+            case 3:
+                SceneManager.LoadScene("Tutorial");
                 break;
             default:
                 break;

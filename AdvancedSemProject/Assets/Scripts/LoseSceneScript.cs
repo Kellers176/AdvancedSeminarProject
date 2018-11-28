@@ -19,6 +19,7 @@ public class LoseSceneScript : MonoBehaviour {
 
     public void MainMenu()
     {
+        Debug.Log("Being hit");
         myType = 0;
         StartCoroutine(LoseSceneScript.FadeOut(track1, myType));
     }
@@ -32,7 +33,7 @@ public class LoseSceneScript : MonoBehaviour {
     public static IEnumerator FadeOut(AudioSource audioSource, int type)
     {
         float startVolume = audioSource.volume;
-
+        Debug.Log("inside function");
         while (audioSource.volume > 0)
         {
             audioSource.volume -= startVolume * Time.deltaTime / 0.5f;

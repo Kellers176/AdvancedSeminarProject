@@ -3,41 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BubbleEnemyAI : MonoBehaviour {
-    
-    List<GameObject> closeEnemies = new List<GameObject>();
+
     EnemyManager mManager;
     private Renderer rend;
+    bool ifDying;
     [SerializeField] GameObject explosion;
-    Vector2 positionVector;
-    Transform sitPoint;
-    Transform cowerPoint;
     private GameObject spawn;
+
+    float impulseForce = 100.0f;
     bool canSubtract;
     float moveSpeed = 2.0f;
-    float impulseForce = 100.0f;
-    int neighborCount;
-    float safeDistance = 3f;
     int maxHealth = 100;
     int currentHealth;
-    bool flee = false;
-    float timeToSeek = 0.0f;
-    int mRandom;
-    float time;
-    float cooldown;
+
     float timeTillDeactive;
-    bool ifDying;
     private GameObject shield;
 	bool shieldIsActive;
-
-    int numberOfAIBehaviors = 5;
-    enum AIBehaviors {SEEK, ARRIVE, FLEE, MOVETOPOINT, COWER }
-    AIBehaviors myBehavior;
+    
     Rigidbody2D rb;
 
 	// Use this for initialization
 	void Start () {
 		shield = this.gameObject.transform.GetChild(0).gameObject;
-        mRandom = Random.Range(0, numberOfAIBehaviors);
         mManager = GameObject.FindGameObjectWithTag("EnemyManager").GetComponent<EnemyManager>();
         rb = GetComponent<Rigidbody2D>();
         currentHealth = maxHealth;
