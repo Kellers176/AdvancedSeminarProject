@@ -67,8 +67,14 @@ public class PlayerManager : MonoBehaviour
         }
         if (collision.gameObject.tag == "SpikeTrap")
         {
-            currentHealth -= 10;
+            Debug.Log("In spike trap");
+            if(collision.gameObject.GetComponent<Animator>().GetBool("pain"))
+            {
+                Debug.Log("inPain");
+                currentHealth -= 10;
+            }
         }
+        
     }
 
 

@@ -3,22 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SpikeTrap : MonoBehaviour {
-    public Animator anim;
+    Animator anim;
     // Use this for initialization
     void Start () {
-		//anim.
+        //anim.
+        anim = GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		
 	}
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void SetPain(int myPain)
     {
-        if(collision.gameObject.tag == "Player")
+        if (myPain == 0)
         {
-            anim.SetTrigger("Hit");
+            anim.SetBool("pain", false);
+        }
+        else
+        {
+            anim.SetBool("pain", true);
         }
     }
+    
 }
