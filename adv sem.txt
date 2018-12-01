@@ -4,6 +4,10 @@ For next week:
 Show what you got killed by
 
 Working on:
+PAZAZZEE
+vignette when player starts to die
+drop blood splater on death
+
 
 
 DONE:

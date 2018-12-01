@@ -12,7 +12,7 @@ public class EnemyManager : MonoBehaviour {
     private GameObject spawn;
     bool stopSpawning;
 
-    int remainingEnemyCount = 5;
+    int remainingEnemyCount;
     int spawnedEnemies;
     float count;
     int j = 0;
@@ -35,6 +35,7 @@ public class EnemyManager : MonoBehaviour {
 	// Update is called once per frame
 	private void Update ()
     {
+        Debug.Log(totalEnemies);
         Wave();
 	}
 

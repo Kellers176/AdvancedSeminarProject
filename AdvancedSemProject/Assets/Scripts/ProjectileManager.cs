@@ -7,10 +7,8 @@ using UnityEngine.UI;
 public class ProjectileManager : MonoBehaviour
 {
     [SerializeField] bool canShoot = false;
-    //[SerializeField] Tutorial myTutorial;
-    //make more clear
-    //[SerializeField] Rigidbody2D[] myBulletType;
     [SerializeField] List<Rigidbody2D> myBulletType = new List<Rigidbody2D>();
+    Rigidbody2D lastWeapon;
     List<Rigidbody2D> myBulletTypeDeleted = new List<Rigidbody2D>();
     private Rigidbody2D myBullet;
     private Rigidbody2D spawn;
@@ -150,6 +148,8 @@ public class ProjectileManager : MonoBehaviour
                 //moves all deleted bullets back to original list
                 for(int i = 0; i < myBulletTypeDeleted.Count; i++)
                 {
+                    //need to check last weapon
+
                     myBulletType.Add(myBulletTypeDeleted[i]);
                     myBulletTypeDeleted.RemoveAt(i);
                     i--;
@@ -160,8 +160,14 @@ public class ProjectileManager : MonoBehaviour
                 myBulletTypeDeleted.Add(myBullet);
                 myBulletType.Remove(myBullet);
             }
+            //should fix last weapon issue
             random = Random.Range(0, myBulletType.Count);
+            while(myBulletType[random] == lastWeapon)
+            {
+                random = Random.Range(0, myBulletType.Count);
+            }
             myBullet = myBulletType[random];
+            lastWeapon = myBullet;
             CheckCooldown();
             done = false;
         }

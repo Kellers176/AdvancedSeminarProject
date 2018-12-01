@@ -10,6 +10,7 @@ public class ShieldHealth : MonoBehaviour {
     // Use this for initialization
     void Start () {
 		currentHealth = 155;
+        rend = GetComponent<Renderer>();
         parent = gameObject.transform.parent.gameObject.GetComponent<BubbleEnemyAI>();
         rend.material.color = Color.blue;
     }
@@ -21,12 +22,14 @@ public class ShieldHealth : MonoBehaviour {
             parent.SetShieldActive(false);
 			this.gameObject.SetActive(false);
         }
-        if(currentHealth < 40 && currentHealth > 20)
+        if(currentHealth < 100 && currentHealth >= 50)
         {
+            Debug.Log("YELLOw");
             rend.material.color = Color.yellow;
         }
-        else if( currentHealth < 20)
+        else if(currentHealth < 50)
         {
+            Debug.Log("RED");
             rend.material.color = Color.red;
         }
         Debug.Log(currentHealth);
