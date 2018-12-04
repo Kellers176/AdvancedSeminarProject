@@ -10,6 +10,9 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] int currentHealth;
     private Renderer rend;
     Rigidbody2D rb;
+    [SerializeField] GameObject deathV1, deathV2, deathV3;
+    PlayerMovement mSpeed;
+    bool notColliding = true;
 
 	// Use this for initialization
 	void Start () 
@@ -17,6 +20,7 @@ public class PlayerManager : MonoBehaviour
 		currentHealth = maxHealth;
         rend = GetComponent<Renderer>();
         rend.material.color = Color.white;
+        mSpeed = this.GetComponent<PlayerMovement>();
     }
 	
 	// Update is called once per frame
@@ -29,11 +33,18 @@ public class PlayerManager : MonoBehaviour
     {
         switch (currentHealth)
         {
-            case 40:
+            case 60:
                 rend.material.color = Color.grey;
+                deathV1.SetActive(true);
+                break;
+            case 40:
+                rend.material.color = Color.yellow;
+                deathV1.SetActive(false);
+                deathV2.SetActive(true);
                 break;
             case 20:
-                rend.material.color = Color.yellow;
+                deathV2.SetActive(false);
+                deathV3.SetActive(true);
                 break;
             case 0:
                 Destroy(this.gameObject);
@@ -41,11 +52,17 @@ public class PlayerManager : MonoBehaviour
             default:
                 break;
         }
+        if(currentHealth > 40)
+        {
+            deathV1.SetActive(false);
+        }
         if (currentHealth <= 0)
         {
             Destroy(this.gameObject);
             SceneManager.LoadScene("Lose Screen");
         }
+        if(notColliding)
+            mSpeed.SetSpeed(15);
     }
 	private void OnCollisionEnter2D(Collision2D col)
 	{
@@ -72,9 +89,22 @@ public class PlayerManager : MonoBehaviour
             {
                 Debug.Log("inPain");
                 currentHealth -= 10;
+                mSpeed.SetSpeed(10);
+                notColliding = false;
             }
         }
         
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "SpikeTrap")
+        {
+            Debug.Log("In spike trap");
+            if (collision.gameObject.GetComponent<Animator>().GetBool("pain"))
+            {
+                notColliding = true;
+            }
+        }
     }
 
 

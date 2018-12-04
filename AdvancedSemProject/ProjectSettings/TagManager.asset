@@ -23,6 +23,9 @@ TagManager:
   - music
   - RocketExplosion
   - SpikeTrap
+  - Death1
+  - Death2
+  - Death3
   layers:
   - Default
   - TransparentFX

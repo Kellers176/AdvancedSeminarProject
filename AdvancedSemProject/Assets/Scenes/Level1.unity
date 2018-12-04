@@ -16245,6 +16245,21 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 903c2e7f09e50284d995307c62572e06, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &918835073 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1353787036511444, guid: 903c2e7f09e50284d995307c62572e06,
+    type: 2}
+  m_PrefabInternal: {fileID: 918835072}
+--- !u!1 &918835074 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1023952875988716, guid: 903c2e7f09e50284d995307c62572e06,
+    type: 2}
+  m_PrefabInternal: {fileID: 918835072}
+--- !u!1 &918835075 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1682053790337900, guid: 903c2e7f09e50284d995307c62572e06,
+    type: 2}
+  m_PrefabInternal: {fileID: 918835072}
 --- !u!1 &929490810
 GameObject:
   m_ObjectHideFlags: 0
@@ -29505,6 +29520,21 @@ Prefab:
       value: 
       objectReference: {fileID: 50356382330083222, guid: dbd3c22658fb1bc45a890de07c0a62e0,
         type: 2}
+    - target: {fileID: 114300123091025958, guid: 1d29f8317840f1048a8363e51b2bde5c,
+        type: 2}
+      propertyPath: deathV1
+      value: 
+      objectReference: {fileID: 918835075}
+    - target: {fileID: 114300123091025958, guid: 1d29f8317840f1048a8363e51b2bde5c,
+        type: 2}
+      propertyPath: deathV2
+      value: 
+      objectReference: {fileID: 918835074}
+    - target: {fileID: 114300123091025958, guid: 1d29f8317840f1048a8363e51b2bde5c,
+        type: 2}
+      propertyPath: deathV3
+      value: 
+      objectReference: {fileID: 918835073}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d29f8317840f1048a8363e51b2bde5c, type: 2}
   m_IsPrefabAsset: 0

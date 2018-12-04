@@ -111,4 +111,9 @@ public class PlayerMovement : MonoBehaviour {
         rb.velocity += Vector2.up * speed* Time.deltaTime;
         transform.rotation = Quaternion.Euler(0, 0, 0);
     }
+
+    public void SetSpeed(int myFunctionSpeed)
+    {
+        speed = myFunctionSpeed;
+    }
 }
