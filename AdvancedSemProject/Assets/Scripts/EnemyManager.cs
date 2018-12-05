@@ -16,7 +16,8 @@ public class EnemyManager : MonoBehaviour {
     int spawnedEnemies;
     float count;
     int j = 0;
-
+    
+    int curArrive, curFlee, curShoot, curCower;
     int wave;
     [SerializeField] int finalWave;
 
@@ -30,12 +31,61 @@ public class EnemyManager : MonoBehaviour {
         mHud = GameObject.FindGameObjectWithTag("HUD").GetComponent<HUD>();
         wave = 1;
         stopSpawning = false;
+        curArrive = 0;
+        curFlee = 0;
+        curShoot = 0;
+        curCower = 0;
     }
-	
-	// Update is called once per frame
-	private void Update ()
+
+    public void AddArrive()
     {
-        Debug.Log(totalEnemies);
+        curArrive++;
+        Debug.Log("Arrive : " + curArrive);
+    }
+    public void AddFlee()
+    {
+        curFlee++;
+        Debug.Log("Flee : " + curFlee);
+    }
+    public void AddShoot()
+    {
+        curShoot++;
+        Debug.Log("Shoot : " + curShoot);
+    }
+    public void AddCower()
+    {
+        curCower++;
+        Debug.Log("Cower : " + curCower);
+    }
+    public int getArrive()
+    {
+        return curArrive;
+    }
+    public int getFlee()
+    {
+        return curFlee;
+    }
+    public int getShoot()
+    {
+        return curShoot;
+    }
+    public int getCower()
+    {
+        return curCower;
+    }
+
+    public void resetNumbers()
+    {
+        curArrive = 0;
+        curFlee = 0;
+        curShoot = 0;
+        curCower = 0;
+    }
+
+    // Update is called once per frame
+    private void Update ()
+    {
+       // Debug.Log(totalEnemies);
         Wave();
 	}
 
@@ -63,6 +113,7 @@ public class EnemyManager : MonoBehaviour {
             remainingEnemyCount = totalEnemies;
             spawnedEnemies = 0;
             wave++;
+            resetNumbers();
         }
     }
 
@@ -82,7 +133,7 @@ public class EnemyManager : MonoBehaviour {
     public void SubtractEnemyCount()
     {
         remainingEnemyCount--;
-        Debug.Log(remainingEnemyCount);
+        //Debug.Log(remainingEnemyCount);
     }
     public int GetWaves()
     {

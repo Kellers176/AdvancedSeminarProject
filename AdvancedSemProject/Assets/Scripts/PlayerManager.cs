@@ -80,7 +80,7 @@ public class PlayerManager : MonoBehaviour
         }
         if(collision.gameObject.tag == "RocketExplosion")
         {
-            currentHealth -= 50;
+            currentHealth -= 20;
         }
         if (collision.gameObject.tag == "SpikeTrap")
         {

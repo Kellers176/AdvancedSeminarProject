@@ -54,6 +54,7 @@ public class BubbleEnemyAI : MonoBehaviour {
             GameObject myExplosion = Instantiate(explosion, transform.position, Quaternion.identity) as GameObject;
             Destroy(myExplosion, 1.0f);
             this.gameObject.GetComponent<Renderer>().enabled = false;
+            this.gameObject.GetComponent<BoxCollider2D>().enabled = false;
             mManager.SubtractEnemyCount();
             Destroy(this.gameObject, 1.0f);
             canSubtract = false;

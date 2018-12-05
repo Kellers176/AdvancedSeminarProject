@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Level4 : MonoBehaviour
 {
@@ -23,8 +24,9 @@ public class Level4 : MonoBehaviour
     {
         if (myScene.getDone() == true && collision.gameObject.tag == "Player")
         {
-            myLevel.FadeToNextLevel(6);
-            //SceneManager.LoadScene("WinScene");
+            Debug.Log("Im gettting hit");
+            //myLevel.FadeToNextLevel(6);
+            SceneManager.LoadScene("WinScene");
 
         }
     }

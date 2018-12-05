@@ -27,6 +27,7 @@ public class SteeringBehavior : MonoBehaviour {
     float time;
     float cooldown;
     bool ifDying;
+    int maxAvailable;
 
     int numberOfAIBehaviors = 5;
     enum AIBehaviors { SEEK, ARRIVE, FLEE, MOVETOPOINT, COWER }
@@ -39,6 +40,7 @@ public class SteeringBehavior : MonoBehaviour {
         target = GameObject.FindGameObjectWithTag("Player");
         sitPoint = GameObject.FindGameObjectWithTag("Sit").GetComponent<Transform>();
         cowerPoint = GameObject.FindGameObjectWithTag("Cower").GetComponent<Transform>();
+        maxAvailable = 2;
         mRandom = Random.Range(0, numberOfAIBehaviors);
         mManager = GameObject.FindGameObjectWithTag("EnemyManager").GetComponent<EnemyManager>();
         rb = GetComponent<Rigidbody2D>();
@@ -48,8 +50,65 @@ public class SteeringBehavior : MonoBehaviour {
         deecelerationFactor = 10;
         ifDying = false;
         canSubtract = true;
+        AddToManager(mRandom);
+        CheckAvailability();
         Wave();
     }
+
+    void AddToManager(int type)
+    {
+        switch(type)
+        {
+            case 1:
+                mManager.AddArrive();
+                break;
+            case 2:
+                mManager.AddFlee();
+                break;
+            case 3:
+                mManager.AddShoot();
+                break;
+            case 4:
+                mManager.AddCower();
+                break;
+            default:
+                break;
+        }
+    }
+
+    void CheckAvailability()
+    {
+        if(mManager.getArrive() > maxAvailable)
+        {
+            while(mRandom == (int)AIBehaviors.ARRIVE)
+            {
+                mRandom = Random.Range(0, numberOfAIBehaviors);
+            }
+        }
+        if (mManager.getFlee() > maxAvailable)
+        {
+            while (mRandom == (int)AIBehaviors.FLEE)
+            {
+                mRandom = Random.Range(0, numberOfAIBehaviors);
+            }
+        }
+        if (mManager.getCower() > maxAvailable)
+        {
+            while (mRandom == (int)AIBehaviors.COWER)
+            {
+                mRandom = Random.Range(0, numberOfAIBehaviors);
+            }
+        }
+        if (mManager.getShoot() > maxAvailable)
+        {
+            while (mRandom == (int)AIBehaviors.MOVETOPOINT)
+            {
+                mRandom = Random.Range(0, numberOfAIBehaviors);
+            }
+        }
+    }
+
+
 
     // Update is called once per frame
     void Update()
@@ -104,11 +163,13 @@ public class SteeringBehavior : MonoBehaviour {
                 cooldown = 1.3f;
                 moveSpeed = 2.2f;
                 maxHealth = 110;
+
                 break;
             case 3:
                 cooldown = 1.1f;
                 moveSpeed = 2.4f;
                 maxHealth = 120;
+
                 break;
             case 4:
                 cooldown = 1.0f;
@@ -118,6 +179,7 @@ public class SteeringBehavior : MonoBehaviour {
             default:
                 moveSpeed = 1.5f;
                 maxHealth = 100;
+
                 break;
         }
     }

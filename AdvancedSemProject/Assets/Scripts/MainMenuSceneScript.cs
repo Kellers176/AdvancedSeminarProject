@@ -23,28 +23,29 @@ public class MainMenuSceneScript : MonoBehaviour
 	}
     public void LoadTutorial()
     {
-        myType = 3;
-        StartCoroutine(MainMenuSceneScript.FadeOut(track1, myType));
+        SceneManager.LoadScene("Tutorial");
+        //myType = 3;
+        //StartCoroutine(MainMenuSceneScript.FadeOut(track1, myType));
     }
 
     public void LoadLevel1()
     {
-        //IEnumerator fadeSound1 = MainMenuSceneScript.FadeOut(track1);
-        //StartCoroutine(fadeSound1);
-        //StopCoroutine(fadeSound1);
-        myType = 0;
-        StartCoroutine(MainMenuSceneScript.FadeOut(track1, myType));
+        SceneManager.LoadScene("Level1");
+        //myType = 0;
+       // StartCoroutine(MainMenuSceneScript.FadeOut(track1, myType));
     }
     public void Credits()
     {
-        myType = 1;
-        StartCoroutine(MainMenuSceneScript.FadeOut(track1, myType));
+        SceneManager.LoadScene("Credits");
+        //myType = 1;
+       // StartCoroutine(MainMenuSceneScript.FadeOut(track1, myType));
     }
 
     public void Quit()
     {
-        myType = 2;
-        StartCoroutine(MainMenuSceneScript.FadeOut(track1, myType));
+        Application.Quit();
+        //myType = 2;
+        //StartCoroutine(MainMenuSceneScript.FadeOut(track1, myType));
     }
     public static IEnumerator FadeOut(AudioSource audioSource, int type)
     {
