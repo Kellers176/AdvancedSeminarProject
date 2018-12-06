@@ -6,10 +6,13 @@ public class Level3 : MonoBehaviour {
 
     [SerializeField] SceneManagerScript myScene;
     [SerializeField] LevelChanger myLevel;
+    [SerializeField] LevelCheck LevelManager;
+
     // Use this for initialization
     void Start()
     {
-
+        LevelManager = GameObject.FindGameObjectWithTag("LevelCheck").GetComponent<LevelCheck>();
+        LevelManager.SetLevel("Level 3");
     }
 
     // Update is called once per frame

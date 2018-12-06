@@ -10,7 +10,7 @@ public class RocketEnemyAIBehaviors : MonoBehaviour {
     [SerializeField] GameObject explosion;
     private GameObject spawn;
 
-    float impulseForce = 100.0f;
+    float impulseForce = 200.0f;
     bool canSubtract;
     float moveSpeed = 2.0f;
     int maxHealth = 100;

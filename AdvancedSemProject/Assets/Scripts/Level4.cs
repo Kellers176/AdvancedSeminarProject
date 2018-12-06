@@ -5,13 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class Level4 : MonoBehaviour
 {
-
+    [SerializeField] LevelCheck LevelManager;
     [SerializeField] SceneManagerScript myScene;
     [SerializeField] LevelChanger myLevel;
     // Use this for initialization
     void Start()
     {
-
+        LevelManager = GameObject.FindGameObjectWithTag("LevelCheck").GetComponent<LevelCheck>();
+        LevelManager.SetLevel("Level 4");
     }
 
     // Update is called once per frame

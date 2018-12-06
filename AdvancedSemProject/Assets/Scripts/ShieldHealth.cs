@@ -32,7 +32,7 @@ public class ShieldHealth : MonoBehaviour {
             Debug.Log("RED");
             rend.material.color = Color.red;
         }
-        Debug.Log(currentHealth);
+        //Debug.Log(currentHealth);
 	}
 
 	private void OnCollisionEnter2D(Collision2D col)

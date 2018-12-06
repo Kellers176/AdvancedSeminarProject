@@ -6,10 +6,12 @@ using UnityEngine.SceneManagement;
 public class ChangeScript : MonoBehaviour {
     [SerializeField] SceneManagerScript myScene;
     [SerializeField] LevelChanger myLevel;
-	// Use this for initialization
-	void Start () {
-		
-	}
+    [SerializeField] LevelCheck LevelManager;
+    // Use this for initialization
+    void Start () {
+        LevelManager = GameObject.FindGameObjectWithTag("LevelCheck").GetComponent<LevelCheck>();
+        LevelManager.SetLevel("Level 2");
+    }
 	
 	// Update is called once per frame
 	void Update () {

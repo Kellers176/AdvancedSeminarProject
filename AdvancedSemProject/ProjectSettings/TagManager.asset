@@ -26,6 +26,8 @@ TagManager:
   - Death1
   - Death2
   - Death3
+  - LevelCheck
+  - Health
   layers:
   - Default
   - TransparentFX

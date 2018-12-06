@@ -7,6 +7,7 @@ public class SceneManagerScript : MonoBehaviour {
     [SerializeField] EnemyManager myEnemyManager;
     [SerializeField] GameObject oldSprite;
     [SerializeField] GameObject particles;
+    
     bool done = false;
     int finalWaveNum;
     // Use this for initialization

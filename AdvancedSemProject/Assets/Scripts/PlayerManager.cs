@@ -31,30 +31,28 @@ public class PlayerManager : MonoBehaviour
 
     private void checkHealth()
     {
-        switch (currentHealth)
+
+        if(currentHealth < 70 && currentHealth > 50)
         {
-            case 60:
-                rend.material.color = Color.grey;
-                deathV1.SetActive(true);
-                break;
-            case 40:
-                rend.material.color = Color.yellow;
-                deathV1.SetActive(false);
-                deathV2.SetActive(true);
-                break;
-            case 20:
-                deathV2.SetActive(false);
-                deathV3.SetActive(true);
-                break;
-            case 0:
-                Destroy(this.gameObject);
-                break;
-            default:
-                break;
+            //rend.material.color = Color.grey;
+            deathV1.SetActive(true);
         }
-        if(currentHealth > 40)
+        if(currentHealth < 50 && currentHealth > 20)
+        {
+            //rend.material.color = Color.yellow;
+            deathV1.SetActive(false);
+            deathV2.SetActive(true);
+        }
+        if(currentHealth < 20 && currentHealth > 1)
+        {
+            deathV2.SetActive(false);
+            deathV3.SetActive(true);
+        }
+        if(currentHealth > 70)
         {
             deathV1.SetActive(false);
+            deathV2.SetActive(false);
+            deathV3.SetActive(false);
         }
         if (currentHealth <= 0)
         {
@@ -92,6 +90,11 @@ public class PlayerManager : MonoBehaviour
                 mSpeed.SetSpeed(10);
                 notColliding = false;
             }
+        }
+        if(collision.gameObject.tag == "Health")
+        {
+            currentHealth = maxHealth;
+            Destroy(collision.gameObject);
         }
         
     }
