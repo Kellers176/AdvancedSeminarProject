@@ -78,32 +78,34 @@ public class TutorialManager : MonoBehaviour {
         tutorialObjects[5].SetActive(true);
         Time.timeScale = 0.0f;
     }
-    public void showBubble()
+    public void showHealthPack()
     {
         tutorialObjects[5].SetActive(false);
-        health = true;
         tutorialObjects[6].SetActive(true);
+        Time.timeScale = 0.0f;
+    }
+    public void showBubble()
+    {
+        tutorialObjects[6].SetActive(false);
+        tutorialObjects[7].SetActive(true);
         Time.timeScale = 0.0f;
     }
     public void showFlameThrower()
     {
-        tutorialObjects[6].SetActive(false);
-        health = true;
-        tutorialObjects[7].SetActive(true);
+        tutorialObjects[7].SetActive(false);
+        tutorialObjects[8].SetActive(true);
         Time.timeScale = 0.0f;
     }
     public void showBullet()
     {
-        tutorialObjects[7].SetActive(false);
-        health = true;
-        tutorialObjects[8].SetActive(true);
+        tutorialObjects[8].SetActive(false);
+        tutorialObjects[9].SetActive(true);
         Time.timeScale = 0.0f;
     }
     public void showRocket()
     {
-        tutorialObjects[8].SetActive(false);
-        health = true;
-        tutorialObjects[9].SetActive(true);
+        tutorialObjects[9].SetActive(false);
+        tutorialObjects[10].SetActive(true);
         Time.timeScale = 0.0f;
     }
 }

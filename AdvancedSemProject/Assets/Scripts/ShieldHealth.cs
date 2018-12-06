@@ -12,7 +12,7 @@ public class ShieldHealth : MonoBehaviour {
 		currentHealth = 155;
         rend = GetComponent<Renderer>();
         parent = gameObject.transform.parent.gameObject.GetComponent<BubbleEnemyAI>();
-        rend.material.color = Color.blue;
+        rend.material.color = Color.white;
     }
 	
 	// Update is called once per frame
@@ -30,7 +30,7 @@ public class ShieldHealth : MonoBehaviour {
         else if(currentHealth < 50)
         {
             Debug.Log("RED");
-            rend.material.color = Color.red;
+            rend.material.color = Color.grey;
         }
         //Debug.Log(currentHealth);
 	}
