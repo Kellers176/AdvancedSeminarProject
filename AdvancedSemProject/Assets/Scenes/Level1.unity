@@ -16062,12 +16062,12 @@ Prefab:
       propertyPath: m_isInputParsingRequired
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114833930128228064, guid: 903c2e7f09e50284d995307c62572e06,
+    - target: {fileID: 114946635091241758, guid: 903c2e7f09e50284d995307c62572e06,
         type: 2}
       propertyPath: m_havePropertiesChanged
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114833930128228064, guid: 903c2e7f09e50284d995307c62572e06,
+    - target: {fileID: 114946635091241758, guid: 903c2e7f09e50284d995307c62572e06,
         type: 2}
       propertyPath: m_isInputParsingRequired
       value: 1
@@ -16092,12 +16092,12 @@ Prefab:
       propertyPath: m_isInputParsingRequired
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114946635091241758, guid: 903c2e7f09e50284d995307c62572e06,
+    - target: {fileID: 114833930128228064, guid: 903c2e7f09e50284d995307c62572e06,
         type: 2}
       propertyPath: m_havePropertiesChanged
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114946635091241758, guid: 903c2e7f09e50284d995307c62572e06,
+    - target: {fileID: 114833930128228064, guid: 903c2e7f09e50284d995307c62572e06,
         type: 2}
       propertyPath: m_isInputParsingRequired
       value: 1
@@ -29798,7 +29798,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myScene: {fileID: 1282655893}
   myLevel: {fileID: 1097353989}
-  LevelManager: {fileID: 0}
+  LevelManager: {fileID: 2091106222}
 --- !u!1 &2074001266
 GameObject:
   m_ObjectHideFlags: 0

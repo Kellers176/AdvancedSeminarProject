@@ -140,9 +140,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0032045445, y: 0}
+  m_Offset: {x: -0.014978608, y: 0.022728443}
   serializedVersion: 2
-  m_Radius: 0.291158
+  m_Radius: 0.41389462
 --- !u!61 &61404828485116350
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -197,7 +197,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2e2a5da94591f549962175d91796a4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosion: {fileID: 1046786526472100, guid: 84dc385b9fa3a634bac437bafbfa0e90, type: 2}
+  explosion: {fileID: 1405266401081708, guid: 89d87622ab740a848b74b5c6608b37c3, type: 2}
+  bloodstain: {fileID: 1998175554499832, guid: 493d0e850c5688140bfa04f3b22c368c, type: 2}
 --- !u!114 &114523935570713018
 MonoBehaviour:
   m_ObjectHideFlags: 1

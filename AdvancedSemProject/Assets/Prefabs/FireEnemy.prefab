@@ -150,7 +150,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e96b65baed56ef742b93193d108b336d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosion: {fileID: 1046786526472100, guid: 84dc385b9fa3a634bac437bafbfa0e90, type: 2}
+  explosion: {fileID: 1489212110532842, guid: 99a206b53cf23a0498e4d55d056d7b18, type: 2}
+  bloodstain: {fileID: 1998175554499832, guid: 493d0e850c5688140bfa04f3b22c368c, type: 2}
 --- !u!114 &114772420454443768
 MonoBehaviour:
   m_ObjectHideFlags: 1

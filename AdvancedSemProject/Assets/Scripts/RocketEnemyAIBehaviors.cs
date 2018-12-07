@@ -8,6 +8,8 @@ public class RocketEnemyAIBehaviors : MonoBehaviour {
     private Renderer rend;
     bool ifDying;
     [SerializeField] GameObject explosion;
+    [SerializeField] GameObject bloodstain;
+    SteeringBehavior mySteer;
     private GameObject spawn;
 
     float impulseForce = 200.0f;
@@ -23,6 +25,7 @@ public class RocketEnemyAIBehaviors : MonoBehaviour {
     void Start()
     {
         mManager = GameObject.FindGameObjectWithTag("EnemyManager").GetComponent<EnemyManager>();
+        mySteer = this.GetComponent<SteeringBehavior>();
         rb = GetComponent<Rigidbody2D>();
         currentHealth = maxHealth;
         rend = GetComponent<Renderer>();
@@ -42,10 +45,15 @@ public class RocketEnemyAIBehaviors : MonoBehaviour {
         if (currentHealth <= 0 && canSubtract)
         {
             GameObject myExplosion = Instantiate(explosion, transform.position, Quaternion.identity) as GameObject;
-            Destroy(myExplosion, 1.0f);
+            GameObject bloodStain = Instantiate(bloodstain, transform.position, Quaternion.identity) as GameObject;
+            Destroy(myExplosion, 0.5f);
+            Destroy(bloodStain, 5.0f);
+            this.gameObject.transform.GetChild(0).gameObject.SetActive(false);
             this.gameObject.GetComponent<Renderer>().enabled = false;
+            this.gameObject.GetComponent<BoxCollider2D>().enabled = false;
+            mySteer.setShoot(false);
             mManager.SubtractEnemyCount();
-            Destroy(this.gameObject, 1.0f);
+            Destroy(this.gameObject, 5.0f);
             canSubtract = false;
         }
     }
@@ -81,12 +89,8 @@ public class RocketEnemyAIBehaviors : MonoBehaviour {
         if (collision.gameObject.tag == "Rocket")
         {
             //explode
-            GameObject myExplosion = Instantiate(explosion, transform.position, Quaternion.identity) as GameObject;
-            Destroy(myExplosion, 1.0f);
-            this.gameObject.GetComponent<Renderer>().enabled = false;
-            this.gameObject.GetComponent<BoxCollider2D>().enabled = false;
-            mManager.SubtractEnemyCount();
-            Destroy(this.gameObject, 1.0f);
+            currentHealth = 0;
+            DestroyObject();
         }
         if (collision.gameObject.tag == "Bubbles")
         {

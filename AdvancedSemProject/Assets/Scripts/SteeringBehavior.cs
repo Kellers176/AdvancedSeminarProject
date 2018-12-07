@@ -28,6 +28,7 @@ public class SteeringBehavior : MonoBehaviour {
     float cooldown;
     bool ifDying;
     int maxAvailable;
+    bool canShoot;
 
     int numberOfAIBehaviors = 5;
     enum AIBehaviors { SEEK, ARRIVE, FLEE, MOVETOPOINT, COWER }
@@ -47,6 +48,7 @@ public class SteeringBehavior : MonoBehaviour {
         currentHealth = maxHealth;
         rend = GetComponent<Renderer>();
         rend.material.color = Color.white;
+        canShoot = true;
         deecelerationFactor = 10;
         ifDying = false;
         canSubtract = true;
@@ -130,7 +132,8 @@ public class SteeringBehavior : MonoBehaviour {
                     flee = true;
                     break;
                 case (int)AIBehaviors.MOVETOPOINT:
-                    MoveAway();
+                    if(canShoot)
+                        MoveAway();
                     break;
                 case (int)AIBehaviors.COWER:
                     Cower();
@@ -147,6 +150,11 @@ public class SteeringBehavior : MonoBehaviour {
             }
             Seperation();
         }
+    }
+
+    public void setShoot(bool can)
+    {
+        canShoot = can;
     }
 
     void Wave()

@@ -37,15 +37,15 @@ public class ShieldHealth : MonoBehaviour {
 
 	private void OnCollisionEnter2D(Collision2D col)
 	{
-		if(col.gameObject.tag != "Bubbles")
+		if(col.gameObject.tag != "Bubbles" || col.gameObject.tag != "Wall")
 		{
 			currentHealth -= 10;
-
 		}
 	}
 	private void OnTriggerEnter2D(Collider2D col)
 	{
-		currentHealth -= 10;
+        if (col.gameObject.tag != "SpikeTrap")
+		    currentHealth -= 10;
 	}
 	
 

@@ -105,6 +105,7 @@ public class PlayerManager : MonoBehaviour
             Debug.Log("In spike trap");
             if (collision.gameObject.GetComponent<Animator>().GetBool("pain"))
             {
+                mSpeed.SetSpeed(15);
                 notColliding = true;
             }
         }

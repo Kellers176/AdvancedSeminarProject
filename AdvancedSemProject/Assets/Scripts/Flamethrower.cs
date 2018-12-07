@@ -32,7 +32,7 @@ public class Flamethrower : MonoBehaviour {
         }
         lifetime += Time.deltaTime;
         ChangeColor();
-        if (lifetime > 1.0)
+        if (lifetime > 0.7)
         {
             Destroy(this.gameObject);
         }

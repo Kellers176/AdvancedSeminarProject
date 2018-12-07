@@ -6,8 +6,8 @@ Material:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: ParticleFlare
-  m_Shader: {fileID: 4800000, guid: eafce4d2ccf19234f88d11dbd5182da3, type: 3}
+  m_Name: BloodSplat2x2
+  m_Shader: {fileID: 4800000, guid: d228bea13cb48394085c31c52c4a4f45, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -18,25 +18,20 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _Highlight_Cubmap:
+    - _CubeMap:
         m_Texture: {fileID: 8900000, guid: 1b3ac9892b764054ab7b1631c4914ffc, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _Main_Tex:
-        m_Texture: {fileID: 2800000, guid: 3cacdd741ba437942acc42a3256f515b, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _Main_Texture:
-        m_Texture: {fileID: 2800000, guid: 3cacdd741ba437942acc42a3256f515b, type: 3}
+        m_Texture: {fileID: 2800000, guid: 7974d6731f814b14e9de01659a1f4849, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _TextureNormals:
+    - _NormalMap:
         m_Texture: {fileID: 2800000, guid: 4e4e7a9d4caba1546a8222b8100665f6, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _Cutoff: 0.5
-    - _PixelAmount: 64
-    - _PixelSize: 64
+    - _PixelSize: 65
     m_Colors:
-    - _TintColor: {r: 1, g: 0, b: 0.29365063, a: 0}
+    - _Highlights: {r: 0.3207547, g: 0.0075649684, b: 0.0075649684, a: 1}
