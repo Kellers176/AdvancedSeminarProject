@@ -7,13 +7,14 @@ public class SceneManagerScript : MonoBehaviour {
     [SerializeField] EnemyManager myEnemyManager;
     [SerializeField] GameObject oldSprite;
     [SerializeField] GameObject particles;
-    
+    HUD mHud;
     bool done = false;
     int finalWaveNum;
     // Use this for initialization
     private void Start () {
         finalWaveNum = 1;
         UpdateFinalWaveCount();
+        mHud = GameObject.FindGameObjectWithTag("HUD").GetComponent<HUD>();
     }
 	
 	// Update is called once per frame
@@ -27,6 +28,7 @@ public class SceneManagerScript : MonoBehaviour {
     {
         if(myEnemyManager.GetWaves() > finalWaveNum)
         {
+            mHud.makeEnemy0();
             oldSprite.SetActive(false);
             particles.SetActive(true);
             done = true;

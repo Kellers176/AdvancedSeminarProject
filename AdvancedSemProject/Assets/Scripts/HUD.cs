@@ -65,6 +65,11 @@ public class HUD : MonoBehaviour
         }
     }
 
+    public void makeEnemy0()
+    {
+        enemiesLeft.text = ("0");
+    }
+
     public void ShowCountdown()
     {
         if(timeLeft <= 3 && timeLeft >= 1)
